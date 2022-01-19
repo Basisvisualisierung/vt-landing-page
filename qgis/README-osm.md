@@ -1,8 +1,8 @@
 # Einbindung in QGIS
 
 ## QGIS-Version
-Mit der hier verwendeten QGIS-Version 3.22.2 auf macOS Monterey 12.1 funktioniert die Einbindung der Vector Tiles wie im Video beschrieben.
-Bei älteren QGIS-Versionen kann es zu fehlern oder einem Programmabsturz kommen.
+Wir empfehlen die Verwendung von QGIS 3.22.2.
+Bei anderen QGIS-Versionen kann es zu Fehlern bei der Layer-Erstellung kommen.
 
 ***
 ## Anleitung
@@ -23,13 +23,11 @@ Bei älteren QGIS-Versionen kann es zu fehlern oder einem Programmabsturz kommen
 ## Schriften
 Folgende kostenlose Schriftarten sollten auf dem Betriebssystem installiert sein, um die Darstellung zu optimieren:
 
-http://www.schriftarten-fonts.de/fonts/11136/liberation_sans.html
-
+https://github.com/liberationfonts/liberation-fonts/tree/main/src
 * Liberation Sans Regular
 * Liberation Sans Bold
 
-https://fonts.google.com/specimen/Cantarell#standard-styles
-
+https://github.com/google/fonts/tree/main/ofl/cantarell
 * Cantarell Oblique
 * Cantarell Regular
 
