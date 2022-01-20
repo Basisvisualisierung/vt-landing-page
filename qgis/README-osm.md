@@ -43,6 +43,5 @@ https://github.com/google/fonts/tree/main/ofl/cantarell
 
 Die genannten Warnungen können Ignoriert werden. 3D-Objekte werden von QGIS momentan ohne PlugIn nicht unterstützt.
 
-
-
+***
 Stand: 20.01.2022
