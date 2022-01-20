@@ -34,7 +34,7 @@ https://github.com/google/fonts/tree/main/ofl/cantarell
 ***
 ## Warnungen
 
-*Vektorkacheln: Stil konnte nicht vollständig umgewandelt werden*
+***Vektorkacheln: Stil konnte nicht vollständig umgewandelt werden***
 
 *Die folgenden Warnungen traten beim Erzeugen des Vektorkachelstils auf:*
 
@@ -45,4 +45,4 @@ Die genannten Warnungen können Ignoriert werden. 3D-Objekte werden von QGIS mom
 
 
 
-Stand: 18.01.2022
+Stand: 20.01.2022
