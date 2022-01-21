@@ -11,7 +11,7 @@ let services = ["vt_basiskarte_tiles",
     "fonts",
     "offline_test"]
 
-let baseUrl = "https://67029deb.eu-de.apigw.appdomain.cloud/vt-status-api/get-http-status?service="
+let baseUrl = "https://basisvisualisierung.niedersachsen.de/status-api/health-check?service="
 
 getStatus();
 setInterval(function () {
@@ -20,7 +20,6 @@ setInterval(function () {
 
 getLatestStatusDbDoc()
 
-// gets the status of every service, that ist listed in "services"
 function getStatus() {
     let service;
     for (service of services) {
@@ -28,7 +27,6 @@ function getStatus() {
     }
 
 }
-
 // send the request and changes the html depending on the response
 function sendRequest(service) {
     url = baseUrl + service;
@@ -38,7 +36,9 @@ function sendRequest(service) {
         if (xmlHttp.readyState === XMLHttpRequest.DONE) {
             var status = xmlHttp.status;
             if (status === 0 || (status >= 200 && status < 400)) {
+
                 var response = JSON.parse(xmlHttp.responseText)
+                for (const [key, feature] of Object.entries(response))
                 var element = document.getElementById(service);
                 var span_small_text = element.getElementsByClassName("small")[0];
                 if (response.status == "online") {
@@ -113,7 +113,7 @@ function showToast(header, msg) {
 
 
 function getLatestStatusDbDoc() {
-    url = "https://67029deb.eu-de.apigw.appdomain.cloud/vt-status-api/get-latest-status-db-doc?name=" + services
+    url = "https://67029deb.eu-de.apigw.appdomain.cloud/status-api/get-outages?" 
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.open("GET", url, true);
     xmlHttp.onreadystatechange = function () {
@@ -126,13 +126,7 @@ function getLatestStatusDbDoc() {
         }
     }
     xmlHttp.send();
-
-    
-
 }
-
-
-
 
 
 function writeLatestMalfunctionToHTML(response_docs) {
