@@ -1,71 +1,61 @@
-let services = ["vt_basiskarte_tiles",
-    "vt_basiskarte_classic",
-    "vt_basiskarte_color",
-    "vt_basiskarte_grayscale",
-    "vt_basiskarte_light",
-    "vt_basiskarte_night",
-    "grundsteuer_styles",
-    "opengeodata_styles",
-    "ki_styles",
-    "alkis_tiles",
-    "fonts",
-    "offline_test"]
+let services = []
 
 let baseUrl = "https://basisvisualisierung.niedersachsen.de/status-api/health-check?service="
 
-getStatus();
+sendRequest();
+
 setInterval(function () {
-    getStatus()
+    sendRequest()
 }, 60000);
 
 getLatestStatusDbDoc()
 
-function getStatus() {
-    let service;
-    for (service of services) {
-        sendRequest(service);
-    }
-
-}
 // send the request and changes the html depending on the response
-function sendRequest(service) {
-    url = baseUrl + service;
+function sendRequest() {
+    url = baseUrl + "all";
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.open("GET", url, true);
     xmlHttp.onreadystatechange = function () {
         if (xmlHttp.readyState === XMLHttpRequest.DONE) {
             var status = xmlHttp.status;
             if (status === 0 || (status >= 200 && status < 400)) {
-
                 var response = JSON.parse(xmlHttp.responseText)
-                for (const [key, feature] of Object.entries(response))
-                var element = document.getElementById(service);
-                var span_small_text = element.getElementsByClassName("small")[0];
-                if (response.status == "online") {
-                    span_small_text.textContent = "";
-                    var span_status = element.getElementsByClassName("status")[0];
-                    span_status.textContent = "Online"
-                    span_status.classList.remove("failed")
-                    span_status.classList.add("success")
-                } else {
-                    var span_status = element.getElementsByClassName("status")[0];
-                    span_status.textContent = "Offline"
-                    span_status.classList.remove("success")
-                    span_status.classList.add("failed")
-                }
+                for (const [key,feature] of Object.entries(response["services"])) {
+                    service = key;
+                    services.push(service);
 
-                var tbodyRefSummary = document.getElementById(service + "-collapse").getElementsByTagName('tbody')[0];
-                tbodyRefSummary.innerHTML = "";
-
-                for (const [key, feature] of Object.entries(response.services[service])) {
-                    var newRow = tbodyRefSummary.insertRow();
-                    var row = '<th scope="row">' + key + '</th><td>' + feature.status_code + '</td><td><img src="../svg/check-circle.svg" </td>';
-                    if (!(feature.status_code >= 200 && feature.status_code < 400)) {
-                        var row = '<th scope="row">' + key + '</th><td>' + feature.status_code + '</td><td><img src="../svg/exclamation-circle.svg" </td>';
-                        span_small_text.textContent = "Status-Code: " + feature.status_code;
+                    var element = document.getElementById(service);
+                    var span_small_text = element.getElementsByClassName("small")[0];
+                    console.log(response["services"])
+                    // bis hier hin läufts
+                    if (response["services"].status == "online") {
+                        span_small_text.textContent = "";
+                        var span_status = element.getElementsByClassName("status")[0];
+                        span_status.textContent = "Online"
+                        span_status.classList.remove("failed")
+                        span_status.classList.add("success")
+                    } else {
+                        var span_status = element.getElementsByClassName("status")[0];
+                        span_status.textContent = "Offline"
+                        span_status.classList.remove("success")
+                        span_status.classList.add("failed")
                     }
-                    newRow.innerHTML = row;
+                    var tbodyRefSummary = document.getElementById(service + "-collapse").getElementsByTagName('tbody')[0];
+                    tbodyRefSummary.innerHTML = "";
+    
+                    for (const [key, feature] of Object.entries(response.services[service])) {
+                        var newRow = tbodyRefSummary.insertRow();
+                        var row = '<th scope="row">' + key + '</th><td>' + feature.status_code + '</td><td><img src="../svg/check-circle.svg" </td>';
+                        if (!(feature.status_code >= 200 && feature.status_code < 400)) {
+                            var row = '<th scope="row">' + key + '</th><td>' + feature.status_code + '</td><td><img src="../svg/exclamation-circle.svg" </td>';
+                            span_small_text.textContent = "Status-Code: " + feature.status_code;
+                        }
+                        newRow.innerHTML = row;
+                    }
                 }
+
+
+
 
             } else {
                 var element = document.getElementById(service);
@@ -82,8 +72,6 @@ function sendRequest(service) {
 function copyURL(id) {
     copyToClipboard(baseUrl + id)
     showToast(id + " kopiert", "Die URL der Status-API wurde erfolgreich in die Zwischenablage kopiert")
-
-
 }
 
 // Helper function to copy text to clipboard
@@ -113,7 +101,7 @@ function showToast(header, msg) {
 
 
 function getLatestStatusDbDoc() {
-    url = "https://67029deb.eu-de.apigw.appdomain.cloud/status-api/get-outages?" 
+    url = "https://basisvisualisierung.niedersachsen.de/status-api/get-outages?" 
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.open("GET", url, true);
     xmlHttp.onreadystatechange = function () {
