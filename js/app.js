@@ -1,4 +1,4 @@
-let baseurl = "https://basisvisualisierung.niedersachsen.de/services/basiskarte_ni/"
+let baseurl = "https://basisvisualisierung.niedersachsen.de/services/basiskarte/"
 let usageMap
 
 setupHeaderMap()
