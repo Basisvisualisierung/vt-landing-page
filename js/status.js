@@ -1,72 +1,98 @@
-let services = []
+let baseUrl = "https://basisvisualisierung.niedersachsen.de/status-api/"
 
-let baseUrl = "https://basisvisualisierung.niedersachsen.de/status-api/health-check?service="
-
-sendRequest();
-
+sendRequest(true);
 setInterval(function () {
-    sendRequest()
+    sendRequest(false)
 }, 60000);
 
-getLatestStatusDbDoc()
-
 // send the request and changes the html depending on the response
-function sendRequest() {
-    url = baseUrl + "all";
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open("GET", url, true);
-    xmlHttp.onreadystatechange = function () {
-        if (xmlHttp.readyState === XMLHttpRequest.DONE) {
-            var status = xmlHttp.status;
-            if (status === 0 || (status >= 200 && status < 400)) {
-                var response = JSON.parse(xmlHttp.responseText)
-                for (const [key,feature] of Object.entries(response["services"])) {
-                    service = key;
-                    services.push(service);
+function sendRequest(initial) {
+    const accordion = document.querySelector("#services-accordion")
+    fetch(baseUrl + "health-check?service=all").then(handleErrors).then(res => res.json()).then(services => {
+        fetch(baseUrl + "get-outages").then(handleErrors).then(res => res.json()).then(outages_resp => {
+            initial && setAccordion(accordion, false)
+            services.services.forEach(service => {
+                const item = initial ? document.querySelector("#service-template").content.cloneNode(true) : document.querySelector("#" + service.name + "-item")
+                const outages = outages_resp.docs.filter(o => o.name === service.name)
+                initial && setDescriptions(item, service)
+                setStatus(item, service)
+                setLastOutage(item, outages)
+                setParts(item, service)
+                initial && accordion.appendChild(item)
+            })
+        }).catch(_ => {
+            setAccordion(accordion, true)
+        })
+    }).catch(_ => {
+        setAccordion(accordion, true)
+    })
+}
 
-                    var element = document.getElementById(service);
-                    var span_small_text = element.getElementsByClassName("small")[0];
-                    console.log(response["services"])
-                    // bis hier hin läufts
-                    if (response["services"].status == "online") {
-                        span_small_text.textContent = "";
-                        var span_status = element.getElementsByClassName("status")[0];
-                        span_status.textContent = "Online"
-                        span_status.classList.remove("failed")
-                        span_status.classList.add("success")
-                    } else {
-                        var span_status = element.getElementsByClassName("status")[0];
-                        span_status.textContent = "Offline"
-                        span_status.classList.remove("success")
-                        span_status.classList.add("failed")
-                    }
-                    var tbodyRefSummary = document.getElementById(service + "-collapse").getElementsByTagName('tbody')[0];
-                    tbodyRefSummary.innerHTML = "";
-    
-                    for (const [key, feature] of Object.entries(response.services[service])) {
-                        var newRow = tbodyRefSummary.insertRow();
-                        var row = '<th scope="row">' + key + '</th><td>' + feature.status_code + '</td><td><img src="../svg/check-circle.svg" </td>';
-                        if (!(feature.status_code >= 200 && feature.status_code < 400)) {
-                            var row = '<th scope="row">' + key + '</th><td>' + feature.status_code + '</td><td><img src="../svg/exclamation-circle.svg" </td>';
-                            span_small_text.textContent = "Status-Code: " + feature.status_code;
-                        }
-                        newRow.innerHTML = row;
-                    }
-                }
+function handleErrors(response) {
+    if (!response.ok) {
+        throw Error(response.statusText)
+    }
+    return response
+}
 
+function setAccordion(accordion, showError) {
+    if (showError) {
+        accordion.innerHTML = "Fehler beim Statusabruf"
+    } else {
+        accordion.innerHTML = ""
+        accordion.classList.remove("d-flex")
+        accordion.classList.remove("justify-content-center")
+    }
+}
 
+function setStatus(item, service) {
+    const statusDescription = item.querySelector(".service-status")
+    statusDescription.textContent = service.status && service.status[0].toUpperCase() + service.status.slice(1)
+    statusDescription.classList.remove("success")
+    statusDescription.classList.remove("failed")
+    statusDescription.classList.add(service.status === "online" ? "success" : "failed")
+}
 
+function setDescriptions(item, service) {
+    const itemBody = item.querySelector(".accordion-collapse")
+    const itemToggle = item.querySelector(".accordion-button")
+    item.querySelector("div").id = service.name + "-item"
+    item.querySelector(".service-name").textContent = service.name
+    item.querySelector(".accordion-header").id = service.name + "-header"
+    item.querySelector(".service-url").textContent = baseUrl + service.name
+    itemBody.id = service.name + "-collapse"
+    itemBody.setAttribute("aria-labelledby", service.name + "-header")
+    itemBody.setAttribute("data-bs-parent", "#services-accordion")
+    itemToggle.setAttribute("data-bs-target", "#" + service.name + "-collapse")
+    itemToggle.setAttribute("aria-controls", service.name + "-collapse")
+}
 
-            } else {
-                var element = document.getElementById(service);
-                var span_small = element.getElementsByClassName("small")[0];
-                span_small.textContent = "Statusabfrage fehlgeschlagen";
+function setParts(item, service) {
+    const table = item.querySelector("tbody")
+    table.innerHTML = ""
+    service.parts.forEach(part => {
+        const row = document.createElement("tr")
+        row.setAttribute("scope", "row")
+        const name = document.createElement("td")
+        name.textContent = part.name
+        row.appendChild(name)
+        const status = document.createElement("td")
+        status.textContent = part.status_code
+        row.appendChild(status)
+        row.appendChild(document.createElement("td"))
+        table.appendChild(row)
+    })
+}
 
-            }
-        }
-    };
-    xmlHttp.send();
-
+function setLastOutage(item, outages) {
+    if (outages.length > 0) {
+        const latest = outages.sort((a, b) => (a.timestamp < b.timestamp) ? 1 : -1)[0]
+        const date = new Date(latest.timestamp)
+        item.querySelector(".last-outage").innerHTML =
+            "<b>Letzte Störung am " + date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear() +
+            " um " + date.getHours() + ":" + date.getMinutes() + " Uhr</b><br/>Services: " +
+            latest.parts.map(part => part.name).join(", ") + "<br/>Status-Codes: " + latest.parts.map(part => part.status_code).join(", ")
+    }
 }
 
 function copyURL(id) {
@@ -98,58 +124,3 @@ function showToast(header, msg) {
     document.getElementById("toastHeaderText").textContent = header
     toastElement.show()
 }
-
-
-function getLatestStatusDbDoc() {
-    url = "https://basisvisualisierung.niedersachsen.de/status-api/get-outages?" 
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open("GET", url, true);
-    xmlHttp.onreadystatechange = function () {
-        if (xmlHttp.readyState === XMLHttpRequest.DONE) {
-            var status = xmlHttp.status;
-            if (status === 0 || (status >= 200 && status < 400)) {
-                var response = JSON.parse(xmlHttp.responseText);
-                writeLatestMalfunctionToHTML(response.docs)                
-            }
-        }
-    }
-    xmlHttp.send();
-}
-
-
-function writeLatestMalfunctionToHTML(response_docs) {
-    service_array = services
-    for (const [key, feature] of Object.entries(response_docs)) {
-        for (service of service_array) {
-            if (service == feature.name) {
-                timestamp = feature.timestamp
-                var date  = new Date(timestamp)
-                for (const [k1, f1] of Object.entries(feature.services)){
-                    var service = k1;
-                    for (const [k, f] of Object.entries(f1)){
-                        var status_code = f.status_code
-                    }
-
-                }
-                var el = document.getElementById("latest-malfunction-" + service);
-                el.innerHTML = "<b>Letzte Störung am " + 
-                date.getDate()+
-                "."+(date.getMonth()+1)+
-                "."+date.getFullYear()+
-                " um  "+date.getHours()+
-                ":"+date.getMinutes()+ 
-                " Uhr </b><br />   Service: " + service + " <br /> Status-Code: " + status_code + ""
-                const index = service_array.indexOf(service);
-                if (index > -1) {
-                    service_array.splice(index, 1);
-                }
-            }
-        }
-    }
-    console.log(service_array)
-    for (service of service_array) {
-        var el = document.getElementById("latest-malfunction-" + service);
-        el.innerHTML = "<b>Letzte Störung: Keine Störung in den letzten zwei Wochen</b>"
-    }
-}
-
