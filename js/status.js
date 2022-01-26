@@ -56,10 +56,11 @@ function setStatus(item, service) {
 function setDescriptions(item, service) {
     const itemBody = item.querySelector(".accordion-collapse")
     const itemToggle = item.querySelector(".accordion-button")
+    item.querySelector(".urlBtn").setAttribute("onclick", "copyURL('" + service.name + "')")
     item.querySelector("div").id = service.name + "-item"
     item.querySelector(".service-name").textContent = service.name
     item.querySelector(".accordion-header").id = service.name + "-header"
-    item.querySelector(".service-url").textContent = baseUrl + service.name
+    item.querySelector(".service-url").textContent = baseUrl + "health-check?service=" + service.name
     itemBody.id = service.name + "-collapse"
     itemBody.setAttribute("aria-labelledby", service.name + "-header")
     itemBody.setAttribute("data-bs-parent", "#services-accordion")
@@ -96,7 +97,7 @@ function setLastOutage(item, outages) {
 }
 
 function copyURL(id) {
-    copyToClipboard(baseUrl + id)
+    copyToClipboard(baseUrl + "health-check?service=" + id)
     showToast(id + " kopiert", "Die URL der Status-API wurde erfolgreich in die Zwischenablage kopiert")
 }
 
