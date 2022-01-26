@@ -157,11 +157,15 @@
                         aria-labelledby="pills-news-tab">
                         <div class="p-2">
                             <div class="news-content" id="news-content">
-                                <b>20.01.2022 +++ Q-GIS README +++</b></br>
+                                <b>26.01.2022 +++ Integrierte Darstellung Niedersachsen und Bremen +++</b></br>
+                                Mehr dazu im Abschnitt <a class="news-href"  onclick="scrollToID('styles')">Styles</a></br></br>
+                                <b>26.01.2022 +++ Bitte QGIS-Version ab 3.22.2 verwenden +++</b></br>
+                                Mehr dazu im Abschnitt <a class="news-href"  onclick="scrollToID('data')">Daten</a></br></br>
+                                <b>20.01.2022 +++ QGIS Readme +++</b></br>
                                 Mehr dazu im Abschnitt <a class="news-href"  onclick="scrollToID('data')">Daten</a></br></br>
                                 <b>19.11.2021 +++ Microfrontend +++</b></br>
                                 Mehr dazu im Abschnitt <a class="news-href" onclick="scrollToID('microfrontend')">Microfrontend</a></br></br>
-                                <b>19.11.2021 +++ Q-GIS Einbindung +++</b></br>
+                                <b>19.11.2021 +++ QGIS Einbindung +++</b></br>
                                 Mehr dazu im Abschnitt <a class="news-href"  onclick="scrollToID('data')">Daten</a></br></br>
                                 <b>01.07.2021 +++ Live-Gang des Dienstes +++</b></br>
                                 Mehr dazu im Abschnitt <a class="news-href" onclick="scrollToID('data')">Daten</a></br></br>
@@ -298,7 +302,7 @@
     &lt;script&gt;
         var map = new maplibregl.Map({
             container: 'map',
-            style: 'https://basisvisualisierung.niedersachsen.de/services/basiskarte_ni/styles/vt-style-color.json',
+            style: 'https://basisvisualisierung.niedersachsen.de/services/basiskarte/styles/vt-style-color.json',
             center: [9.8, 52.4],
             zoom: 13,
         });
@@ -336,7 +340,7 @@
         mapboxgl.accessToken = '&lt;your access token here&gt;';
         var map = new mapboxgl.Map({
             container: 'map',
-            style: 'https://basisvisualisierung.niedersachsen.de/services/basiskarte_ni/styles/vt-style-color.json',
+            style: 'https://basisvisualisierung.niedersachsen.de/services/basiskarte/styles/vt-style-color.json',
             center: [9.8, 52.4],
             zoom: 13,
         });
@@ -377,7 +381,7 @@
             maxZoom: 18,
         });
         var gl = L.mapboxGL({
-            style: 'https://basisvisualisierung.niedersachsen.de/services/basiskarte_ni/styles/vt-style-color.json',
+            style: 'https://basisvisualisierung.niedersachsen.de/services/basiskarte/styles/vt-style-color.json',
         }).addTo(map);
         map.setView([ 52.4, 9.8 ], 13);
     &lt;/script&gt;
@@ -414,7 +418,7 @@
     &lt;script&gt;
         var center = [9.8, 52.4];
         var mbMap = new mapboxgl.Map({
-            style: 'https://basisvisualisierung.niedersachsen.de/services/basiskarte_ni/styles/vt-style-color.json',
+            style: 'https://basisvisualisierung.niedersachsen.de/services/basiskarte/styles/vt-style-color.json',
             center: center,
             container: 'map',
         });
@@ -1030,13 +1034,13 @@
                 <p>
                     TileJSON-URL:<br />
                     <code>
-                        https://basisvisualisierung.niedersachsen.de/services/basiskarte_ni/v1/tiles/basiskarte_ni.json
+                        https://basisvisualisierung.niedersachsen.de/services/basiskarte/v1/tiles/basiskarte.json
                     </code>
                 </p>
                 <p>
                     XYZ-URL:<br />
                     <code>
-                        https://basisvisualisierung.niedersachsen.de/services/basiskarte_ni/v1/tiles/{z}/{x}/{y}.pbf
+                        https://basisvisualisierung.niedersachsen.de/services/basiskarte/v1/tiles/{z}/{x}/{y}.pbf
                     </code>
                 </p>
                 <p> Einbindung in QGIS:
@@ -1049,9 +1053,8 @@
                         QGIS-Projekt<img height="20px" width="30px" src="./svg/box-arrow-down.svg"
                             alt="Icon: Box mit einem Pfeil nach unten">
                     </a>
-                    <a class="btn btn-primary px-3" href="./qgis/README-osm.md" type="application/qgis"
-                    download="README-osm.md">
-                    README<img height="20px" width="30px" src="./svg/box-arrow-down.svg"
+                    <a class="btn btn-primary px-3" href="./qgis/Readme.txt" type="application/qgis"
+                    download="Readme.txt">Readme<img height="20px" width="30px" src="./svg/box-arrow-down.svg"
                         alt="Icon: Box mit einem Pfeil nach unten">
                 </a>
                 <p>

@@ -11,9 +11,9 @@ Bei anderen QGIS-Versionen kann es zu Fehlern bei der Layer-Erstellung kommen.
 * Im linken *Browser*-Fenster eine neue Verbindung erstellen, unter *Vektor Tiles/ Neue allgemeine Verbindung...*
 * Vektorkachelverbindung
   * *Name* vergeben (z.B. Basisvisualisierung-Farbe)
-  * *URL* einfügen: https://basisvisualisierung.niedersachsen.de/services/basiskarte_ni/v1/tiles/{z}/{x}/{y}.pbf
+  * *URL* einfügen: https://basisvisualisierung.niedersachsen.de/services/basiskarte/v1/tiles/{z}/{x}/{y}.pbf
   * *Maximale Zoomstufe* auf **15** ändern
-  * *Stil URL* einfügen: https://basisvisualisierung.niedersachsen.de/services/basiskarte_ni/styles/vt-style-color.json
+  * *Stil URL* einfügen: https://basisvisualisierung.niedersachsen.de/services/basiskarte/styles/vt-style-color.json
 (Beispiel Color-Style. Weitere Stil-URL´s finden Sie unter https://basisvisualisierung.niedersachsen.de/ . Ohne Stil-URL werden die Daten in einem Standard-Stil von QGIS dargestellt.)
   * Mit *OK* Fenster schließen
 * Doppelklick fügt neu erstellte Vektorkachelverbindung als Layer dem QGIS-Projekt hinzu.
