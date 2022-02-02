@@ -27,12 +27,12 @@ jobs:
         run: ./mc alias set upload https://s3.eu-de.cloud-object-storage.appdomain.cloud ${{ secrets.IBM_COS_ACCESS_KEY }} ${{ secrets.IBM_COS_SECRET_KEY }}
       - name: Upload files
         run: |
-          ./mc cp -r ./css/ upload/website-bavi-dev/
-          ./mc cp -r ./icons/ upload/website-bavi-dev/
-          ./mc cp -r ./js/ upload/website-bavi-dev/
-          ./mc cp -r ./qgis/ upload/website-bavi-dev/
-          ./mc cp -r ./svg/ upload/website-bavi-dev/
-          ./mc cp -r ./status/ upload/website-bavi-dev/
-          ./mc cp ./index.html upload/website-bavi-dev/
-          ./mc cp ./robots.txt upload/website-bavi-dev/
-          ./mc cp ./sitemap.xml upload/website-bavi-dev/
+          ./mc cp -r css upload/website-bavi-dev/
+          ./mc cp -r icons upload/website-bavi-dev/
+          ./mc cp -r js upload/website-bavi-dev/
+          ./mc cp -r qgis upload/website-bavi-dev/
+          ./mc cp -r svg upload/website-bavi-dev/
+          ./mc cp -r status upload/website-bavi-dev/
+          ./mc cp index.html upload/website-bavi-dev/
+          ./mc cp robots.txt upload/website-bavi-dev/
+          ./mc cp sitemap.xml upload/website-bavi-dev/
