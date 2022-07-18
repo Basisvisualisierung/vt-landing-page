@@ -67,7 +67,7 @@ function showFooterSection(container) {
     container.style.display = "block"
     document.getElementById(container.id + "-image").src = "../svg/chevron-up.svg"
     window.scrollTo({
-        top : document.getElementById("footer").offsetTop - 70,
+        top: document.getElementById("footer").offsetTop - 70,
         behavior: "smooth"
     })
 }
@@ -75,7 +75,7 @@ function showFooterSection(container) {
 // Smooth scrolls to html element with given id
 function scrollToID(id) {
     window.scrollTo({
-        top : document.getElementById(id).offsetTop - 56,
+        top: document.getElementById(id).offsetTop - 56,
         behavior: "smooth"
     })
 }
@@ -88,19 +88,32 @@ function changeBasemap(id) {
     else {
         usageMap.setStyle(baseurl + "basiskarte/styles/" + id + ".json")
     }
-    
+
 }
 
 // Copys the active style in the usage map to the clipboard
-function copyURL() {
+function copyURL(id) {
     let active = document.getElementsByClassName('nav-link map active').item(0)
-    if (active.id == 'osm-style-color' || active.id == 'osm-style-mix-gray-color') {
-        copyToClipboard(baseurl + "osm-basiskarte/styles/" + active.id + ".json")
+    if (id) {
+        if (id =='Tilejson') {
+            copyToClipboard("https://basisvisualisierung.niedersachsen.de/services/basiskarte/v1/tiles/basiskarte.json")
+        }else {
+            copyToClipboard("https://basisvisualisierung.niedersachsen.de/services/basiskarte/v1/tiles/{z}/{x}/{y}.pbf")
+        }
+        showToast(id + "-URL kopiert", "Die URL urde erfolgreich in die Zwischenablage kopiert")
+
     } else {
-        copyToClipboard(baseurl + "basiskarte/styles/" + active.id + ".json")
+        if (active.id == 'osm-style-color' || active.id == 'osm-style-mix-gray-color') {
+            copyToClipboard(baseurl + "osm-basiskarte/styles/" + active.id + ".json")
+        } else {
+            copyToClipboard(baseurl + "basiskarte/styles/" + active.id + ".json")
+        }
+
+        showToast(active.textContent + " kopiert", "Die URL des Styles wurde erfolgreich in die Zwischenablage kopiert")
+
     }
-    
-    showToast(active.textContent + " kopiert", "Die URL des Styles wurde erfolgreich in die Zwischenablage kopiert")
+
+
 }
 
 // Copys the active code example to the clipboard

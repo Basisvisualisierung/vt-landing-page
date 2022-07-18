@@ -69,6 +69,10 @@
                         <div onclick="scrollToID('styles')" class="nav-link text-secondary link">Styles</div>
                     </li>
                     <li class="nav-item">
+                        <div onclick="scrollToID('styleprinteditor')" class="nav-link text-secondary link">Style & Print Editor
+                        </div>
+                    </li>
+                    <li class="nav-item">
                         <div onclick="scrollToID('microfrontend')" class="nav-link text-secondary link">Microfrontend
                         </div>
                     </li>
@@ -205,9 +209,10 @@
                     JavaScript-Bibliotheken wie z.B. MapLibre GL JS,
                     Mapbox GL JS, OpenLayers oder Leaflet unterstützt.</p>
                 <p>
-                    Nachfolgend sind unsere fünf vorgefertigten Styles sowie deren URLs zur Einbindung zu finden.
+                    Nachfolgend sind sieben vorgefertigten Styles sowie deren URLs zur Einbindung zu finden.
                     Die Styles Farbe und Klassisch beinhalten mehr Objektarten als die
-                    reduzierten Styles Graustufen, Hell und Nacht.
+                    reduzierten Styles Graustufen, Hell und Nacht. Die OSM-Kombi Styles bestehen 
+                    aus ATKIS-Daten innerhalb und OSM-Daten außerhalb von Niedersachsen.
                 </p>
             </div>
         </div>
@@ -463,8 +468,26 @@
         </div>
     </div>
 
+    <!-- SECTION Bavi-Print-Style-Editor -->
+    <div id="styleprinteditor" class="container-fluid py-5 bg-light position-relative">
+        <h1 class="text-center">Style & Print Editor</h1>
+        <div class="row">
+            <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 py-2">
+                <p>Im Style & Print Editor können die Styles der Basisvisualisierung sowie externe Styles angepasst werden.
+                    Neben dem Donwload von Styles können außerdem Kartenausschnitte als PDF oder PNG für den Druck erstellt werden.
+                </p>
+                <a class="btn btn-primary px-3" href="https://dev.basisvisualisierung.niedersachsen.de/apps/editor/" target="_blank"
+                rel="noopener">
+                zum Style & Print Editor
+                <img height="20px" width="30px" src="./svg/box-arrow-up-right.svg"
+                    alt="Icon: Box mit einem Pfeil nach rechts oben">
+            </a>
+            </div>
+            </div>
+    </div>
+
     <!-- SECTION Microfrontend -->
-    <div id="microfrontend" class="container-fluid py-5 bg-light position-relative">
+    <div id="microfrontend" class="container-fluid py-5 bg-white position-relative">
         <div class="corner-ribbon">Beta</div>
         <h1 class="text-center">Microfrontend</h1>
         <div class="row">
@@ -511,14 +534,14 @@
                             <div id="example1" class="col-xl-6 mh-600">
                                 <vt-map map-height="100%"></vt-map>
                             </div>
-                            <div class="col-xl-6 micro-code position-relative">
+                            <div class="col-xl-6 micro-code position-relative bg-light">
                                 <button class="btn btn-primary copyBtn px-3 px-md-3"
                                     onclick="copyCode('Standard Beispiel', 'default-example')">
                                     <span class="d-none d-md-inline">HTML</span>
                                     <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
                                         alt="Icon: In die Zwischenablage kopieren">
                                 </button>
-                                <pre class="example-micro bg-white" data-lang="HTML">
+                                <pre class="example-micro bg-light" data-lang="HTML">
                                     <code id="default-example" class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -537,14 +560,14 @@
                     <div class="tab-pane show" id="pills-example2" role="tabpanel" aria-labelledby="pills-example2-tab">
                         <div class="row g-0">
                             <div id="example2" class="col-xl-6 mh-600"></div>
-                            <div class="col-xl-6 micro-code position-relative">
+                            <div class="col-xl-6 micro-code position-relative bg-light">
                                 <button class="btn btn-primary copyBtn px-3 px-md-3"
                                     onclick="copyCode('Markierungen Beispiel', 'markers-example')">
                                     <span class="d-none d-md-inline">HTML</span>
                                     <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
                                         alt="Icon: In die Zwischenablage kopieren">
                                 </button>
-                                <pre class="example-micro bg-white" data-lang="HTML">
+                                <pre class="example-micro bg-light" data-lang="HTML">
                                     <code id="markers-example" class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -576,14 +599,14 @@
                                 }
                             </script>
                             <div id="example3" class="col-xl-6 mh-600"></div>
-                            <div class="col-xl-6 micro-code position-relative">
+                            <div class="col-xl-6 micro-code position-relative bg-light">
                                 <button class="btn btn-primary copyBtn px-3 px-md-3"
                                     onclick="copyCode('Interaktion Beispiel', 'interaction-example')">
                                     <span class="d-none d-md-inline">HTML</span>
                                     <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
                                         alt="Icon: In die Zwischenablage kopieren">
                                 </button>
-                                <pre class="example-micro bg-white" data-lang="HTML">
+                                <pre class="example-micro bg-light" data-lang="HTML">
                                     <code id="interaction-example" class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -609,14 +632,14 @@
                     <div class="tab-pane show" id="pills-example4" role="tabpanel" aria-labelledby="pills-example4-tab">
                         <div class="row g-0">
                             <div id="example4" class="col-xl-6 mh-600"></div>
-                            <div class="col-xl-6 micro-code position-relative">
+                            <div class="col-xl-6 micro-code position-relative bg-light">
                                 <button class="btn btn-primary copyBtn px-3 px-md-3"
                                     onclick="copyCode('Externe Quelle Beispiel', 'external-source-example')">
                                     <span class="d-none d-md-inline">HTML</span>
                                     <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
                                         alt="Icon: In die Zwischenablage kopieren">
                                 </button>
-                                <pre class="example-micro bg-white" data-lang="HTML">
+                                <pre class="example-micro bg-light" data-lang="HTML">
                                     <code id="external-source-example" class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -1033,7 +1056,7 @@
     </div>
 
     <!-- SECTION Daten -->
-    <div id="data" class="container-fluid py-5 bg-white">
+    <div id="data" class="container-fluid py-5 bg-light">
         <h1 class="text-center">Daten</h1>
         <div class="row">
             <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 py-2">
@@ -1046,7 +1069,7 @@
                     <code>
                         https://basisvisualisierung.niedersachsen.de/services/basiskarte/v1/tiles/basiskarte.json
                     </code>
-                    <button class="btn btn-primary data-url-btn btn-sm px-3 px-md-3" onclick="copyURL()">
+                    <button class="btn btn-primary data-url-btn btn-sm px-3 px-md-3" onclick="copyURL('Tilejson')">
                         <span class="d-none d-md-inline">URL</span>
                         <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
                             alt="Icon: In die Zwischenablage kopieren">
@@ -1063,7 +1086,7 @@
                     <code>
                         https://basisvisualisierung.niedersachsen.de/services/basiskarte/v1/tiles/{z}/{x}/{y}.pbf
                     </code>
-                    <button class="btn btn-primary data-url-btn btn-sm px-3 px-md-3" onclick="copyURL()">
+                    <button class="btn btn-primary data-url-btn btn-sm px-3 px-md-3" onclick="copyURL('XYZ')">
                         <span class="d-none d-md-inline">URL</span>
                         <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
                             alt="Icon: In die Zwischenablage kopieren">
@@ -1090,7 +1113,7 @@
                 </p>
                 <a class="btn btn-primary px-3" href="https://adv-smart.de/documentation.html" target="_blank"
                     rel="noopener">
-                    Smart Mapping
+                    zu Smart Mapping
                     <img height="20px" width="30px" src="./svg/box-arrow-up-right.svg"
                         alt="Icon: Box mit einem Pfeil nach rechts oben">
                 </a>
@@ -1101,11 +1124,11 @@
     </div>
 
     <!-- SECTION TERMS OF SERVICE -->
-    <div id="tos" class="container-fluid py-5 bg-light">
+    <div id="tos" class="container-fluid py-5 bg-white">
         <h1 class="text-center pb-3">Nutzungsbedingungen</h1>
         <div class="row gx-4">
             <div class="col-xl-4 offset-xl-2 col-lg-5 offset-lg-1 py-2">
-                <div class="bg-white h-100 p-4 tos-container">
+                <div class="bg-light h-100 p-4 tos-container">
                     <h2 class="text-center pb-2">Styles</h2>
                     <p class="mb-2"> Die Styles sind als Dienst kostenfrei nutzbar. Bei öffentlichen Bereitstellungen
                         ist die Angabe eines Quellenvermerks für die Daten anzubringen:
@@ -1124,7 +1147,7 @@
                 </div>
             </div>
             <div class="col-xl-4 col-lg-5 py-2">
-                <div class="bg-white h-100 p-4 tos-container">
+                <div class="bg-light h-100 p-4 tos-container">
                     <h2 class="text-center pb-2">Daten</h2>
                     <p class="mb-2">
                         Der Vector-Tiles-Dienst darf kostenfrei in Kartenanwendungen eingebunden werden. Bei
@@ -1145,18 +1168,18 @@
     </div>
 
     <!-- SECTION FAQ -->
-    <div id="faq" class="container-fluid py-5 bg-white">
+    <div id="faq" class="container-fluid py-5 bg-light">
         <h1 class="text-center">FAQ - Häufig gestellte Fragen</h1>
         <div class="row">
             <div class="accordion col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 py-2" id="faqAccordion">
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
+                    <h2 class="accordion-header bg-white rounded-top" id="headingOne">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                             Welchen Bereich decken die Vector Tiles ab?
                         </button>
                     </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                    <div id="collapseOne" class="accordion-collapse collapse bg-white" aria-labelledby="headingOne"
                         data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
                             Die auf dieser Seite verfügbaren Vector Tiles decken seit dem 01.02.2022 das Gebiet des Landes Niedersachsen und Bremen 
@@ -1166,7 +1189,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="accordion-item">
+                <div class="accordion-item bg-white">
                     <h2 class="accordion-header" id="headingTwo">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -1180,7 +1203,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="accordion-item">
+                <div class="accordion-item bg-white">
                     <h2 class="accordion-header" id="headingTwoPointFive">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseTwoPointFive" aria-expanded="false"
@@ -1195,7 +1218,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="accordion-item">
+                <div class="accordion-item bg-white">
                     <h2 class="accordion-header" id="headingThree">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -1212,7 +1235,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="accordion-item">
+                <div class="accordion-item bg-white">
                     <h2 class="accordion-header" id="headingFour">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
@@ -1227,7 +1250,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="accordion-item">
+                <div class="accordion-item bg-white">
                     <h2 class="accordion-header" id="headingFive">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
@@ -1242,7 +1265,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="accordion-item">
+                <div class="accordion-item bg-white">
                     <h2 class="accordion-header" id="headingSeven">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
@@ -1257,8 +1280,8 @@
                     </div>
                 </div>
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingEight">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    <h2 class="accordion-header bg-white rounded-bottom" id="headingEight">
+                        <button class="accordion-button collapsed bg-white" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
                             Gibt es Code-Beispiele?
                         </button>
