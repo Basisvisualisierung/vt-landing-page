@@ -1,4 +1,4 @@
-let baseurl = "https://basisvisualisierung.niedersachsen.de/services/basiskarte/"
+let baseurl = "https://basisvisualisierung.niedersachsen.de/services/"
 let usageMap
 
 setupHeaderMap()
@@ -8,7 +8,7 @@ setupUsageMap()
 function setupHeaderMap() {
     let map = new maplibregl.Map({
         container: "map",
-        style: baseurl + "styles/vt-style-classic.json",
+        style: baseurl + "basiskarte/styles/vt-style-classic.json",
         center: [9.8, 52.4],
         zoom: 10,
         pitch: 0,
@@ -31,7 +31,7 @@ function setupHeaderMap() {
 function setupUsageMap() {
     usageMap = new maplibregl.Map({
         container: "usageMap",
-        style: baseurl + "styles/vt-style-color.json",
+        style: baseurl + "basiskarte/styles/vt-style-color.json",
         center: [9.8, 52.4],
         zoom: 12,
         minZoom: 7, //zoom out
@@ -82,13 +82,24 @@ function scrollToID(id) {
 
 // Changes the active style on the usage map
 function changeBasemap(id) {
-    usageMap.setStyle(baseurl + "styles/" + id + ".json")
+    if (id == 'osm-style-color' || id == 'osm-style-mix-gray-color') {
+        usageMap.setStyle(baseurl + "osm-basiskarte/styles/" + id + ".json")
+    }
+    else {
+        usageMap.setStyle(baseurl + "basiskarte/styles/" + id + ".json")
+    }
+    
 }
 
 // Copys the active style in the usage map to the clipboard
 function copyURL() {
     let active = document.getElementsByClassName('nav-link map active').item(0)
-    copyToClipboard(baseurl + "styles/" + active.id + ".json")
+    if (active.id == 'osm-style-color' || active.id == 'osm-style-mix-gray-color') {
+        copyToClipboard(baseurl + "osm-basiskarte/styles/" + active.id + ".json")
+    } else {
+        copyToClipboard(baseurl + "basiskarte/styles/" + active.id + ".json")
+    }
+    
     showToast(active.textContent + " kopiert", "Die URL des Styles wurde erfolgreich in die Zwischenablage kopiert")
 }
 
