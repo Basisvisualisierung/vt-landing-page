@@ -311,6 +311,19 @@ pre {
   transform: translate(-50%, -0%);
 }
 
+
+.editor-vid>video {
+  border-radius: 30px;
+  width: 100%;
+  height: 100%;
+}
+
+.editor-img>img {
+  border-radius: 30px;
+  width: 100%;
+  height: 100%;
+}
+
 /********** MICROFRONTEND **********/
 #styleprinteditor {
   position: relative;

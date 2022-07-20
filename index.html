@@ -272,7 +272,7 @@
             </div>
         </div>
 
-        <div class="row mt-3">
+        <!-- <div class="row mt-3">
             <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 py-2 pt-2">
                 <ul class="nav justify-content-center nav-pills mb-2" id="pills-tab" role="tablist">
                     <li class="nav-item" role="presentation">
@@ -472,7 +472,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <!-- SECTION Bavi-Print-Style-Editor -->
@@ -482,16 +482,24 @@
             <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 py-2">
                 <p>Im Style & Print Editor können die Styles der Basisvisualisierung sowie externe Styles angepasst
                     werden.
-                    Neben dem Donwload von Styles können außerdem Kartenausschnitte als PDF oder PNG für den Druck
+                    Neben dem Download von Styles können außerdem Kartenausschnitte als PDF oder PNG für den Druck
                     erstellt werden.
                 </p>
             
             <div class="row ">
-                <div class="col-xl-6 col-lg-5 py-2">
-                    <img src="svg/editor4.gif" alt="style & print editor" height="350">
+                <div class="col-xl-6 py-2">
+                    <div class="editor-vid"> 
+                        <video height="350" width="494" autoplay loop>
+                            <source src="svg/video_editor.mov"></source>
+                        </video>
+                    </div>
+                    
                 </div>
-                <div class="col-xl-6 col-lg-5 py-2">
-                    <img src="svg/map_a4.png" alt="style & print editor" height="350">
+                <div class="col-xl-6 py-2">
+                    <div class="editor-img">
+                        <img src="svg/map_a4.png" alt="style & print editor" height="350" width="494">
+                    </div>
+                    
                 </div>
             </div>
 
@@ -504,7 +512,7 @@
                     </a>
 
                 </div>
-         
+
             </div>
         </div>
     </div>
@@ -1109,6 +1117,18 @@
                     XYZ-URL:<br />
                     <code>
                         https://basisvisualisierung.niedersachsen.de/services/basiskarte/v1/tiles/{z}/{x}/{y}.pbf
+                    </code>
+                    <button class="btn btn-primary data-url-btn btn-sm px-3 px-md-3" onclick="copyURL('XYZ')">
+                        <span class="d-none d-md-inline">URL</span>
+                        <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
+                            alt="Icon: In die Zwischenablage kopieren">
+                    </button>
+                </p>
+
+                <p>
+                    Beispiel Style-URL (mehr Styles im Abschnitt <a class="news-href" onclick="scrollToID('styles')">Styles</a>):<br />
+                    <code>
+                        https://basisvisualisierung.niedersachsen.de/services/basiskarte/styles/vt-style-color.json
                     </code>
                     <button class="btn btn-primary data-url-btn btn-sm px-3 px-md-3" onclick="copyURL('XYZ')">
                         <span class="d-none d-md-inline">URL</span>
