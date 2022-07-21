@@ -305,23 +305,29 @@ pre {
 /********** PRINT & STYLE EDITOR **********/
 
 .vertical-center {
-  position: absolute;
-  left: 50%;
-  -ms-transform: translate(-50%, -0%);
-  transform: translate(-50%, -0%);
+  width:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+.vertical-center-btn{
+  /* position:relative;
+  left:50%; */
 
+}
 
 .editor-vid>video {
   border-radius: 30px;
   width: 100%;
   height: 100%;
+  border: 1px solid var(--bs-dark);
 }
 
 .editor-img>img {
   border-radius: 30px;
   width: 100%;
   height: 100%;
+  border: 1px solid var(--bs-dark);
 }
 
 /********** MICROFRONTEND **********/
@@ -432,6 +438,11 @@ vt-map::part(mapcanvas) {
 
 .copyright-geobasis {
   text-align: center;
+}
+
+#trenner {
+  height: 50px;
+  z-index: 10;
 }
 
 /********** FOOTER **********/

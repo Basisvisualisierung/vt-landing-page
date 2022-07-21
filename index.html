@@ -64,21 +64,45 @@
                     <li class="nav-item">
                         <div onclick="scrollToID('vectortiles')" class="nav-link text-secondary link">Vector Tiles</div>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <div onclick="scrollToID('styles')" class="nav-link text-secondary link">Styles</div>
+                    </li> -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDarkDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Karte erstellen
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                            <li><a class="dropdown-item" onclick="scrollToID('map_creating')">Karte erstellen</a></li>
+                            <li><a class="dropdown-item" onclick="scrollToID('styles')">Styles</a></li>
+                            <li><a class="dropdown-item" onclick="scrollToID('styleprinteditor')">Style & Print
+                                    Editor</a></li>
+                            <li><a class="dropdown-item" onclick="scrollToID('microfrontend')">Microfrontend</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Daten nutzen
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                            <li><a class="dropdown-item" onclick="scrollToID('data_usage')">Daten nutzen</a></li>
+                            <li><a class="dropdown-item" onclick="scrollToID('data')">Daten</a></li>
+                            <li><a class="dropdown-item" onclick="scrollToID('qgis')">QGIS-Einbindung</a></li>
+                        </ul>
+                    </li>
+                    <!-- <li class="nav-item">
                         <div onclick="scrollToID('styleprinteditor')" class="nav-link text-secondary link">Style & Print
                             Editor
                         </div>
-                    </li>
-                    <li class="nav-item">
+                    </li> -->
+                    <!-- <li class="nav-item">
                         <div onclick="scrollToID('microfrontend')" class="nav-link text-secondary link">Microfrontend
                         </div>
-                    </li>
-                    <li class="nav-item">
+                    </li> -->
+                    <!-- <li class="nav-item">
                         <div onclick="scrollToID('data')" class="nav-link text-secondary link">Daten</div>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <div onclick="scrollToID('tos')" class="nav-link text-secondary link">Nutzungsbedingungen</div>
                     </li>
@@ -206,9 +230,28 @@
         </div>
     </div>
 
+    <!-- SECTION Karte erstellen -->
+    <div id="map_creating" class="container-fluid py-5 bg-white position-relative">
+        <h1 class="text-center">Karte erstellen</h1>
+        <div class="row pb-3">
+            <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 py-2">
+                <p> Die Basisvisualisierung liefert Werkzeuge mit denen individuelle Karten erstellt werden können.
+                    Unsere vorgefertigten Styles inklusive URL zur Einbindung sind unter <a class="news-href"
+                        onclick="scrollToID('styles')">Styles</a> zu finden.
+                    Ein Werkzeug zur individuellen Anpassung von unseren sowie exteren Styles ist im Abschnitt <a
+                        class="news-href" onclick="scrollToID('styleprinteditor')">Style & Print Editor</a> zu finden.
+                    Mit dem <a class="news-href" onclick="scrollToID('microfrontend')">Microfrontend</a> können
+                    individuelle Karten einfach auf der Webseite eingebunden werden.
+
+                </p>
+            </div>
+        </div>
+    </div>
+
     <!-- SECTION Styles -->
-    <div id="styles" class="container-fluid py-5 bg-white">
-        <h1 class="text-center">Styles</h1>
+    <div id="styles" class="container-fluid py-5 bg-white position-relative">
+        <div class="col-xl-10 offset-xl-1 col-lg-10 offset-lg-1 py-4 tos-container bg-light">
+        <h2 class="text-center">Styles</h2>
         <div class="row">
             <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 py-2">
                 <p>Der Vector-Tiles-Dienst bietet verschiedene Kartenstyles zur Nutzung an, die über eine URL
@@ -474,10 +517,13 @@
             </div>
         </div> -->
     </div>
+    </div>
+
 
     <!-- SECTION Bavi-Print-Style-Editor -->
-    <div id="styleprinteditor" class="container-fluid py-5 bg-light position-relative">
-        <h1 class="text-center">Style & Print Editor</h1>
+    <div id="styleprinteditor" class="container-fluid py-5 bg-white position-relative">
+        <div class="col-xl-10 offset-xl-1 col-lg-10 offset-lg-1 py-4 tos-container bg-light">
+        <h2 class="text-center">Style & Print Editor</h2>
         <div class="row">
             <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 py-2">
                 <p>Im Style & Print Editor können die Styles der Basisvisualisierung sowie externe Styles angepasst
@@ -485,27 +531,29 @@
                     Neben dem Download von Styles können außerdem Kartenausschnitte als PDF oder PNG für den Druck
                     erstellt werden.
                 </p>
-            
-            <div class="row ">
-                <div class="col-xl-6 py-2">
-                    <div class="editor-vid"> 
-                        <video height="350" width="494" autoplay loop muted>
-                            <source src="svg/video_editor.mov"></source>
-                        </video>
+
+                <div class="row ">
+                    <div class="col-xl-6 py-2">
+                        <div class="editor-vid">
+                            <video height="350" width="494" autoplay loop muted>
+                                <source src="svg/video_editor.mov">
+                                </source>
+                            </video>
+                        </div>
+
                     </div>
-                    
-                </div>
-                <div class="col-xl-6 py-2">
-                    <div class="editor-img">
-                        <img src="svg/map_a4.png" alt="style & print editor" height="350" width="494">
+                    <div class="col-xl-6 py-2">
+                        <div class="editor-img">
+                            <img src="svg/map_a4.png" alt="style & print editor" height="350" width="494">
+                        </div>
+
                     </div>
-                    
                 </div>
-            </div>
 
                 <div class="vertical-center">
-                    <a class="btn btn-primary px-3" href="https://dev.basisvisualisierung.niedersachsen.de/apps/editor/"
-                        target="_blank" rel="noopener">
+                    <a class="btn btn-primary"
+                        href="https://dev.basisvisualisierung.niedersachsen.de/apps/editor/" target="_blank"
+                        rel="noopener">
                         zum Style & Print Editor
                         <img height="20px" width="30px" src="./svg/box-arrow-up-right.svg"
                             alt="Icon: Box mit einem Pfeil nach rechts oben">
@@ -518,10 +566,13 @@
     </div>
     </div>
 
+
+
     <!-- SECTION Microfrontend -->
     <div id="microfrontend" class="container-fluid py-5 bg-white position-relative">
+        <div class="col-xl-10 offset-xl-1 col-lg-10 offset-lg-1 py-4 tos-container bg-light">
         <div class="corner-ribbon">Beta</div>
-        <h1 class="text-center">Microfrontend</h1>
+        <h2 class="text-center">Microfrontend</h2>
         <div class="row">
             <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 py-2">
                 <p>Für den Vector-Tiles-Dienst besteht zusätzlich die Möglichkeit, diesen als Microfrontend zu
@@ -566,14 +617,14 @@
                             <div id="example1" class="col-xl-6 mh-600">
                                 <vt-map map-height="100%"></vt-map>
                             </div>
-                            <div class="col-xl-6 micro-code position-relative bg-light">
+                            <div class="col-xl-6 micro-code position-relative bg-white">
                                 <button class="btn btn-primary copyBtn px-3 px-md-3"
                                     onclick="copyCode('Standard Beispiel', 'default-example')">
                                     <span class="d-none d-md-inline">HTML</span>
                                     <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
                                         alt="Icon: In die Zwischenablage kopieren">
                                 </button>
-                                <pre class="example-micro bg-light" data-lang="HTML">
+                                <pre class="example-micro bg-white" data-lang="HTML">
                                     <code id="default-example" class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -592,14 +643,14 @@
                     <div class="tab-pane show" id="pills-example2" role="tabpanel" aria-labelledby="pills-example2-tab">
                         <div class="row g-0">
                             <div id="example2" class="col-xl-6 mh-600"></div>
-                            <div class="col-xl-6 micro-code position-relative bg-light">
+                            <div class="col-xl-6 micro-code position-relative bg-white">
                                 <button class="btn btn-primary copyBtn px-3 px-md-3"
                                     onclick="copyCode('Markierungen Beispiel', 'markers-example')">
                                     <span class="d-none d-md-inline">HTML</span>
                                     <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
                                         alt="Icon: In die Zwischenablage kopieren">
                                 </button>
-                                <pre class="example-micro bg-light" data-lang="HTML">
+                                <pre class="example-micro bg-white" data-lang="HTML">
                                     <code id="markers-example" class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -631,14 +682,14 @@
                                 }
                             </script>
                             <div id="example3" class="col-xl-6 mh-600"></div>
-                            <div class="col-xl-6 micro-code position-relative bg-light">
+                            <div class="col-xl-6 micro-code position-relative bg-white">
                                 <button class="btn btn-primary copyBtn px-3 px-md-3"
                                     onclick="copyCode('Interaktion Beispiel', 'interaction-example')">
                                     <span class="d-none d-md-inline">HTML</span>
                                     <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
                                         alt="Icon: In die Zwischenablage kopieren">
                                 </button>
-                                <pre class="example-micro bg-light" data-lang="HTML">
+                                <pre class="example-micro bg-white" data-lang="HTML">
                                     <code id="interaction-example" class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -664,14 +715,14 @@
                     <div class="tab-pane show" id="pills-example4" role="tabpanel" aria-labelledby="pills-example4-tab">
                         <div class="row g-0">
                             <div id="example4" class="col-xl-6 mh-600"></div>
-                            <div class="col-xl-6 micro-code position-relative bg-light">
+                            <div class="col-xl-6 micro-code position-relative bg-white">
                                 <button class="btn btn-primary copyBtn px-3 px-md-3"
                                     onclick="copyCode('Externe Quelle Beispiel', 'external-source-example')">
                                     <span class="d-none d-md-inline">HTML</span>
                                     <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
                                         alt="Icon: In die Zwischenablage kopieren">
                                 </button>
-                                <pre class="example-micro bg-light" data-lang="HTML">
+                                <pre class="example-micro bg-white" data-lang="HTML">
                                     <code id="external-source-example" class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -1085,13 +1136,52 @@
             </div>
         </div>
     </div>
+</div>
     </div>
 
+    <!-- SECTION Daten nutzen -->
+    <div id="data_usage" class="container-fluid py-5 bg-light ">
+        <h1 class="text-center">Daten nutzen</h1>
+        <div class="row gx-4">
+            <div class="col-xl-4 offset-xl-2 col-lg-5 offset-lg-1 py-2">
+                <div class="tos-container h-100 p-4  bg-white">
+                    <h2 class="text-center pb-2">Daten</h2>
+                    <p>
+
+                        Die Basisvisualisierung liefert Daten mit denen individuelle Karten erstellt werden können.
+                        Hierfür benötigte URLs und weitere Informationen sind unter <a class="news-href"
+                            onclick="scrollToID('data')">Daten</a> zu finden.
+
+                    </p>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-5 py-2">
+                <div class="tos-container h-30 p-4 bg-white">
+                    <h2 class="text-center pb-2">QGIS-Einbindung</h2>
+                    <p>
+                        Unsere Daten können als Vector Tiles in GIS-Sytsemen, wie z.B. QGIS eingebunden werden.
+                        im GIS können die Vector Tiles als Hintegrrundkarte mit z.B. Fachdaten kombiniert werden. Mehr
+                        dazu im Abschnitt <a class="news-href" onclick="scrollToID('qgis')">QGIS-Einbindung</a>.
+
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
     <!-- SECTION Daten -->
-    <div id="data" class="container-fluid py-5 bg-light">
-        <h1 class="text-center">Daten</h1>
-        <div class="row">
+    <div id="data" class="container-fluid py-5 bg-light ">
+        <div class="col-xl-10 offset-xl-1 py-4 tos-container bg-white">
+        <h2 class="text-center">Daten</h2>
+        <div class="row ">
+            
+
+            
             <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 py-2">
+
+
                 <p> Die Datengrundlage für diesen Dienst sind die Vector Tiles der AdV-Arbeitsgruppe Smart
                     Mapping.
                     Über folgende Links können die Daten für den Bereich von Niedersachsen in Kartenanwendungen
@@ -1126,7 +1216,8 @@
                 </p>
 
                 <p>
-                    Beispiel Style-URL (mehr Styles im Abschnitt <a class="news-href" onclick="scrollToID('styles')">Styles</a>):<br />
+                    Beispiel Style-URL (mehr Styles im Abschnitt <a class="news-href"
+                        onclick="scrollToID('styles')">Styles</a>):<br />
                     <code>
                         https://basisvisualisierung.niedersachsen.de/services/basiskarte/styles/vt-style-color.json
                     </code>
@@ -1137,20 +1228,7 @@
                     </button>
                 </p>
 
-                <p> Einbindung in QGIS:
-                    <br>
-                    <video class="example-video" src="./qgis/Bavi_VectorTiles_in_QGIS_720p.mp4"
-                        alt="Video: Einbindung in QGIS" controls></video>
-                    <br>
-                    <!-- <a class="btn btn-primary px-3" href="./qgis/Basisvisualisierung-VT_3.22.2.qgs" type="application/qgis"
-                        download="QGIS-Beispiel.qgs">
-                        QGIS-Projekt<img height="20px" width="30px" src="./svg/box-arrow-down.svg"
-                            alt="Icon: Box mit einem Pfeil nach unten">
-                    </a> -->
-                    <a class="btn btn-primary px-3" href="./qgis/Readme.txt" type="application/qgis"
-                        download="Readme.txt">Readme<img height="20px" width="30px" src="./svg/box-arrow-down.svg"
-                            alt="Icon: Box mit einem Pfeil nach unten">
-                    </a>
+
                 <p>
                     Weitere Informationen zur Einbindung von Vector Tiles und dem zugrundeliegenden Datenmodell
                     finden Sie in der Dokumentation von Smart Mapping.
@@ -1163,8 +1241,36 @@
                 </a>
             </div>
         </div>
+    </div>
 
 
+    </div>
+
+
+
+    <!-- SECTION QGIS nutzen -->
+    <div id="qgis" class="container-fluid py-5 bg-light position-relative">
+        <div class="col-xl-10 offset-xl-1 py-4 tos-container bg-white">
+        <h2 class="text-center">QGIS-Einbindung</h2>
+        <div class="row pb-3">
+            <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 py-2">
+                <p>
+                    <video class="example-video" src="./qgis/Bavi_VectorTiles_in_QGIS_720p.mp4"
+                        alt="Video: Einbindung in QGIS" controls></video>
+                    <br>
+                    <!-- <a class="btn btn-primary px-3" href="./qgis/Basisvisualisierung-VT_3.22.2.qgs" type="application/qgis"
+                        download="QGIS-Beispiel.qgs">
+                        QGIS-Projekt<img height="20px" width="30px" src="./svg/box-arrow-down.svg"
+                            alt="Icon: Box mit einem Pfeil nach unten">
+                    </a> -->
+                    <a class="btn btn-primary px-3" href="./qgis/Readme.txt" type="application/qgis"
+                        download="Readme.txt">Readme<img height="20px" width="30px" src="./svg/box-arrow-down.svg"
+                            alt="Icon: Box mit einem Pfeil nach unten">
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
     </div>
 
     <!-- SECTION TERMS OF SERVICE -->
