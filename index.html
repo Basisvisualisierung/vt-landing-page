@@ -64,9 +64,6 @@
                     <li class="nav-item">
                         <div onclick="scrollToID('vectortiles')" class="nav-link text-secondary link">Vector Tiles</div>
                     </li>
-                    <!-- <li class="nav-item">
-                        <div onclick="scrollToID('styles')" class="nav-link text-secondary link">Styles</div>
-                    </li> -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDarkDropdownMenuLink" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -91,18 +88,6 @@
                             <li><a class="dropdown-item" onclick="scrollToID('qgis')">QGIS-Einbindung</a></li>
                         </ul>
                     </li>
-                    <!-- <li class="nav-item">
-                        <div onclick="scrollToID('styleprinteditor')" class="nav-link text-secondary link">Style & Print
-                            Editor
-                        </div>
-                    </li> -->
-                    <!-- <li class="nav-item">
-                        <div onclick="scrollToID('microfrontend')" class="nav-link text-secondary link">Microfrontend
-                        </div>
-                    </li> -->
-                    <!-- <li class="nav-item">
-                        <div onclick="scrollToID('data')" class="nav-link text-secondary link">Daten</div>
-                    </li> -->
                     <li class="nav-item">
                         <div onclick="scrollToID('tos')" class="nav-link text-secondary link">Nutzungsbedingungen</div>
                     </li>
@@ -135,7 +120,7 @@
     </div>
 
     <!-- SECTION VECTOR TILES -->
-    <div id="vectortiles" class="container-fluid py-5 bg-light">
+    <div id="vectortiles" class="container-fluid py-4 bg-light">
         <h1 class="text-center">Vector Tiles</h1>
         <div class="row">
             <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 py-2">
@@ -167,7 +152,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xl-8 offset-xl-2  col-lg-8 offset-lg-2 py-2 pt-2">
+            <div class="col-xl-8 offset-xl-2  col-lg-8 offset-lg-2">
                 <ul class="nav justify-content-center nav-pills mb-2" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link news active" id="pills-news-tab" data-bs-toggle="pill"
@@ -231,9 +216,9 @@
     </div>
 
     <!-- SECTION Karte erstellen -->
-    <div id="map_creating" class="container-fluid py-5 bg-white position-relative">
+    <div id="map_creating" class="container-fluid pt-4 bg-white position-relative">
         <h1 class="text-center">Karte erstellen</h1>
-        <div class="row pb-3">
+        <div class="row">
             <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 py-2">
                 <p> Die Basisvisualisierung liefert Werkzeuge mit denen individuelle Karten erstellt werden können.
                     Unsere vorgefertigten Styles inklusive URL zur Einbindung sind unter <a class="news-href"
@@ -249,382 +234,184 @@
     </div>
 
     <!-- SECTION Styles -->
-    <div id="styles" class="container-fluid py-5 bg-white position-relative">
-        <div class="col-xl-10 offset-xl-1 col-lg-10 offset-lg-1 py-4 tos-container bg-light">
-        <h2 class="text-center">Styles</h2>
-        <div class="row">
-            <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 py-2">
-                <p>Der Vector-Tiles-Dienst bietet verschiedene Kartenstyles zur Nutzung an, die über eine URL
-                    eingebunden werden können. Vector Tiles werden von vielen
-                    JavaScript-Bibliotheken wie z.B. MapLibre GL JS,
-                    Mapbox GL JS, OpenLayers oder Leaflet unterstützt.</p>
-                <p>
-                    Nachfolgend sind sieben vorgefertigten Styles sowie deren URLs zur Einbindung zu finden.
-                    Die Styles Farbe und Klassisch beinhalten mehr Objektarten als die
-                    reduzierten Styles Graustufen, Hell und Nacht. Die OSM-Kombi Styles bestehen
-                    aus ATKIS-Daten innerhalb und OSM-Daten außerhalb von Niedersachsen.
-                </p>
+    <div id="styles" class="container-fluid pb-4 bg-white position-relative">
+        <div class="col-xl-10 offset-xl-1 col-lg-10 offset-lg-1 p-4 tos-container bg-light">
+            <h2 class="text-center">Styles</h2>
+            <div class="row">
+                <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 py-2">
+                    <p>Der Vector-Tiles-Dienst bietet verschiedene Kartenstyles zur Nutzung an, die über eine URL
+                        eingebunden werden können. Vector Tiles werden von vielen
+                        JavaScript-Bibliotheken wie z.B. MapLibre GL JS,
+                        Mapbox GL JS, OpenLayers oder Leaflet unterstützt.</p>
+                    <p>
+                        Nachfolgend sind sieben vorgefertigten Styles sowie deren URLs zur Einbindung zu finden.
+                        Die Styles Farbe und Klassisch beinhalten mehr Objektarten als die
+                        reduzierten Styles Graustufen, Hell und Nacht. Die OSM-Kombi Styles bestehen
+                        aus ATKIS-Daten innerhalb und OSM-Daten außerhalb von Niedersachsen.
+                    </p>
+                    <p>
+                        Für die eigenständige Einbindung von Vector Tiles mit JavaScript-Bibliotheken sind in unserem                               
+                         <a target="blank"
+                        href="https://github.com/Basisvisualisierung/vt-landing-page/tree/main/code_examples">GitHub-Repository</a> Code-Beispiele zu finden.
+                    </p>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="text-center col-xl-8 offset-xl-2  col-lg-10 offset-lg-1 pt-2">
-                <ul class="nav justify-content-center nav-pills" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button onclick="changeBasemap(id)" class="nav-link map active" id="vt-style-color"
-                            data-bs-toggle="pill" type="button" role="tab">Farbe</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button onclick="changeBasemap(id)" class="nav-link map" id="vt-style-classic"
-                            data-bs-toggle="pill" type="button" role="tab">Klassisch</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button onclick="changeBasemap(id)" class="nav-link map" id="vt-style-grayscale"
-                            data-bs-toggle="pill" type="button" role="tab">Graustufen</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button onclick="changeBasemap(id)" class="nav-link map" id="vt-style-light"
-                            data-bs-toggle="pill" type="button" role="tab">Hell</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button onclick="changeBasemap(id)" class="nav-link map" id="vt-style-night"
-                            data-bs-toggle="pill" type="button" role="tab">Nacht</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button onclick="changeBasemap(id)" class="nav-link map" id="osm-style-color"
-                            data-bs-toggle="pill" type="button" role="tab">OSM-Kombi</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button onclick="changeBasemap(id)" class="nav-link map" id="osm-style-mix-gray-color"
-                            data-bs-toggle="pill" type="button" role="tab">OSM-Kombi-SW</button>
-                    </li>
-                </ul>
+            <div class="row">
+                <div class="text-center col-xl-8 offset-xl-2  col-lg-10 offset-lg-1">
+                    <ul class="nav justify-content-center nav-pills" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button onclick="changeBasemap(id)" class="nav-link map active" id="vt-style-color"
+                                data-bs-toggle="pill" type="button" role="tab">Farbe</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button onclick="changeBasemap(id)" class="nav-link map" id="vt-style-classic"
+                                data-bs-toggle="pill" type="button" role="tab">Klassisch</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button onclick="changeBasemap(id)" class="nav-link map" id="vt-style-grayscale"
+                                data-bs-toggle="pill" type="button" role="tab">Graustufen</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button onclick="changeBasemap(id)" class="nav-link map" id="vt-style-light"
+                                data-bs-toggle="pill" type="button" role="tab">Hell</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button onclick="changeBasemap(id)" class="nav-link map" id="vt-style-night"
+                                data-bs-toggle="pill" type="button" role="tab">Nacht</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button onclick="changeBasemap(id)" class="nav-link map" id="osm-style-color"
+                                data-bs-toggle="pill" type="button" role="tab">OSM-Kombi</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button onclick="changeBasemap(id)" class="nav-link map" id="osm-style-mix-gray-color"
+                                data-bs-toggle="pill" type="button" role="tab">OSM-Kombi-SW</button>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-xl-8 offset-xl-2  col-lg-8 offset-lg-2 py-2">
-                <div class="usageMap-container">
-                    <button class="btn btn-primary copyBtn px-3 px-md-3" onclick="copyURL()">
-                        <span class="d-none d-md-inline">URL</span>
-                        <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
-                            alt="Icon: In die Zwischenablage kopieren">
-                    </button>
-                    <div id="usageMap" class="usage-map">
+            <div class="row">
+                <div class="col-xl-8 offset-xl-2  col-lg-8 offset-lg-2 py-2">
+                    <div class="usageMap-container">
+                        <button class="btn btn-primary copyBtn px-3 px-md-3" onclick="copyURL()">
+                            <span class="d-none d-md-inline">URL</span>
+                            <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
+                                alt="Icon: In die Zwischenablage kopieren">
+                        </button>
+                        <div id="usageMap" class="usage-map">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- <div class="row mt-3">
-            <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 py-2 pt-2">
-                <ul class="nav justify-content-center nav-pills mb-2" id="pills-tab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-maplibre-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-maplibre" type="button" role="tab" aria-controls="pills-maplibre"
-                            aria-selected="false">MapLibre GL</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-mapbox-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-mapbox" type="button" role="tab" aria-controls="pills-mapbox"
-                            aria-selected="true">Mapbox GL</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-leaflet-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-leaflet" type="button" role="tab" aria-controls="pills-leaflet"
-                            aria-selected="false">Leaflet</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-openlayers-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-openlayers" type="button" role="tab" aria-controls="pills-openlayers"
-                            aria-selected="false">OpenLayers</button>
-                    </li>
-                </ul>
-                <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane show active" id="pills-maplibre" role="tabpanel"
-                        aria-labelledby="pills-maplibre-tab">
-                        <button class="btn btn-primary copyBtn px-3 px-md-3 sourceBtn"
-                            onclick="copyCode('MapLibre GL JS', 'mapLibreCode')">
-                            <span class="d-none d-md-inline">Quelltext</span>
-                            <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
-                                alt="Icon: In die Zwischenablage kopieren">
-                        </button>
-                        <div class="source-code">
-                            <pre class="bg-light">
-                            <code id="mapLibreCode" class="language-html">
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Vector Tiles - MapLibre GL JS Demo&lt;/title&gt;
-    &lt;script src="https://unpkg.com/maplibre-gl@1.14.0-rc.1/dist/maplibre-gl.js"&gt;&lt;/script&gt;
-    &lt;link rel="stylesheet" href="https://unpkg.com/maplibre-gl@1.14.0-rc.1/dist/maplibre-gl.css"&gt;
-    &lt;style&gt;
-        body { margin:0; padding:0; }
-        #map { position:absolute; top:0; bottom:0; width:100%; }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div id="map" class="map"&gt;&lt;/div&gt;
-    &lt;script&gt;
-        var map = new maplibregl.Map({
-            container: 'map',
-            style: 'https://basisvisualisierung.niedersachsen.de/services/basiskarte/styles/vt-style-color.json',
-            center: [9.8, 52.4],
-            zoom: 13,
-        });
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code>
-                    </pre>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="pills-mapbox" role="tabpanel" aria-labelledby="pills-mapbox-tab">
-                        <button class="btn btn-primary copyBtn px-3 px-md-3 sourceBtn"
-                            onclick="copyCode('Mapbox GL JS', 'mapBoxCode')">
-                            <span class="d-none d-md-inline">Quelltext</span>
-                            <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
-                                alt="Icon: In die Zwischenablage kopieren">
-                        </button>
-                        <div class="source-code">
-                            <pre class="bg-light">
-                    <code id="mapBoxCode" class="language-html">
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Vector Tiles - Mapbox GL JS Demo&lt;/title&gt;
-    &lt;script src="https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.js"&gt;&lt;/script&gt;
-    &lt;link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.css"&gt;
-    &lt;style&gt;
-        body { margin:0; padding:0; }
-        #map { position:absolute; top:0; bottom:0; width:100%; }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div id="map" class="map"&gt;&lt;/div&gt;
-    &lt;script&gt;
-        // For Mapbox GL JS &gt; Version 2 you need an access token to make the map appear
-        mapboxgl.accessToken = '&lt;your access token here&gt;';
-        var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'https://basisvisualisierung.niedersachsen.de/services/basiskarte/styles/vt-style-color.json',
-            center: [9.8, 52.4],
-            zoom: 13,
-        });
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code>
-                </pre>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="pills-leaflet" role="tabpanel" aria-labelledby="pills-leaflet-tab">
-                        <button class="btn btn-primary copyBtn px-3 px-md-3 sourceBtn"
-                            onclick="copyCode('Leaflet', 'leafletCode')">
-                            <span class="d-none d-md-inline">Quelltext</span>
-                            <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
-                                alt="Icon: In die Zwischenablage kopieren">
-                        </button>
-                        <div class="source-code">
-                            <pre data-lang="HTML" class="bg-light">
-                    <code id="leafletCode" class="language-html">
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Vector Tiles - Leaflet Demo&lt;/title&gt;
-    &lt;link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/&gt;
-    &lt;style&gt;
-        body { margin:0; padding:0; }
-        #map { position:absolute; top:0; bottom:0; width:100%; }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div id="map"&gt;&lt;/div&gt;
-    &lt;script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.js"&gt;&lt;/script&gt;
-    &lt;script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"&gt;&lt;/script&gt;
-    &lt;script src="https://unpkg.com/mapbox-gl-leaflet/leaflet-mapbox-gl.js"&gt;&lt;/script&gt;
-    &lt;script&gt;
-        var map = L.map('map', {
-            minZoom: 6,
-            maxZoom: 18,
-        });
-        var gl = L.mapboxGL({
-            style: 'https://basisvisualisierung.niedersachsen.de/services/basiskarte/styles/vt-style-color.json',
-        }).addTo(map);
-        map.setView([ 52.4, 9.8 ], 13);
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code>
-                    </pre>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="pills-openlayers" role="tabpanel" aria-labelledby="pills-openlayers-tab">
-                        <button class="btn btn-primary copyBtn px-3 px-md-3 sourceBtn"
-                            onclick="copyCode('OpenLayers', 'openlayersCode')">
-                            <span class="d-none d-md-inline">Quelltext</span>
-                            <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
-                                alt="Icon: In die Zwischenablage kopieren">
-                        </button>
-                        <div class="source-code">
-                            <pre class="bg-light">
-                        <code id="openlayersCode" class="language-html">
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Vector Tiles - OpenLayers Demo&lt;/title&gt;
-    &lt;script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.js"&gt;&lt;/script&gt;
-    &lt;link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.css"&gt;
-    &lt;script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js"&gt;&lt;/script&gt;
-    &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/css/ol.css" type=text/css&gt;
-    &lt;style&gt;
-        body { margin:0; padding:0; }
-        #map { position:absolute; top:0; bottom:0; width:100%; }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div id="map" class="map"&gt;&lt;/div&gt;
-    &lt;script&gt;
-        var center = [9.8, 52.4];
-        var mbMap = new mapboxgl.Map({
-            style: 'https://basisvisualisierung.niedersachsen.de/services/basiskarte/styles/vt-style-color.json',
-            center: center,
-            container: 'map',
-        });
-        var mbLayer = new ol.layer.Layer({
-            render: function(frameState) {
-                var canvas = mbMap.getCanvas();
-                var viewState = frameState.viewState;
-                mbMap.jumpTo({
-                    center: ol.proj.toLonLat(viewState.center),
-                    zoom: viewState.zoom - 1,
-                    animate: false
-                });
-                return canvas;
-            }
-        });
-        var map = new ol.Map({
-            layers: [mbLayer],
-            target: 'map',
-            view: new ol.View({
-                center: ol.proj.fromLonLat(center),
-                zoom: 13
-            })
-        });
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code>
-                    </pre>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-    </div>
     </div>
 
 
     <!-- SECTION Bavi-Print-Style-Editor -->
-    <div id="styleprinteditor" class="container-fluid py-5 bg-white position-relative">
-        <div class="col-xl-10 offset-xl-1 col-lg-10 offset-lg-1 py-4 tos-container bg-light">
-        <h2 class="text-center">Style & Print Editor</h2>
-        <div class="row">
-            <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 py-2">
-                <p>Im Style & Print Editor können die Styles der Basisvisualisierung sowie externe Styles angepasst
-                    werden.
-                    Neben dem Download von Styles können außerdem Kartenausschnitte als PDF oder PNG für den Druck
-                    erstellt werden.
-                </p>
+    <div id="styleprinteditor" class="container-fluid pb-4 bg-white position-relative">
+        <div class="col-xl-10 offset-xl-1 col-lg-10 offset-lg-1 p-4 tos-container bg-light">
+            <h2 class="text-center">Style & Print Editor</h2>
+            <div class="row">
+                <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 py-2">
+                    <p>Im Style & Print Editor können die Styles der Basisvisualisierung sowie externe Styles angepasst
+                        werden.
+                        Neben dem Download von Styles können außerdem Kartenausschnitte als PDF oder PNG für den Druck
+                        erstellt werden.
+                    </p>
 
-                <div class="row ">
-                    <div class="col-xl-6 py-2">
-                        <div class="editor-vid">
-                            <video height="350" width="494" autoplay loop muted>
-                                <source src="svg/video_editor.mov">
-                                </source>
-                            </video>
+                    <div class="row ">
+                        <div class="col-xl-6 py-2">
+                            <div class="editor-vid">
+                                <video height="350" width="494" autoplay loop muted>
+                                    <source src="video/video_editor.mov">
+                                    </source>
+                                </video>
+                            </div>
+
                         </div>
+                        <div class="col-xl-6 py-2">
+                            <div class="editor-img">
+                                <img src="svg/map_a4.png" alt="style & print editor" height="350" width="494">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="vertical-center">
+                        <a class="btn btn-primary" href="https://dev.basisvisualisierung.niedersachsen.de/apps/editor/"
+                            target="_blank" rel="noopener">
+                            zum Style & Print Editor
+                            <img height="20px" width="30px" src="./svg/box-arrow-up-right.svg"
+                                alt="Icon: Box mit einem Pfeil nach rechts oben">
+                        </a>
 
                     </div>
-                    <div class="col-xl-6 py-2">
-                        <div class="editor-img">
-                            <img src="svg/map_a4.png" alt="style & print editor" height="350" width="494">
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="vertical-center">
-                    <a class="btn btn-primary"
-                        href="https://dev.basisvisualisierung.niedersachsen.de/apps/editor/" target="_blank"
-                        rel="noopener">
-                        zum Style & Print Editor
-                        <img height="20px" width="30px" src="./svg/box-arrow-up-right.svg"
-                            alt="Icon: Box mit einem Pfeil nach rechts oben">
-                    </a>
 
                 </div>
-
             </div>
         </div>
-    </div>
     </div>
 
 
 
     <!-- SECTION Microfrontend -->
-    <div id="microfrontend" class="container-fluid py-5 bg-white position-relative">
-        <div class="col-xl-10 offset-xl-1 col-lg-10 offset-lg-1 py-4 tos-container bg-light">
-        <div class="corner-ribbon">Beta</div>
-        <h2 class="text-center">Microfrontend</h2>
-        <div class="row">
-            <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 py-2">
-                <p>Für den Vector-Tiles-Dienst besteht zusätzlich die Möglichkeit, diesen als Microfrontend zu
-                    verwenden. Die Einbindung erfolgt durch den Import einer
-                    Javascript-Datei im Header einer Web-Anwendung. Durch die Verwendung der unten aufgeführten
-                    Komponenten kann eine Hintergrundkarte deklarativ in HTML beschrieben werden. Die Vorteile des
-                    Microfrontends sind, dass keine JavaScript-Kenntnisse benötigt werden und
-                    verwendete Bibliotheken nicht mehr selbst verwaltet werden müssen.
-                </p>
-                <p>Das Microfrontend befindet sich derzeit in aktiver Entwicklung. Die Komponenten, Attribute und
-                    Funktionen können sich jederzeit ändern.</p>
+    <div id="microfrontend" class="container-fluid pb-4 bg-white position-relative">
+        <div class="col-xl-10 offset-xl-1 col-lg-10 offset-lg-1 p-4 tos-container bg-light">
+            <div class="corner-ribbon">Beta</div>
+            <h2 class="text-center">Microfrontend</h2>
+            <div class="row">
+                <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 py-2">
+                    <p>Für den Vector-Tiles-Dienst besteht zusätzlich die Möglichkeit, diesen als Microfrontend zu
+                        verwenden. Die Einbindung erfolgt durch den Import einer
+                        Javascript-Datei im Header einer Web-Anwendung. Durch die Verwendung der unten aufgeführten
+                        Komponenten kann eine Hintergrundkarte deklarativ in HTML beschrieben werden. Die Vorteile des
+                        Microfrontends sind, dass keine JavaScript-Kenntnisse benötigt werden und
+                        verwendete Bibliotheken nicht mehr selbst verwaltet werden müssen.
+                    </p>
+                    <p>Das Microfrontend befindet sich derzeit in aktiver Entwicklung. Die Komponenten, Attribute und
+                        Funktionen können sich jederzeit ändern.</p>
+                </div>
             </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 py-2 pt-2">
-                <ul class="nav justify-content-center nav-pills mb-2" id="pills-tab2" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-example1-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-example1" type="button" role="tab" aria-controls="pills-example1"
-                            aria-selected="true">Standard</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-example2-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-example2" type="button" role="tab" aria-controls="pills-example2"
-                            aria-selected="false">Markierungen</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-example3-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-example3" type="button" role="tab" aria-controls="pills-example3"
-                            aria-selected="false">Interaktion</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-example4-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-example4" type="button" role="tab" aria-controls="pills-example4"
-                            aria-selected="false">Externe Quelle</button>
-                    </li>
-                </ul>
-                <div class="tab-content bg-white p-0" id="pills-tabContent">
-                    <div class="tab-pane show active" id="pills-example1" role="tabpanel"
-                        aria-labelledby="pills-example1-tab">
-                        <div class="row g-0">
-                            <div id="example1" class="col-xl-6 mh-600">
-                                <vt-map map-height="100%"></vt-map>
-                            </div>
-                            <div class="col-xl-6 micro-code position-relative bg-white">
-                                <button class="btn btn-primary copyBtn px-3 px-md-3"
-                                    onclick="copyCode('Standard Beispiel', 'default-example')">
-                                    <span class="d-none d-md-inline">HTML</span>
-                                    <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
-                                        alt="Icon: In die Zwischenablage kopieren">
-                                </button>
-                                <pre class="example-micro bg-white" data-lang="HTML">
+            <div class="row mt-3">
+                <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 py-2 pt-2">
+                    <ul class="nav justify-content-center nav-pills mb-2" id="pills-tab2" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pills-example1-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-example1" type="button" role="tab" aria-controls="pills-example1"
+                                aria-selected="true">Standard</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-example2-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-example2" type="button" role="tab" aria-controls="pills-example2"
+                                aria-selected="false">Markierungen</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-example3-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-example3" type="button" role="tab" aria-controls="pills-example3"
+                                aria-selected="false">Interaktion</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-example4-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-example4" type="button" role="tab" aria-controls="pills-example4"
+                                aria-selected="false">Externe Quelle</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content bg-white p-0" id="pills-tabContent">
+                        <div class="tab-pane show active" id="pills-example1" role="tabpanel"
+                            aria-labelledby="pills-example1-tab">
+                            <div class="row g-0">
+                                <div id="example1" class="col-xl-6 mh-600">
+                                    <vt-map map-height="100%"></vt-map>
+                                </div>
+                                <div class="col-xl-6 micro-code position-relative bg-white">
+                                    <button class="btn btn-primary copyBtn px-3 px-md-3"
+                                        onclick="copyCode('Standard Beispiel', 'default-example')">
+                                        <span class="d-none d-md-inline">HTML</span>
+                                        <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
+                                            alt="Icon: In die Zwischenablage kopieren">
+                                    </button>
+                                    <pre class="example-micro bg-white" data-lang="HTML">
                                     <code id="default-example" class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -637,20 +424,21 @@
     &lt;vt-map&gt;&lt;/vt-map&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="tab-pane show" id="pills-example2" role="tabpanel" aria-labelledby="pills-example2-tab">
-                        <div class="row g-0">
-                            <div id="example2" class="col-xl-6 mh-600"></div>
-                            <div class="col-xl-6 micro-code position-relative bg-white">
-                                <button class="btn btn-primary copyBtn px-3 px-md-3"
-                                    onclick="copyCode('Markierungen Beispiel', 'markers-example')">
-                                    <span class="d-none d-md-inline">HTML</span>
-                                    <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
-                                        alt="Icon: In die Zwischenablage kopieren">
-                                </button>
-                                <pre class="example-micro bg-white" data-lang="HTML">
+                        <div class="tab-pane show" id="pills-example2" role="tabpanel"
+                            aria-labelledby="pills-example2-tab">
+                            <div class="row g-0">
+                                <div id="example2" class="col-xl-6 mh-600"></div>
+                                <div class="col-xl-6 micro-code position-relative bg-white">
+                                    <button class="btn btn-primary copyBtn px-3 px-md-3"
+                                        onclick="copyCode('Markierungen Beispiel', 'markers-example')">
+                                        <span class="d-none d-md-inline">HTML</span>
+                                        <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
+                                            alt="Icon: In die Zwischenablage kopieren">
+                                    </button>
+                                    <pre class="example-micro bg-white" data-lang="HTML">
                                     <code id="markers-example" class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -671,25 +459,26 @@
     &lt;/vt-map&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="tab-pane show" id="pills-example3" role="tabpanel" aria-labelledby="pills-example3-tab">
-                        <div class="row g-0">
-                            <script>
-                                function mapClick(position, features) {
-                                    showToast('mapClick ausgeführt', 'Position: [' + position.lon.toFixed(2) + ', ' + position.lat.toFixed(2) + ']')
-                                }
-                            </script>
-                            <div id="example3" class="col-xl-6 mh-600"></div>
-                            <div class="col-xl-6 micro-code position-relative bg-white">
-                                <button class="btn btn-primary copyBtn px-3 px-md-3"
-                                    onclick="copyCode('Interaktion Beispiel', 'interaction-example')">
-                                    <span class="d-none d-md-inline">HTML</span>
-                                    <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
-                                        alt="Icon: In die Zwischenablage kopieren">
-                                </button>
-                                <pre class="example-micro bg-white" data-lang="HTML">
+                        <div class="tab-pane show" id="pills-example3" role="tabpanel"
+                            aria-labelledby="pills-example3-tab">
+                            <div class="row g-0">
+                                <script>
+                                    function mapClick(position, features) {
+                                        showToast('mapClick ausgeführt', 'Position: [' + position.lon.toFixed(2) + ', ' + position.lat.toFixed(2) + ']')
+                                    }
+                                </script>
+                                <div id="example3" class="col-xl-6 mh-600"></div>
+                                <div class="col-xl-6 micro-code position-relative bg-white">
+                                    <button class="btn btn-primary copyBtn px-3 px-md-3"
+                                        onclick="copyCode('Interaktion Beispiel', 'interaction-example')">
+                                        <span class="d-none d-md-inline">HTML</span>
+                                        <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
+                                            alt="Icon: In die Zwischenablage kopieren">
+                                    </button>
+                                    <pre class="example-micro bg-white" data-lang="HTML">
                                     <code id="interaction-example" class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -709,20 +498,21 @@
     &lt;vt-map map-click="mapClick" map-style="night"&gt;&lt;/vt-map&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="tab-pane show" id="pills-example4" role="tabpanel" aria-labelledby="pills-example4-tab">
-                        <div class="row g-0">
-                            <div id="example4" class="col-xl-6 mh-600"></div>
-                            <div class="col-xl-6 micro-code position-relative bg-white">
-                                <button class="btn btn-primary copyBtn px-3 px-md-3"
-                                    onclick="copyCode('Externe Quelle Beispiel', 'external-source-example')">
-                                    <span class="d-none d-md-inline">HTML</span>
-                                    <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
-                                        alt="Icon: In die Zwischenablage kopieren">
-                                </button>
-                                <pre class="example-micro bg-white" data-lang="HTML">
+                        <div class="tab-pane show" id="pills-example4" role="tabpanel"
+                            aria-labelledby="pills-example4-tab">
+                            <div class="row g-0">
+                                <div id="example4" class="col-xl-6 mh-600"></div>
+                                <div class="col-xl-6 micro-code position-relative bg-white">
+                                    <button class="btn btn-primary copyBtn px-3 px-md-3"
+                                        onclick="copyCode('Externe Quelle Beispiel', 'external-source-example')">
+                                        <span class="d-none d-md-inline">HTML</span>
+                                        <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
+                                            alt="Icon: In die Zwischenablage kopieren">
+                                    </button>
+                                    <pre class="example-micro bg-white" data-lang="HTML">
                                     <code id="external-source-example" class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -740,431 +530,424 @@
     &lt;/vt-map&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 py-2 pt-2">
-                <ul class="nav justify-content-center nav-pills mb-2" id="pills-tab2" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-documentation-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-documentation" type="button" role="tab"
-                            aria-controls="pills-documentation" aria-selected="true">Dokumentation</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-infos-tab" data-bs-toggle="pill"
-                            data-bs-target="#pills-infos" type="button" role="tab" aria-controls="pills-infos"
-                            aria-selected="false">Weitere Informationen</button>
-                    </li>
-                </ul>
-                <div class="tab-content p-0"">
+            <div class="row mt-3">
+                <div class="col-xl-8 offset-xl-2 col-lg-8 offset-lg-2 py-2 pt-2">
+                    <ul class="nav justify-content-center nav-pills mb-2" id="pills-tab2" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pills-documentation-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-documentation" type="button" role="tab"
+                                aria-controls="pills-documentation" aria-selected="true">Dokumentation</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-infos-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-infos" type="button" role="tab" aria-controls="pills-infos"
+                                aria-selected="false">Weitere Informationen</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content p-0"">
                     <div class=" tab-pane show active" id="pills-documentation" role="tabpanel"
-                    aria-labelledby="pills-documentation-tab">
-                    <div class="row g-0">
-                        <div class="accordion" id="microAccordion">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header bg-white rounded-top" id="micro-headingOne">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#micro-collapseOne" aria-expanded="false"
-                                        aria-controls="micro-collapseOne">
-                                        vt-map
-                                    </button>
-                                </h2>
-                                <div id="micro-collapseOne" class="accordion-collapse collapse bg-white"
-                                    aria-labelledby="micro-headingOne" data-bs-parent="#microAccordion">
-                                    <div class="accordion-body">
-                                        <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Name</th>
-                                                    <th scope="col">Benötigt</th>
-                                                    <th scope="col">Typ</th>
-                                                    <th scope="col">Standardwert</th>
-                                                    <th scope="col">Reaktiv</th>
-                                                    <th scope="col">Beschreibung/Werte</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">lon</th>
-                                                    <td>Nein</td>
-                                                    <td>Zahl</td>
-                                                    <td>9.73</td>
-                                                    <td>Ja</td>
-                                                    <td>Kartenzentrum</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">lat</th>
-                                                    <td>Nein</td>
-                                                    <td>Zahl</td>
-                                                    <td>52.37</td>
-                                                    <td>Ja</td>
-                                                    <td>Kartenzentrum</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">zoom</th>
-                                                    <td>Nein</td>
-                                                    <td>Zahl</td>
-                                                    <td>12</td>
-                                                    <td>Ja</td>
-                                                    <td>Zoomlevel</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">map-style</th>
-                                                    <td>Nein</td>
-                                                    <td>String/URL</td>
-                                                    <td>classic</td>
-                                                    <td>Ja</td>
-                                                    <td>classic, color, grayscale, light, night, URL zu externem Style
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">map-click</th>
-                                                    <td>Nein</td>
-                                                    <td>String</td>
-                                                    <td></td>
-                                                    <td>Ja</td>
-                                                    <td>Callback-Funktion</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">map-height</th>
-                                                    <td>Nein</td>
-                                                    <td>String</td>
-                                                    <td>100vh</td>
-                                                    <td>Ja</td>
-                                                    <td>CSS-Wert für Kartenhöhe</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">map-width</th>
-                                                    <td>Nein</td>
-                                                    <td>String</td>
-                                                    <td>100%</td>
-                                                    <td>Ja</td>
-                                                    <td>CSS-Wert für Kartenbreite</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                        aria-labelledby="pills-documentation-tab">
+                        <div class="row g-0">
+                            <div class="accordion" id="microAccordion">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header bg-white rounded-top" id="micro-headingOne">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#micro-collapseOne"
+                                            aria-expanded="false" aria-controls="micro-collapseOne">
+                                            vt-map
+                                        </button>
+                                    </h2>
+                                    <div id="micro-collapseOne" class="accordion-collapse collapse bg-white"
+                                        aria-labelledby="micro-headingOne" data-bs-parent="#microAccordion">
+                                        <div class="accordion-body">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Name</th>
+                                                        <th scope="col">Benötigt</th>
+                                                        <th scope="col">Typ</th>
+                                                        <th scope="col">Standardwert</th>
+                                                        <th scope="col">Reaktiv</th>
+                                                        <th scope="col">Beschreibung/Werte</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">lon</th>
+                                                        <td>Nein</td>
+                                                        <td>Zahl</td>
+                                                        <td>9.73</td>
+                                                        <td>Ja</td>
+                                                        <td>Kartenzentrum</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">lat</th>
+                                                        <td>Nein</td>
+                                                        <td>Zahl</td>
+                                                        <td>52.37</td>
+                                                        <td>Ja</td>
+                                                        <td>Kartenzentrum</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">zoom</th>
+                                                        <td>Nein</td>
+                                                        <td>Zahl</td>
+                                                        <td>12</td>
+                                                        <td>Ja</td>
+                                                        <td>Zoomlevel</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">map-style</th>
+                                                        <td>Nein</td>
+                                                        <td>String/URL</td>
+                                                        <td>classic</td>
+                                                        <td>Ja</td>
+                                                        <td>classic, color, grayscale, light, night, URL zu externem
+                                                            Style
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">map-click</th>
+                                                        <td>Nein</td>
+                                                        <td>String</td>
+                                                        <td></td>
+                                                        <td>Ja</td>
+                                                        <td>Callback-Funktion</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">map-height</th>
+                                                        <td>Nein</td>
+                                                        <td>String</td>
+                                                        <td>100vh</td>
+                                                        <td>Ja</td>
+                                                        <td>CSS-Wert für Kartenhöhe</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">map-width</th>
+                                                        <td>Nein</td>
+                                                        <td>String</td>
+                                                        <td>100%</td>
+                                                        <td>Ja</td>
+                                                        <td>CSS-Wert für Kartenbreite</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="accordion-item bg-white">
-                                <h2 class="accordion-header" id="micro-headingTwo">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#micro-collapseTwo" aria-expanded="false"
-                                        aria-controls="micro-collapseTwo">
-                                        vt-control
-                                    </button>
-                                </h2>
-                                <div id="micro-collapseTwo" class="accordion-collapse collapse"
-                                    aria-labelledby="micro-headingTwo" data-bs-parent="#microAccordion">
-                                    <div class="accordion-body">
-                                        <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Name</th>
-                                                    <th scope="col">Benötigt</th>
-                                                    <th scope="col">Typ</th>
-                                                    <th scope="col">Standardwert</th>
-                                                    <th scope="col">Reaktiv</th>
-                                                    <th scope="col">Beschreibung/Werte</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">type</th>
-                                                    <td>Ja</td>
-                                                    <td>String</td>
-                                                    <td></td>
-                                                    <td>Ja</td>
-                                                    <td>navigation, scale, geolocate, fullscreen</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">position</th>
-                                                    <td>Ja</td>
-                                                    <td>String</td>
-                                                    <td></td>
-                                                    <td>Ja</td>
-                                                    <td>top-left, top-right, bottom-left, bottom-right</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                <div class="accordion-item bg-white">
+                                    <h2 class="accordion-header" id="micro-headingTwo">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#micro-collapseTwo"
+                                            aria-expanded="false" aria-controls="micro-collapseTwo">
+                                            vt-control
+                                        </button>
+                                    </h2>
+                                    <div id="micro-collapseTwo" class="accordion-collapse collapse"
+                                        aria-labelledby="micro-headingTwo" data-bs-parent="#microAccordion">
+                                        <div class="accordion-body">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Name</th>
+                                                        <th scope="col">Benötigt</th>
+                                                        <th scope="col">Typ</th>
+                                                        <th scope="col">Standardwert</th>
+                                                        <th scope="col">Reaktiv</th>
+                                                        <th scope="col">Beschreibung/Werte</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">type</th>
+                                                        <td>Ja</td>
+                                                        <td>String</td>
+                                                        <td></td>
+                                                        <td>Ja</td>
+                                                        <td>navigation, scale, geolocate, fullscreen</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">position</th>
+                                                        <td>Ja</td>
+                                                        <td>String</td>
+                                                        <td></td>
+                                                        <td>Ja</td>
+                                                        <td>top-left, top-right, bottom-left, bottom-right</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="accordion-item bg-white">
-                                <h2 class="accordion-header" id="micro-headingThree">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#micro-collapseThree" aria-expanded="false"
-                                        aria-controls="micro-collapseThree">
-                                        vt-marker
-                                    </button>
-                                </h2>
-                                <div id="micro-collapseThree" class="accordion-collapse collapse"
-                                    aria-labelledby="micro-collapseThree" data-bs-parent="#microAccordion">
-                                    <div class="accordion-body">
-                                        <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Name</th>
-                                                    <th scope="col">Benötigt</th>
-                                                    <th scope="col">Typ</th>
-                                                    <th scope="col">Standardwert</th>
-                                                    <th scope="col">Reaktiv</th>
-                                                    <th scope="col">Beschreibung/Werte</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">lon</th>
-                                                    <td>Ja</td>
-                                                    <td>Zahl</td>
-                                                    <td></td>
-                                                    <td>Ja</td>
-                                                    <td>Positionswert</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">lat</th>
-                                                    <td>Ja</td>
-                                                    <td>Zahl</td>
-                                                    <td></td>
-                                                    <td>Ja</td>
-                                                    <td>Positionswert</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                <div class="accordion-item bg-white">
+                                    <h2 class="accordion-header" id="micro-headingThree">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#micro-collapseThree"
+                                            aria-expanded="false" aria-controls="micro-collapseThree">
+                                            vt-marker
+                                        </button>
+                                    </h2>
+                                    <div id="micro-collapseThree" class="accordion-collapse collapse"
+                                        aria-labelledby="micro-collapseThree" data-bs-parent="#microAccordion">
+                                        <div class="accordion-body">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Name</th>
+                                                        <th scope="col">Benötigt</th>
+                                                        <th scope="col">Typ</th>
+                                                        <th scope="col">Standardwert</th>
+                                                        <th scope="col">Reaktiv</th>
+                                                        <th scope="col">Beschreibung/Werte</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">lon</th>
+                                                        <td>Ja</td>
+                                                        <td>Zahl</td>
+                                                        <td></td>
+                                                        <td>Ja</td>
+                                                        <td>Positionswert</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">lat</th>
+                                                        <td>Ja</td>
+                                                        <td>Zahl</td>
+                                                        <td></td>
+                                                        <td>Ja</td>
+                                                        <td>Positionswert</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="accordion-item bg-white">
-                                <h2 class="accordion-header" id="micro-headingFour">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#micro-collapseFour" aria-expanded="false"
-                                        aria-controls="micro-collapseFour">
-                                        vt-popup
-                                    </button>
-                                </h2>
-                                <div id="micro-collapseFour" class="accordion-collapse collapse"
-                                    aria-labelledby="micro-eadingFour" data-bs-parent="#microAccordion">
-                                    <div class="accordion-body">
-                                        <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Name</th>
-                                                    <th scope="col">Benötigt</th>
-                                                    <th scope="col">Typ</th>
-                                                    <th scope="col">Standardwert</th>
-                                                    <th scope="col">Reaktiv</th>
-                                                    <th scope="col">Beschreibung/Werte</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">title</th>
-                                                    <td>Nein</td>
-                                                    <td>String</td>
-                                                    <td></td>
-                                                    <td>Ja</td>
-                                                    <td>Titel des Popups</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">text</th>
-                                                    <td>Nein</td>
-                                                    <td>String</td>
-                                                    <td></td>
-                                                    <td>Ja</td>
-                                                    <td>Text des Popups</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                <div class="accordion-item bg-white">
+                                    <h2 class="accordion-header" id="micro-headingFour">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#micro-collapseFour"
+                                            aria-expanded="false" aria-controls="micro-collapseFour">
+                                            vt-popup
+                                        </button>
+                                    </h2>
+                                    <div id="micro-collapseFour" class="accordion-collapse collapse"
+                                        aria-labelledby="micro-eadingFour" data-bs-parent="#microAccordion">
+                                        <div class="accordion-body">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Name</th>
+                                                        <th scope="col">Benötigt</th>
+                                                        <th scope="col">Typ</th>
+                                                        <th scope="col">Standardwert</th>
+                                                        <th scope="col">Reaktiv</th>
+                                                        <th scope="col">Beschreibung/Werte</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">title</th>
+                                                        <td>Nein</td>
+                                                        <td>String</td>
+                                                        <td></td>
+                                                        <td>Ja</td>
+                                                        <td>Titel des Popups</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">text</th>
+                                                        <td>Nein</td>
+                                                        <td>String</td>
+                                                        <td></td>
+                                                        <td>Ja</td>
+                                                        <td>Text des Popups</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="accordion-item bg-white">
-                                <h2 class="accordion-header" id="micro-headingFive">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#micro-collapseFive" aria-expanded="false"
-                                        aria-controls="micro-collapseFive">
-                                        vt-source
-                                    </button>
-                                </h2>
-                                <div id="micro-collapseFive" class="accordion-collapse collapse"
-                                    aria-labelledby="micro-headingFive" data-bs-parent="#microAccordion">
-                                    <div class="accordion-body">
-                                        <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Name</th>
-                                                    <th scope="col">Benötigt</th>
-                                                    <th scope="col">Typ</th>
-                                                    <th scope="col">Standardwert</th>
-                                                    <th scope="col">Reaktiv</th>
-                                                    <th scope="col">Beschreibung/Werte</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">type</th>
-                                                    <td>Ja</td>
-                                                    <td>String</td>
-                                                    <td></td>
-                                                    <td>Nein</td>
-                                                    <td>vector, raster, geojson</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">src</th>
-                                                    <td>Ja</td>
-                                                    <td>URL</td>
-                                                    <td></td>
-                                                    <td>Nein</td>
-                                                    <td>URL zu externem Dienst</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                <div class="accordion-item bg-white">
+                                    <h2 class="accordion-header" id="micro-headingFive">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#micro-collapseFive"
+                                            aria-expanded="false" aria-controls="micro-collapseFive">
+                                            vt-source
+                                        </button>
+                                    </h2>
+                                    <div id="micro-collapseFive" class="accordion-collapse collapse"
+                                        aria-labelledby="micro-headingFive" data-bs-parent="#microAccordion">
+                                        <div class="accordion-body">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Name</th>
+                                                        <th scope="col">Benötigt</th>
+                                                        <th scope="col">Typ</th>
+                                                        <th scope="col">Standardwert</th>
+                                                        <th scope="col">Reaktiv</th>
+                                                        <th scope="col">Beschreibung/Werte</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">type</th>
+                                                        <td>Ja</td>
+                                                        <td>String</td>
+                                                        <td></td>
+                                                        <td>Nein</td>
+                                                        <td>vector, raster, geojson</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">src</th>
+                                                        <td>Ja</td>
+                                                        <td>URL</td>
+                                                        <td></td>
+                                                        <td>Nein</td>
+                                                        <td>URL zu externem Dienst</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header bg-white rounded-bottom" id="micro-headingSix">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#micro-collapseSix" aria-expanded="false"
-                                        aria-controls="micro-collapseSix">
-                                        vt-layer
-                                    </button>
-                                </h2>
-                                <div id="micro-collapseSix" class="accordion-collapse collapse bg-white"
-                                    aria-labelledby="micro-headingSix" data-bs-parent="#microAccordion">
-                                    <div class="accordion-body">
-                                        <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Name</th>
-                                                    <th scope="col">Benötigt</th>
-                                                    <th scope="col">Typ</th>
-                                                    <th scope="col">Standardwert</th>
-                                                    <th scope="col">Reaktiv</th>
-                                                    <th scope="col">Beschreibung/Werte</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">id</th>
-                                                    <td>Ja</td>
-                                                    <td>String</td>
-                                                    <td></td>
-                                                    <td>Ja</td>
-                                                    <td>ID des Layers aus externem Dienst</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">type</th>
-                                                    <td>Ja</td>
-                                                    <td>String</td>
-                                                    <td></td>
-                                                    <td>Ja</td>
-                                                    <td>line, fill, circle</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">minzoom</th>
-                                                    <td>Nein</td>
-                                                    <td>Zahl</td>
-                                                    <td>Undefiniert</td>
-                                                    <td>Ja</td>
-                                                    <td>Zoomstufe, ab der Layer sichtbar ist</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">maxzoom</th>
-                                                    <td>Nein</td>
-                                                    <td>Zahl</td>
-                                                    <td>Undefiniert</td>
-                                                    <td>Ja</td>
-                                                    <td>Zoomstufe, bis zu der Layer sichtbar ist</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">color</th>
-                                                    <td>Nein</td>
-                                                    <td>String</td>
-                                                    <td>#000000</td>
-                                                    <td>Ja</td>
-                                                    <td>Farbe, in der Layer dargestellt wird</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">opacity</th>
-                                                    <td>Nein</td>
-                                                    <td>Zahl</td>
-                                                    <td>1.0</td>
-                                                    <td>Ja</td>
-                                                    <td>Undurchsichtigkeits-Level</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">line-width</th>
-                                                    <td>Nein</td>
-                                                    <td>Zahl</td>
-                                                    <td>1</td>
-                                                    <td>Ja</td>
-                                                    <td>Legt Linienbreite fest, wenn type "line" ist</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">circle-radius</th>
-                                                    <td>Nein</td>
-                                                    <td>Zahl</td>
-                                                    <td>5</td>
-                                                    <td>Ja</td>
-                                                    <td>Legt Größe des Punktes fest, wenn type "circle" ist</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header bg-white rounded-bottom" id="micro-headingSix">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#micro-collapseSix"
+                                            aria-expanded="false" aria-controls="micro-collapseSix">
+                                            vt-layer
+                                        </button>
+                                    </h2>
+                                    <div id="micro-collapseSix" class="accordion-collapse collapse bg-white"
+                                        aria-labelledby="micro-headingSix" data-bs-parent="#microAccordion">
+                                        <div class="accordion-body">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Name</th>
+                                                        <th scope="col">Benötigt</th>
+                                                        <th scope="col">Typ</th>
+                                                        <th scope="col">Standardwert</th>
+                                                        <th scope="col">Reaktiv</th>
+                                                        <th scope="col">Beschreibung/Werte</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">id</th>
+                                                        <td>Ja</td>
+                                                        <td>String</td>
+                                                        <td></td>
+                                                        <td>Ja</td>
+                                                        <td>ID des Layers aus externem Dienst</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">type</th>
+                                                        <td>Ja</td>
+                                                        <td>String</td>
+                                                        <td></td>
+                                                        <td>Ja</td>
+                                                        <td>line, fill, circle</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">minzoom</th>
+                                                        <td>Nein</td>
+                                                        <td>Zahl</td>
+                                                        <td>Undefiniert</td>
+                                                        <td>Ja</td>
+                                                        <td>Zoomstufe, ab der Layer sichtbar ist</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">maxzoom</th>
+                                                        <td>Nein</td>
+                                                        <td>Zahl</td>
+                                                        <td>Undefiniert</td>
+                                                        <td>Ja</td>
+                                                        <td>Zoomstufe, bis zu der Layer sichtbar ist</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">color</th>
+                                                        <td>Nein</td>
+                                                        <td>String</td>
+                                                        <td>#000000</td>
+                                                        <td>Ja</td>
+                                                        <td>Farbe, in der Layer dargestellt wird</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">opacity</th>
+                                                        <td>Nein</td>
+                                                        <td>Zahl</td>
+                                                        <td>1.0</td>
+                                                        <td>Ja</td>
+                                                        <td>Undurchsichtigkeits-Level</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">line-width</th>
+                                                        <td>Nein</td>
+                                                        <td>Zahl</td>
+                                                        <td>1</td>
+                                                        <td>Ja</td>
+                                                        <td>Legt Linienbreite fest, wenn type "line" ist</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">circle-radius</th>
+                                                        <td>Nein</td>
+                                                        <td>Zahl</td>
+                                                        <td>5</td>
+                                                        <td>Ja</td>
+                                                        <td>Legt Größe des Punktes fest, wenn type "circle" ist</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                </div>
-                <div class="tab-pane show" id="pills-infos" role="tabpanel" aria-labelledby="pills-infos-tab">
-                    <div class="bg-white h-100 p-4 tos-container">
-                        <p>Weitere Informationen, der Source-Code und eine erweiterte Dokumentation sind unter folgender
-                            URL zu finden:</p>
-                        <p>
-                            GitHub-URL:<br>
-                            <a target="blank"
-                                href="https://github.com/Basisvisualisierung/vt-microfrontend">https://github.com/Basisvisualisierung/vt-microfrontend</a>
-                        </p>
+                    </div>
+                    <div class="tab-pane show" id="pills-infos" role="tabpanel" aria-labelledby="pills-infos-tab">
+                        <div class="bg-white h-100 p-4 tos-container">
+                            <p>Weitere Informationen, der Source-Code und eine erweiterte Dokumentation sind unter
+                                folgender
+                                URL zu finden:</p>
+                            <p>
+                                GitHub-URL:<br>
+                                <a target="blank"
+                                    href="https://github.com/Basisvisualisierung/vt-microfrontend">https://github.com/Basisvisualisierung/vt-microfrontend</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
     </div>
 
     <!-- SECTION Daten nutzen -->
-    <div id="data_usage" class="container-fluid py-5 bg-light ">
+    <div id="data_usage" class="container-fluid pt-4 bg-light ">
         <h1 class="text-center">Daten nutzen</h1>
-        <div class="row gx-4">
-            <div class="col-xl-4 offset-xl-2 col-lg-5 offset-lg-1 py-2">
-                <div class="tos-container h-100 p-4  bg-white">
-                    <h2 class="text-center pb-2">Daten</h2>
-                    <p>
+        <div class="row">
+            <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 py-2">
+                <p>
 
-                        Die Basisvisualisierung liefert Daten mit denen individuelle Karten erstellt werden können.
-                        Hierfür benötigte URLs und weitere Informationen sind unter <a class="news-href"
-                            onclick="scrollToID('data')">Daten</a> zu finden.
+                    Die Basisvisualisierung liefert Daten mit denen individuelle Karten erstellt werden können.
+                    Hierfür benötigte URLs und weitere Informationen sind unter <a class="news-href"
+                        onclick="scrollToID('data')">Daten</a> zu finden.
 
-                    </p>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-5 py-2">
-                <div class="tos-container h-30 p-4 bg-white">
-                    <h2 class="text-center pb-2">QGIS-Einbindung</h2>
-                    <p>
-                        Unsere Daten können als Vector Tiles in GIS-Sytsemen, wie z.B. QGIS eingebunden werden.
-                        im GIS können die Vector Tiles als Hintegrrundkarte mit z.B. Fachdaten kombiniert werden. Mehr
-                        dazu im Abschnitt <a class="news-href" onclick="scrollToID('qgis')">QGIS-Einbindung</a>.
+                    </br>
+                    Unsere Daten können als Vector Tiles in GIS-Systemen, wie z.B. QGIS eingebunden werden.
+                    Im GIS können die Vector Tiles als Hintergrundkarte mit z.B. Fachdaten kombiniert werden. Mehr
+                    dazu im Abschnitt <a class="news-href" onclick="scrollToID('qgis')">QGIS-Einbindung</a>.
 
-                    </p>
-                </div>
+                </p>
 
             </div>
         </div>
@@ -1172,76 +955,69 @@
 
 
     <!-- SECTION Daten -->
-    <div id="data" class="container-fluid py-5 bg-light ">
-        <div class="col-xl-10 offset-xl-1 py-4 tos-container bg-white">
-        <h2 class="text-center">Daten</h2>
-        <div class="row ">
+    <div id="data" class="container-fluid pb-4 bg-light ">
+        <div class="col-xl-10 offset-xl-1 p-4 tos-container bg-white">
+            <h2 class="text-center">Daten </h2>
             
+            <div class="row ">
+                <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 py-2">
+                    <div class="vertical-center"><span class="badge bg-primary">Datenaktualität: März 2022</span></div>
 
-            
-            <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 py-2">
 
-
-                <p> Die Datengrundlage für diesen Dienst sind die Vector Tiles der AdV-Arbeitsgruppe Smart
-                    Mapping.
-                    Über folgende Links können die Daten für den Bereich von Niedersachsen in Kartenanwendungen
-                    direkt eingebunden werden. </p>
-                <p>
-                    TileJSON-URL:<br />
-                    <code>
+                    <p> Die Datengrundlage für diesen Dienst sind die Vector Tiles der AdV-Arbeitsgruppe Smart
+                        Mapping.
+                        Über folgende Links können die Daten für den Bereich von Niedersachsen in Kartenanwendungen
+                        direkt eingebunden werden. </p>
+                    <p>
+                        TileJSON-URL:<br />
+                        <code>
                         https://basisvisualisierung.niedersachsen.de/services/basiskarte/v1/tiles/basiskarte.json
                     </code>
-                    <button class="btn btn-primary data-url-btn btn-sm px-3 px-md-3" onclick="copyURL('Tilejson')">
-                        <span class="d-none d-md-inline">URL</span>
-                        <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
-                            alt="Icon: In die Zwischenablage kopieren">
-                    </button>
-                </p>
-                <!-- <button class="btn btn-primary px-3 px-md-3" onclick="copyURL()">
-                    <span class="d-none d-md-inline">URL</span>
-                    <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
-                        alt="Icon: In die Zwischenablage kopieren">
-                </button> -->
-
-                <p>
-                    XYZ-URL:<br />
-                    <code>
+                        <button class="btn btn-primary data-url-btn btn-sm px-3 px-md-3" onclick="copyURL('Tilejson')">
+                            <span class="d-none d-md-inline">URL</span>
+                            <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
+                                alt="Icon: In die Zwischenablage kopieren">
+                        </button>
+                    </p>
+                    <p>
+                        XYZ-URL:<br />
+                        <code>
                         https://basisvisualisierung.niedersachsen.de/services/basiskarte/v1/tiles/{z}/{x}/{y}.pbf
                     </code>
-                    <button class="btn btn-primary data-url-btn btn-sm px-3 px-md-3" onclick="copyURL('XYZ')">
-                        <span class="d-none d-md-inline">URL</span>
-                        <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
-                            alt="Icon: In die Zwischenablage kopieren">
-                    </button>
-                </p>
+                        <button class="btn btn-primary data-url-btn btn-sm px-3 px-md-3" onclick="copyURL('XYZ')">
+                            <span class="d-none d-md-inline">URL</span>
+                            <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
+                                alt="Icon: In die Zwischenablage kopieren">
+                        </button>
+                    </p>
 
-                <p>
-                    Beispiel Style-URL (mehr Styles im Abschnitt <a class="news-href"
-                        onclick="scrollToID('styles')">Styles</a>):<br />
-                    <code>
+                    <p>
+                        Beispiel Style-URL (mehr Styles im Abschnitt <a class="news-href"
+                            onclick="scrollToID('styles')">Styles</a>):<br />
+                        <code>
                         https://basisvisualisierung.niedersachsen.de/services/basiskarte/styles/vt-style-color.json
                     </code>
-                    <button class="btn btn-primary data-url-btn btn-sm px-3 px-md-3" onclick="copyURL('XYZ')">
-                        <span class="d-none d-md-inline">URL</span>
-                        <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
-                            alt="Icon: In die Zwischenablage kopieren">
-                    </button>
-                </p>
+                        <button class="btn btn-primary data-url-btn btn-sm px-3 px-md-3" onclick="copyURL('XYZ')">
+                            <span class="d-none d-md-inline">URL</span>
+                            <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
+                                alt="Icon: In die Zwischenablage kopieren">
+                        </button>
+                    </p>
 
 
-                <p>
-                    Weitere Informationen zur Einbindung von Vector Tiles und dem zugrundeliegenden Datenmodell
-                    finden Sie in der Dokumentation von Smart Mapping.
-                </p>
-                <a class="btn btn-primary px-3" href="https://adv-smart.de/documentation.html" target="_blank"
-                    rel="noopener">
-                    zu Smart Mapping
-                    <img height="20px" width="30px" src="./svg/box-arrow-up-right.svg"
-                        alt="Icon: Box mit einem Pfeil nach rechts oben">
-                </a>
+                    <p>
+                        Weitere Informationen zur Einbindung von Vector Tiles und dem zugrundeliegenden Datenmodell
+                        finden Sie in der Dokumentation von Smart Mapping.
+                    </p>
+                    <a class="btn btn-primary px-3" href="https://adv-smart.de/documentation.html" target="_blank"
+                        rel="noopener">
+                        zu Smart Mapping
+                        <img height="20px" width="30px" src="./svg/box-arrow-up-right.svg"
+                            alt="Icon: Box mit einem Pfeil nach rechts oben">
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
 
 
     </div>
@@ -1249,32 +1025,32 @@
 
 
     <!-- SECTION QGIS nutzen -->
-    <div id="qgis" class="container-fluid py-5 bg-light position-relative">
-        <div class="col-xl-10 offset-xl-1 py-4 tos-container bg-white">
-        <h2 class="text-center">QGIS-Einbindung</h2>
-        <div class="row pb-3">
-            <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 py-2">
-                <p>
-                    <video class="example-video" src="./qgis/Bavi_VectorTiles_in_QGIS_720p.mp4"
-                        alt="Video: Einbindung in QGIS" controls></video>
-                    <br>
-                    <!-- <a class="btn btn-primary px-3" href="./qgis/Basisvisualisierung-VT_3.22.2.qgs" type="application/qgis"
+    <div id="qgis" class="container-fluid pb-4 bg-light position-relative">
+        <div class="col-xl-10 offset-xl-1 p-4 tos-container bg-white">
+            <h2 class="text-center">QGIS-Einbindung</h2>
+            <div class="row">
+                <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 py-2">
+                    <p>
+                        <video class="example-video" src="./qgis/Bavi_VectorTiles_in_QGIS_720p.mp4"
+                            alt="Video: Einbindung in QGIS" controls></video>
+                        <br>
+                        <!-- <a class="btn btn-primary px-3" href="./qgis/Basisvisualisierung-VT_3.22.2.qgs" type="application/qgis"
                         download="QGIS-Beispiel.qgs">
                         QGIS-Projekt<img height="20px" width="30px" src="./svg/box-arrow-down.svg"
                             alt="Icon: Box mit einem Pfeil nach unten">
                     </a> -->
-                    <a class="btn btn-primary px-3" href="./qgis/Readme.txt" type="application/qgis"
-                        download="Readme.txt">Readme<img height="20px" width="30px" src="./svg/box-arrow-down.svg"
-                            alt="Icon: Box mit einem Pfeil nach unten">
-                    </a>
-                </p>
+                        <a class="btn btn-primary px-3" href="./qgis/Readme.txt" type="application/qgis"
+                            download="Readme.txt">Readme<img height="20px" width="30px" src="./svg/box-arrow-down.svg"
+                                alt="Icon: Box mit einem Pfeil nach unten">
+                        </a>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
-    </div>
 
     <!-- SECTION TERMS OF SERVICE -->
-    <div id="tos" class="container-fluid py-5 bg-white">
+    <div id="tos" class="container-fluid py-4 bg-white">
         <h1 class="text-center pb-3">Nutzungsbedingungen</h1>
         <div class="row gx-4">
             <div class="col-xl-4 offset-xl-2 col-lg-5 offset-lg-1 py-2">
@@ -1318,7 +1094,7 @@
     </div>
 
     <!-- SECTION FAQ -->
-    <div id="faq" class="container-fluid py-5 bg-light">
+    <div id="faq" class="container-fluid py-4 bg-light">
         <h1 class="text-center">FAQ - Häufig gestellte Fragen</h1>
         <div class="row">
             <div class="accordion col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 py-2" id="faqAccordion">

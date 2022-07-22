@@ -9,8 +9,22 @@
   cursor: pointer;
 }
 
+.dropdown-item {
+  cursor:pointer;
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+    color: #1e2125;
+    background-color: var(--bs-light)
+}
+
 .nav-link {
   color: var(--bs-secondary);
+}
+
+.dropdown-menu {
+  padding: .5rem 0;
 }
 
 /********** NAVIGATION **********/
@@ -310,11 +324,7 @@ pre {
   align-items: center;
   justify-content: center;
 }
-.vertical-center-btn{
-  /* position:relative;
-  left:50%; */
 
-}
 
 .editor-vid>video {
   border-radius: 30px;
