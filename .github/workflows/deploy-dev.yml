@@ -31,6 +31,7 @@ jobs:
           ./mc cp -r icons upload/website-bavi-dev/
           ./mc cp -r js upload/website-bavi-dev/
           ./mc cp -r qgis upload/website-bavi-dev/
+          ./mc cp -r video upload/website-bavi-dev/
           ./mc cp -r svg upload/website-bavi-dev/
           ./mc cp -r status upload/website-bavi-dev/
           ./mc cp index.html upload/website-bavi-dev/
