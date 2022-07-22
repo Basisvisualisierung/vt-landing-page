@@ -175,12 +175,12 @@
 .usageMap-container {
   position: relative !important;
   z-index: 100 !important;
-  height: 50vh;
+  height: 70vh;
 }
 
 .usage-map {
   position: absolute;
-  height: 50vh;
+  height: 70vh;
   top: 0;
   bottom: 0;
   width: 100%;
