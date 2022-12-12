@@ -1,0 +1,39 @@
+name: Deploy to staging environment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy landing page
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Replace urls
+        run: | 
+          sed -i 's/https:\/\/basisvisualisierung.niedersachsen.de/https:\/\/staging.basisvisualisierung.niedersachsen.de/g' ./js/app.js
+          sed -i 's/https:\/\/basisvisualisierung.niedersachsen.de/https:\/\/staging.basisvisualisierung.niedersachsen.de/g' ./index.html
+          sed -i 's/https:\/\/basisvisualisierung.niedersachsen.de/https:\/\/staging.basisvisualisierung.niedersachsen.de/g' ./status/status.html
+          sed -i 's/https:\/\/basisvisualisierung.niedersachsen.de/https:\/\/staging.basisvisualisierung.niedersachsen.de/g' ./robots.txt
+          sed -i 's/https:\/\/basisvisualisierung.niedersachsen.de/https:\/\/staging.basisvisualisierung.niedersachsen.de/g' ./sitemap.xml
+      - name: Download minio
+        run: |
+          curl https://dl.minio.io/client/mc/release/linux-amd64/mc --output ./mc
+          chmod u+x ./mc
+      - name: Setup alias
+        run: ./mc alias set upload https://s3.eu-de.cloud-object-storage.appdomain.cloud ${{ secrets.IBM_COS_ACCESS_KEY }} ${{ secrets.IBM_COS_SECRET_KEY }}
+      - name: Upload files
+        run: |
+          ./mc cp -r css upload/website-bavi-staging/
+          ./mc cp -r icons upload/website-bavi-staging/
+          ./mc cp -r js upload/website-bavi-staging/
+          ./mc cp qgis/Readme.txt upload/website-bavi-staging/qgis/Readme.txt
+          ./mc cp -r video upload/website-bavi-staging/
+          ./mc cp -r svg upload/website-bavi-staging/
+          ./mc cp -r status upload/website-bavi-staging/
+          ./mc cp index.html upload/website-bavi-staging/
+          ./mc cp robots.txt upload/website-bavi-staging/
+          ./mc cp sitemap.xml upload/website-bavi-staging/
