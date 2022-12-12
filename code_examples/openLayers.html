@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vector Tiles - OpenLayers Demo</title>
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.js"></script>
+    <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.css">
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/css/ol.css" type=text/css>
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+    <div id="map" class="map"></div>
+    <script>
+        var center = [9.8, 52.4];
+        var mbMap = new mapboxgl.Map({
+            style: 'https://staging.basisvisualisierung.niedersachsen.de/services/basiskarte/styles/vt-style-color.json',
+            center: center,
+            container: 'map',
+        });
+        var mbLayer = new ol.layer.Layer({
+            render: function(frameState) {
+                var canvas = mbMap.getCanvas();
+                var viewState = frameState.viewState;
+                mbMap.jumpTo({
+                    center: ol.proj.toLonLat(viewState.center),
+                    zoom: viewState.zoom - 1,
+                    animate: false
+                });
+                return canvas;
+            }
+        });
+        var map = new ol.Map({
+            layers: [mbLayer],
+            target: 'map',
+            view: new ol.View({
+                center: ol.proj.fromLonLat(center),
+                zoom: 13
+            })
+        });
+    </script>
+</body>
+</html>

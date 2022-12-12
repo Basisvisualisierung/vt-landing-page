@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Basisvisualisierung mit Vector Tiles</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vector Tiles als amtliche Basiskarte für Niedersachsen">
+    <meta name="keywords"
+        content="Vector Tiles, Basisvisualisierung, amtliche Grundkarte, ATKIS, Niedersachsen, Karte, Hintergrundkarte, Styles, Klassisch, Farbe, Nacht">
+    <meta name="author" lang="de" content="Landesamt für Geoinformation und Landesvermessung Niedersachsen (LGLN)">
+    <meta name="theme-color" content="#C4153A" />
+    <link rel="canonical" href="https://basisvisualisierung.niedersachsen.de" />
+    <meta name="robots" content="index,follow">
+    <link rel="shortcut icon" type="image/x-icon" href="./svg/bavilogo.svg" />
+    <link rel="image_src" href="https://basisvisualisierung.niedersachsen.de/icons/512px_bavilogo_farbe.png" />
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://basisvisualisierung.niedersachsen.de/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Basisvisualisierung mit Vector Tiles">
+    <meta property="og:description" content="Vector Tiles als amtliche Basiskarte für Niedersachsen">
+    <meta property="og:image" content="https://basisvisualisierung.niedersachsen.de/icons/512px_bavilogo_farbe.png">
+    <!-- Android-->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/192px_bavilogo_farbe.png">
+    <link rel="icon" type="image/png" sizes="128x128" href="icons/128px_bavilogo_farbe.png">
+    <!-- Windows-->
+    <meta name="application-name" i18n-content="" content="Basisvisualisierung">
+    <meta name="msapplication-TileColor" content="#C4153a">
+    <meta name="msapplication-TileImage" content="icons/144px_bavilogo_farbe.png">
+    <!-- iOS-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" i18n-content="" content="Basisvisualisierung">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#C4153A">
+    <link rel="apple-touch-icon" sizes="144x144" href="icons/144px_bavilogo_farbe.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="icons/152px_bavilogo_farbe.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="icons/192px_bavilogo_farbe.png">
+    <link rel="apple-touch-icon" sizes="384x384" href="icons/384px_bavilogo_farbe.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="icons/512px_bavilogo_farbe.png">
+
+    <link href="https://basisvisualisierung.niedersachsen.de/web-theme/theme/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="./css/maplibre-gl.css" rel="stylesheet" />
+    <link href="./css/maplibre-gl-compare.css" rel="stylesheet" />
+    <link href="./css/prism.min.css" rel="stylesheet" />
+    <link href="./css/main.css" rel="stylesheet" />
+    <script src="https://basisvisualisierung.niedersachsen.de/services/microfrontend/vt-microfrontend.min.js"></script>
+</head>
+
+<body>
+    <div id="home">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+            <div class="navbar-brand link" onclick="scrollToID('home')">
+                <img id="navbar-logo" height="45px" width="268.33px" src="./svg/bavilogoschrift_farbe.svg"
+                    alt="Logo der Basisvisualisierung">
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <div onclick="scrollToID('vectortiles')" class="nav-link text-secondary link">Vector Tiles</div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLinkMap" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Karte erstellen
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLinkMap">
+                            <li><a class="dropdown-item" onclick="scrollToID('map_creating')">Karte erstellen</a></li>
+                            <li><a class="dropdown-item" onclick="scrollToID('styles')">Styles</a></li>
+                            <!-- <li><a class="dropdown-item" onclick="scrollToID('styleprinteditor')">Style & Print
+                                    Editor</a></li> -->
+                            <li><a class="dropdown-item" onclick="scrollToID('bavifrontend')">Bavi Frontend</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkData" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Daten nutzen
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLinkData">
+                            <li><a class="dropdown-item" onclick="scrollToID('data_usage')">Daten nutzen</a></li>
+                            <li><a class="dropdown-item" onclick="scrollToID('data')">Daten</a></li>
+                            <li><a class="dropdown-item" onclick="scrollToID('qgis')">QGIS-Einbindung</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <div onclick="scrollToID('tos')" class="nav-link text-secondary link">Nutzungsbedingungen</div>
+                    </li>
+                    <li class="nav-item">
+                        <div onclick="scrollToID('faq')" class="nav-link text-secondary link">FAQ</div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!-- SECTION HEADER -->
+    <div class="container-fluid p-0 position-relative">
+        <div id="map">
+        </div>
+        <div id="header-title">
+            <div id="header-first-line">
+                <button class="btn btn-primary btn-map-title-red">Basisvisualisierung</button>
+            </div>
+            <div id="header-second-line">
+                <button class="btn btn-secondary btn-map-title-gray">Vector-Tiles-Dienst</button>
+            </div>
+
+        </div>
+        <div id="scroll-indicator" class="link">
+            <div id="indicator-animation">
+                <a onclick="scrollToID('vectortiles')"><span></span></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION VECTOR TILES -->
+    <div id="vectortiles" class="container-fluid py-4 bg-light">
+        <h1 class="text-center">Vector Tiles</h1>
+        <div class="row">
+            <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 py-2">
+                <h2 class="text-center pb-3" id="h4">Interaktive, moderne und konfigurierbare Vektorkarten für Web und
+                    Mobil</h2>
+                <h3 class="text-center pb-3" id="h5">Bereitgestellt vom Team Basisvisualisierung des Landesamtes für
+                    Geoinformation und Landesvermessung Niedersachsen</h3>
+                <p>
+                    Vector Tiles sind gekachelte Vektordaten, die für eine hohe Performance im Web ausgelegt sind.
+                    Unsere amtlichen Geodaten liegen bereits vorberechnet als Vektorkacheln auf einem Server.
+                    Kartenanwendungen müssen
+                    sich immer nur die Kacheln vom Server laden, die im aktuellen Kartenausschnitt benötigt werden.
+                    Dadurch wird die übertragene Datenmenge optimiert.
+                </p>
+                <p>
+                    Ein großer Vorteil von Vector Tiles ist ihre Flexibilität. Die Karten werden mit Hilfe
+                    eines Styles (JSON) erst auf dem Endgerät gerendert.
+                    Durch die Erstellung individueller Basiskarten lassen sich auch Geofachdaten einfach mit den Vector
+                    Tiles kombinieren.
+                    Anders als ein Rasterformat,
+                    kann in den Vektorkarten ohne Verlust der Auflösung zwischen den Zoomstufen rein- und
+                    rausgezoomt werden. Dies ist vor
+                    allem für die effektive Nutzung auf hochauflösenden Bildschirmen wichtig.
+                </p>
+                <p>
+                    Somit stellen die Vector Tiles eine gute Möglichkeit dar, um unsere Geodaten an neue technologische
+                    Herausforderungen anzupassen.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-8 offset-xl-2  col-lg-8 offset-lg-2">
+                <ul class="nav justify-content-center nav-pills mb-2" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link news active" id="pills-news-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-news" type="button" role="tab" aria-controls="pills-news"
+                            aria-selected="true">Neuigkeiten</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link news" id="pills-feedback-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-feedback" type="button" role="tab" aria-controls="pills-feedback"
+                            aria-selected="false">Feedback</button>
+                    </li>
+                </ul>
+                <div class="tab-content p-2" id="pills-news-feedback-tabContent">
+                    <div class="tab-pane show active p-2" id="pills-news" role="tabpanel"
+                        aria-labelledby="pills-news-tab">
+                        <div class="p-2">
+                            <div class="news-content" id="news-content">
+                                <b>07.12.2022 +++ Änderung des Datenmodells auf Version 2 +++</b></br>
+                                Mehr dazu im Abschnitt <a class="news-href"
+                                    onclick="scrollToID('data')">Daten</a></br></br>
+                                <b>15.03.2022 +++ Neue Version 1.3.0 unserer Styles verfügbar +++</b></br>
+                                Mehr dazu auf <a
+                                    href="https://github.com/Basisvisualisierung/vt-styles/blob/master/CHANGELOG.md">GitHub</a></br></br>
+                                <b>01.02.2022 +++ Integrierte Darstellung Niedersachsen und Bremen +++</b></br>
+                                Mehr dazu im Abschnitt <a class="news-href"
+                                    onclick="scrollToID('styles')">Styles</a></br></br>
+                                <b>26.01.2022 +++ Bitte QGIS-Version ab 3.22.2 verwenden +++</b></br>
+                                Mehr dazu im Abschnitt <a class="news-href"
+                                    onclick="scrollToID('data')">Daten</a></br></br>
+                                <b>20.01.2022 +++ QGIS Readme +++</b></br>
+                                Mehr dazu im Abschnitt <a class="news-href"
+                                    onclick="scrollToID('data')">Daten</a></br></br>
+                                <b>19.11.2021 +++ Microfrontend +++</b></br>
+                                Mehr dazu im Abschnitt <a class="news-href"
+                                    onclick="scrollToID('bavifrontend')">Microfrontend</a></br></br>
+                                <b>19.11.2021 +++ QGIS Einbindung +++</b></br>
+                                Mehr dazu im Abschnitt <a class="news-href"
+                                    onclick="scrollToID('data')">Daten</a></br></br>
+                                <b>01.07.2021 +++ Live-Gang des Dienstes +++</b></br>
+                                Mehr dazu im Abschnitt <a class="news-href"
+                                    onclick="scrollToID('data')">Daten</a></br></br>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="pills-feedback" role="tabpanel" aria-labelledby="pills-feedback-tab">
+                        <div class="p-3" id="feedback-content">
+                            <b>Wir freuen uns über Feedback!</b><br>
+                            Sie nutzen unseren Dienst, haben Fragen zum Bavi Frontend oder zum Style?<br>
+                            Schreiben Sie gerne eine Mail an das Team Basisvisualisierung!<br>
+                            <a class="btn btn-primary px-3 mt-2 feedback-button"
+                                href="javascript:location='mailto:\u0062\u0061\u0073\u0069\u0073\u0076\u0069\u0073\u0075\u0061\u006c\u0069\u0073\u0069\u0065\u0072\u0075\u006e\u0067\u0040\u006c\u0067\u006c\u006e\u002e\u006e\u0069\u0065\u0064\u0065\u0072\u0073\u0061\u0063\u0068\u0073\u0065\u006e\u002e\u0064\u0065';void 0">
+
+                                E-Mail
+
+                                <img height="20px" src="./svg/envelope.svg" alt="Icon: Briefumschlag">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SECTION Karte erstellen -->
+    <div id="map_creating" class="container-fluid pt-4 bg-white position-relative">
+        <h1 class="text-center">Karte erstellen</h1>
+        <div class="row">
+            <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 py-2">
+                <p> Die Basisvisualisierung liefert Werkzeuge mit denen individuelle Karten erstellt werden können.
+                    Unsere vorgefertigten Styles inklusive URL zur Einbindung sind unter <a class="news-href"
+                        onclick="scrollToID('styles')">Styles</a> zu finden.
+                    Mit dem <a class="news-href" onclick="scrollToID('bavifrontend')">Bavi Frontend</a> können
+                    individuelle Karten einfach auf der Webseite eingebunden werden.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION Styles -->
+    <div id="styles" class="container-fluid pb-4 bg-white position-relative">
+        <div class="col-xl-10 offset-xl-1 col-lg-10 offset-lg-1 p-4 tos-container bg-light">
+            <h2 class="text-center">Styles</h2>
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1 col-lg-10 offset-lg-1 py-2">
+                    <p>Der Vector-Tiles-Dienst bietet verschiedene Kartenstyles zur Nutzung an, die über eine URL
+                        eingebunden werden können. Vector Tiles werden von vielen
+                        JavaScript-Bibliotheken wie z.B. MapLibre GL JS,
+                        Mapbox GL JS, OpenLayers oder Leaflet unterstützt.</p>
+                    <p>
+                        Nachfolgend sind sieben vorgefertigten Styles sowie deren URLs zur Einbindung zu finden.
+                        Die Styles Farbe und Klassisch beinhalten mehr Objektarten als die
+                        reduzierten Styles Graustufen, Hell und Nacht. Die OSM-Kombi Styles bestehen
+                        aus ATKIS-Daten innerhalb und OSM-Daten außerhalb von Niedersachsen.
+                    </p>
+                    <p>
+                        Für die eigenständige Einbindung von Vector Tiles mit JavaScript-Bibliotheken sind in unserem
+                        <a target="blank"
+                            href="https://github.com/Basisvisualisierung/vt-landing-page/tree/main/code_examples">GitHub-Repository</a>
+                        Code-Beispiele zu finden.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="text-center col-xl-8 offset-xl-2  col-lg-10 offset-lg-1">
+                    <ul class="nav justify-content-center nav-pills" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button onclick="changeBasemap(id)" class="nav-link map active" id="vt-style-color"
+                                data-bs-toggle="pill" type="button" role="tab">Farbe</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button onclick="changeBasemap(id)" class="nav-link map" id="vt-style-classic"
+                                data-bs-toggle="pill" type="button" role="tab">Klassisch</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button onclick="changeBasemap(id)" class="nav-link map" id="vt-style-grayscale"
+                                data-bs-toggle="pill" type="button" role="tab">Graustufen</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button onclick="changeBasemap(id)" class="nav-link map" id="vt-style-light"
+                                data-bs-toggle="pill" type="button" role="tab">Hell</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button onclick="changeBasemap(id)" class="nav-link map" id="vt-style-night"
+                                data-bs-toggle="pill" type="button" role="tab">Nacht</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button onclick="changeBasemap(id)" class="nav-link map" id="osm-style-color"
+                                data-bs-toggle="pill" type="button" role="tab">OSM-Kombi</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button onclick="changeBasemap(id)" class="nav-link map" id="osm-style-mix-gray-color"
+                                data-bs-toggle="pill" type="button" role="tab">OSM-Kombi-SW</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1  col-lg-8 offset-lg-2 py-2">
+                    <div class="usageMap-container ">
+                        <button class="btn btn-primary copyBtn px-3 px-md-3" onclick="copyURL()">
+                            <span class="d-none d-md-inline">URL</span>
+                            <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
+                                alt="Icon: In die Zwischenablage kopieren">
+                        </button>
+                        <div id="usageMap" class="usage-map bg-white">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION Bavi Frontend -->
+    <div id="bavifrontend" class="container-fluid pb-4 bg-white position-relative">
+        <div class="col-xl-10 offset-xl-1 col-lg-10 offset-lg-1 p-4 tos-container bg-light">
+            <h2 class="text-center">Bavi Frontend</h2>
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1 col-lg-10 offset-lg-1 py-2">
+                    <p>Für den Vector-Tiles-Dienst besteht zusätzlich die Möglichkeit, diesen als Microfrontend zu
+                        verwenden. Die Einbindung erfolgt durch den Import einer
+                        Javascript-Datei im Header einer Web-Anwendung. Durch die Verwendung der unten aufgeführten
+                        Komponenten kann eine Hintergrundkarte deklarativ in HTML beschrieben werden. Die Vorteile des
+                        Bavi Frontends sind, dass keine JavaScript-Kenntnisse benötigt werden und
+                        verwendete Bibliotheken nicht mehr selbst verwaltet werden müssen.
+                    </p>
+                    <p>Das Bavi Frontend befindet sich derzeit in aktiver Entwicklung. Die Komponenten, Attribute und
+                        Funktionen können sich jederzeit ändern.</p>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-xl-10 offset-xl-1 col-lg-8 offset-lg-2 py-2 pt-2">
+                    <ul class="nav justify-content-center nav-pills mb-2" id="pills-tab2" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pills-example1-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-example1" type="button" role="tab" aria-controls="pills-example1"
+                                aria-selected="true">Standard</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-example2-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-example2" type="button" role="tab" aria-controls="pills-example2"
+                                aria-selected="false">Markierungen</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-example3-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-example3" type="button" role="tab" aria-controls="pills-example3"
+                                aria-selected="false">Interaktion</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-example4-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-example4" type="button" role="tab" aria-controls="pills-example4"
+                                aria-selected="false">Externe Quelle</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content bg-white p-0" id="pills-tabContent">
+                        <div class="tab-pane show active" id="pills-example1" role="tabpanel"
+                            aria-labelledby="pills-example1-tab">
+                            <div class="row g-0">
+                                <div id="example1" class="col-xl-6 mh-600">
+                                    <vt-map map-height="100%"></vt-map>
+                                </div>
+                                <div class="col-xl-6 micro-code position-relative bg-white">
+                                    <button class="btn btn-primary copyBtn px-3 px-md-3"
+                                        onclick="copyCode('Standard Beispiel', 'default-example')">
+                                        <span class="d-none d-md-inline">HTML</span>
+                                        <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
+                                            alt="Icon: In die Zwischenablage kopieren">
+                                    </button>
+                                    <pre class="example-micro bg-white" data-lang="HTML">
+                                    <code id="default-example" class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Standard Beispiel&lt;/title&gt;
+    &lt;style&gt;body { margin:0; padding:0; }&lt;/style&gt;
+    &lt;script src="https://basisvisualisierung.niedersachsen.de/services/microfrontend/vt-microfrontend.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;vt-map&gt;&lt;/vt-map&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane show" id="pills-example2" role="tabpanel"
+                            aria-labelledby="pills-example2-tab">
+                            <div class="row g-0">
+                                <div id="example2" class="col-xl-6 mh-600"></div>
+                                <div class="col-xl-6 micro-code position-relative bg-white">
+                                    <button class="btn btn-primary copyBtn px-3 px-md-3"
+                                        onclick="copyCode('Markierungen Beispiel', 'markers-example')">
+                                        <span class="d-none d-md-inline">HTML</span>
+                                        <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
+                                            alt="Icon: In die Zwischenablage kopieren">
+                                    </button>
+                                    <pre class="example-micro bg-white" data-lang="HTML">
+                                    <code id="markers-example" class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Markierungen Beispiel&lt;/title&gt;
+    &lt;style&gt;body { margin:0; padding:0; }&lt;/style&gt;
+    &lt;script src="https://basisvisualisierung.niedersachsen.de/services/microfrontend/vt-microfrontend.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;vt-map map-style="light" zoom="8.3" lon="10" lat="52.2"&gt;
+        &lt;vt-control type="navigation" position="top-left">&lt;/vt-control&gt;
+        &lt;vt-control type="fullscreen" position="top-right">&lt;/vt-control&gt;
+        &lt;vt-control type="scale" position="bottom-left">&lt;/vt-control&gt;
+        &lt;vt-marker lon="9.8" lat="52.0"&gt;&lt;/vt-marker&gt;
+        &lt;vt-marker lon="9.80205" lat="52.40729"&gt;
+            &lt;vt-popup title="Landesvermessung und Geobasisinformation" text="Podbielskistraße 331, 30659 Hannover">&lt;/vt-popup&gt;
+        &lt;/vt-marker&gt;
+    &lt;/vt-map&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane show" id="pills-example3" role="tabpanel"
+                            aria-labelledby="pills-example3-tab">
+                            <div class="row g-0">
+                                <script>
+                                    function mapClick(position, features) {
+                                        showToast('mapClick ausgeführt', 'Position: [' + position.lon.toFixed(2) + ', ' + position.lat.toFixed(2) + ']')
+                                    }
+                                </script>
+                                <div id="example3" class="col-xl-6 mh-600"></div>
+                                <div class="col-xl-6 micro-code position-relative bg-white">
+                                    <button class="btn btn-primary copyBtn px-3 px-md-3"
+                                        onclick="copyCode('Interaktion Beispiel', 'interaction-example')">
+                                        <span class="d-none d-md-inline">HTML</span>
+                                        <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
+                                            alt="Icon: In die Zwischenablage kopieren">
+                                    </button>
+                                    <pre class="example-micro bg-white" data-lang="HTML">
+                                    <code id="interaction-example" class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Interaktion Beispiel&lt;/title&gt;
+    &lt;style&gt;body { margin:0; padding:0; }&lt;/style&gt;
+    &lt;script src="https://basisvisualisierung.niedersachsen.de/services/microfrontend/vt-microfrontend.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;script&gt;
+        function mapClick(position, features) {
+            console.log(position.lon)
+            console.log(position.lat)
+            console.log(features)
+        }
+    &lt;/script&gt;
+    &lt;vt-map map-click="mapClick" map-style="night"&gt;&lt;/vt-map&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane show" id="pills-example4" role="tabpanel"
+                            aria-labelledby="pills-example4-tab">
+                            <div class="row g-0">
+                                <div id="example4" class="col-xl-6 mh-600"></div>
+                                <div class="col-xl-6 micro-code position-relative bg-white">
+                                    <button class="btn btn-primary copyBtn px-3 px-md-3"
+                                        onclick="copyCode('Externe Quelle Beispiel', 'external-source-example')">
+                                        <span class="d-none d-md-inline">HTML</span>
+                                        <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
+                                            alt="Icon: In die Zwischenablage kopieren">
+                                    </button>
+                                    <pre class="example-micro bg-white" data-lang="HTML">
+                                    <code id="external-source-example" class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Externe Quelle Beispiel&lt;/title&gt;
+    &lt;style&gt;body { margin:0; padding:0; }&lt;/style&gt;
+    &lt;script src="https://basisvisualisierung.niedersachsen.de/services/microfrontend/vt-microfrontend.min.js">&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;vt-map map-style="light" zoom="7"&gt;
+        &lt;vt-source type="geojson" src="./data/regionaldirektionen.min.geojson"&gt;
+            &lt;vt-layer id="fill" type="fill" color="#ED6A61" opacity="0.1"&gt;&lt;/vt-layer&gt;
+            &lt;vt-layer id="outline" type="line" color="#ED6A61" opacity="0.8" line-width="4"&gt;&lt;/vt-layer&gt;
+        &lt;/vt-source&gt;
+    &lt;/vt-map&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-xl-10 offset-xl-1 col-lg-8 offset-lg-2 py-2 pt-2">
+                    <ul class="nav justify-content-center nav-pills mb-2" id="pills-tab2" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pills-documentation-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-documentation" type="button" role="tab"
+                                aria-controls="pills-documentation" aria-selected="true">Dokumentation</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-infos-tab" data-bs-toggle="pill"
+                                data-bs-target="#pills-infos" type="button" role="tab" aria-controls="pills-infos"
+                                aria-selected="false">Weitere Informationen</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content p-0"">
+                    <div class=" tab-pane show active" id="pills-documentation" role="tabpanel"
+                        aria-labelledby="pills-documentation-tab">
+                        <div class="row g-0">
+                            <div class="accordion" id="microAccordion">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header bg-white rounded-top" id="micro-headingOne">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#micro-collapseOne"
+                                            aria-expanded="false" aria-controls="micro-collapseOne">
+                                            vt-map
+                                        </button>
+                                    </h2>
+                                    <div id="micro-collapseOne" class="accordion-collapse collapse bg-white"
+                                        aria-labelledby="micro-headingOne" data-bs-parent="#microAccordion">
+                                        <div class="accordion-body">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Name</th>
+                                                        <th scope="col">Benötigt</th>
+                                                        <th scope="col">Typ</th>
+                                                        <th scope="col">Standardwert</th>
+                                                        <th scope="col">Reaktiv</th>
+                                                        <th scope="col">Beschreibung/Werte</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">lon</th>
+                                                        <td>Nein</td>
+                                                        <td>Zahl</td>
+                                                        <td>9.73</td>
+                                                        <td>Ja</td>
+                                                        <td>Kartenzentrum</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">lat</th>
+                                                        <td>Nein</td>
+                                                        <td>Zahl</td>
+                                                        <td>52.37</td>
+                                                        <td>Ja</td>
+                                                        <td>Kartenzentrum</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">zoom</th>
+                                                        <td>Nein</td>
+                                                        <td>Zahl</td>
+                                                        <td>12</td>
+                                                        <td>Ja</td>
+                                                        <td>Zoomlevel</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">map-style</th>
+                                                        <td>Nein</td>
+                                                        <td>String/URL</td>
+                                                        <td>classic</td>
+                                                        <td>Ja</td>
+                                                        <td>classic, color, grayscale, light, night, URL zu externem
+                                                            Style
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">map-click</th>
+                                                        <td>Nein</td>
+                                                        <td>String</td>
+                                                        <td></td>
+                                                        <td>Ja</td>
+                                                        <td>Callback-Funktion</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">map-height</th>
+                                                        <td>Nein</td>
+                                                        <td>String</td>
+                                                        <td>100vh</td>
+                                                        <td>Ja</td>
+                                                        <td>CSS-Wert für Kartenhöhe</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">map-width</th>
+                                                        <td>Nein</td>
+                                                        <td>String</td>
+                                                        <td>100%</td>
+                                                        <td>Ja</td>
+                                                        <td>CSS-Wert für Kartenbreite</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item bg-white">
+                                    <h2 class="accordion-header" id="micro-headingTwo">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#micro-collapseTwo"
+                                            aria-expanded="false" aria-controls="micro-collapseTwo">
+                                            vt-control
+                                        </button>
+                                    </h2>
+                                    <div id="micro-collapseTwo" class="accordion-collapse collapse"
+                                        aria-labelledby="micro-headingTwo" data-bs-parent="#microAccordion">
+                                        <div class="accordion-body">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Name</th>
+                                                        <th scope="col">Benötigt</th>
+                                                        <th scope="col">Typ</th>
+                                                        <th scope="col">Standardwert</th>
+                                                        <th scope="col">Reaktiv</th>
+                                                        <th scope="col">Beschreibung/Werte</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">type</th>
+                                                        <td>Ja</td>
+                                                        <td>String</td>
+                                                        <td></td>
+                                                        <td>Ja</td>
+                                                        <td>navigation, scale, geolocate, fullscreen</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">position</th>
+                                                        <td>Ja</td>
+                                                        <td>String</td>
+                                                        <td></td>
+                                                        <td>Ja</td>
+                                                        <td>top-left, top-right, bottom-left, bottom-right</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item bg-white">
+                                    <h2 class="accordion-header" id="micro-headingThree">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#micro-collapseThree"
+                                            aria-expanded="false" aria-controls="micro-collapseThree">
+                                            vt-marker
+                                        </button>
+                                    </h2>
+                                    <div id="micro-collapseThree" class="accordion-collapse collapse"
+                                        aria-labelledby="micro-collapseThree" data-bs-parent="#microAccordion">
+                                        <div class="accordion-body">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Name</th>
+                                                        <th scope="col">Benötigt</th>
+                                                        <th scope="col">Typ</th>
+                                                        <th scope="col">Standardwert</th>
+                                                        <th scope="col">Reaktiv</th>
+                                                        <th scope="col">Beschreibung/Werte</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">lon</th>
+                                                        <td>Ja</td>
+                                                        <td>Zahl</td>
+                                                        <td></td>
+                                                        <td>Ja</td>
+                                                        <td>Positionswert</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">lat</th>
+                                                        <td>Ja</td>
+                                                        <td>Zahl</td>
+                                                        <td></td>
+                                                        <td>Ja</td>
+                                                        <td>Positionswert</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item bg-white">
+                                    <h2 class="accordion-header" id="micro-headingFour">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#micro-collapseFour"
+                                            aria-expanded="false" aria-controls="micro-collapseFour">
+                                            vt-popup
+                                        </button>
+                                    </h2>
+                                    <div id="micro-collapseFour" class="accordion-collapse collapse"
+                                        aria-labelledby="micro-eadingFour" data-bs-parent="#microAccordion">
+                                        <div class="accordion-body">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Name</th>
+                                                        <th scope="col">Benötigt</th>
+                                                        <th scope="col">Typ</th>
+                                                        <th scope="col">Standardwert</th>
+                                                        <th scope="col">Reaktiv</th>
+                                                        <th scope="col">Beschreibung/Werte</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">title</th>
+                                                        <td>Nein</td>
+                                                        <td>String</td>
+                                                        <td></td>
+                                                        <td>Ja</td>
+                                                        <td>Titel des Popups</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">text</th>
+                                                        <td>Nein</td>
+                                                        <td>String</td>
+                                                        <td></td>
+                                                        <td>Ja</td>
+                                                        <td>Text des Popups</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item bg-white">
+                                    <h2 class="accordion-header" id="micro-headingFive">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#micro-collapseFive"
+                                            aria-expanded="false" aria-controls="micro-collapseFive">
+                                            vt-source
+                                        </button>
+                                    </h2>
+                                    <div id="micro-collapseFive" class="accordion-collapse collapse"
+                                        aria-labelledby="micro-headingFive" data-bs-parent="#microAccordion">
+                                        <div class="accordion-body">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Name</th>
+                                                        <th scope="col">Benötigt</th>
+                                                        <th scope="col">Typ</th>
+                                                        <th scope="col">Standardwert</th>
+                                                        <th scope="col">Reaktiv</th>
+                                                        <th scope="col">Beschreibung/Werte</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">type</th>
+                                                        <td>Ja</td>
+                                                        <td>String</td>
+                                                        <td></td>
+                                                        <td>Nein</td>
+                                                        <td>vector, raster, geojson</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">src</th>
+                                                        <td>Ja</td>
+                                                        <td>URL</td>
+                                                        <td></td>
+                                                        <td>Nein</td>
+                                                        <td>URL zu externem Dienst</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header bg-white rounded-bottom" id="micro-headingSix">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#micro-collapseSix"
+                                            aria-expanded="false" aria-controls="micro-collapseSix">
+                                            vt-layer
+                                        </button>
+                                    </h2>
+                                    <div id="micro-collapseSix" class="accordion-collapse collapse bg-white"
+                                        aria-labelledby="micro-headingSix" data-bs-parent="#microAccordion">
+                                        <div class="accordion-body">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Name</th>
+                                                        <th scope="col">Benötigt</th>
+                                                        <th scope="col">Typ</th>
+                                                        <th scope="col">Standardwert</th>
+                                                        <th scope="col">Reaktiv</th>
+                                                        <th scope="col">Beschreibung/Werte</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">id</th>
+                                                        <td>Ja</td>
+                                                        <td>String</td>
+                                                        <td></td>
+                                                        <td>Ja</td>
+                                                        <td>ID des Layers aus externem Dienst</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">type</th>
+                                                        <td>Ja</td>
+                                                        <td>String</td>
+                                                        <td></td>
+                                                        <td>Ja</td>
+                                                        <td>line, fill, circle, raster</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">minzoom</th>
+                                                        <td>Nein</td>
+                                                        <td>Zahl</td>
+                                                        <td>Undefiniert</td>
+                                                        <td>Ja</td>
+                                                        <td>Zoomstufe, ab der Layer sichtbar ist</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">maxzoom</th>
+                                                        <td>Nein</td>
+                                                        <td>Zahl</td>
+                                                        <td>Undefiniert</td>
+                                                        <td>Ja</td>
+                                                        <td>Zoomstufe, bis zu der Layer sichtbar ist</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">color</th>
+                                                        <td>Nein</td>
+                                                        <td>String</td>
+                                                        <td>#000000</td>
+                                                        <td>Ja</td>
+                                                        <td>Farbe, in der Layer dargestellt wird</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">opacity</th>
+                                                        <td>Nein</td>
+                                                        <td>Zahl</td>
+                                                        <td>1.0</td>
+                                                        <td>Ja</td>
+                                                        <td>Undurchsichtigkeits-Level</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">line-width</th>
+                                                        <td>Nein</td>
+                                                        <td>Zahl</td>
+                                                        <td>1</td>
+                                                        <td>Ja</td>
+                                                        <td>Legt Linienbreite fest, wenn type "line" ist</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">circle-radius</th>
+                                                        <td>Nein</td>
+                                                        <td>Zahl</td>
+                                                        <td>5</td>
+                                                        <td>Ja</td>
+                                                        <td>Legt Größe des Punktes fest, wenn type "circle" ist</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">background</th>
+                                                        <td>Nein</td>
+                                                        <td>Boolean</td>
+                                                        <td>false</td>
+                                                        <td>Ja</td>
+                                                        <td>Setzt die Position des Layers in den Hintergrund oder in den
+                                                            Vordergrund</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane show" id="pills-infos" role="tabpanel" aria-labelledby="pills-infos-tab">
+                        <div class="bg-white h-100 p-4 tos-container">
+                            <p>Weitere Informationen, der Source-Code und eine erweiterte Dokumentation sind unter
+                                folgender
+                                URL zu finden:</p>
+                            <p>
+                                GitHub-URL:<br>
+                                <a target="blank"
+                                    href="https://github.com/Basisvisualisierung/bavi-frontend">https://github.com/Basisvisualisierung/bavi-frontend</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- SECTION Daten nutzen -->
+    <div id="data_usage" class="container-fluid pt-4 bg-light ">
+        <h1 class="text-center">Daten nutzen</h1>
+        <div class="row">
+            <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 py-2">
+                <p>
+
+                    Die Basisvisualisierung liefert Daten mit denen individuelle Karten erstellt werden können.
+                    Hierfür benötigte URLs und weitere Informationen sind unter <a class="news-href"
+                        onclick="scrollToID('data')">Daten</a> zu finden.
+
+                    </br>
+                    Unsere Daten können als Vector Tiles in GIS-Systemen, wie z.B. QGIS eingebunden werden.
+                    Im GIS können die Vector Tiles als Hintergrundkarte mit z.B. Fachdaten kombiniert werden. Mehr
+                    dazu im Abschnitt <a class="news-href" onclick="scrollToID('qgis')">QGIS-Einbindung</a>.
+
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- SECTION Daten -->
+    <div id="data" class="container-fluid pb-4 bg-light ">
+        <div class="col-xl-10 offset-xl-1 p-4 tos-container bg-white">
+            <h2 class="text-center">Daten </h2>
+
+            <div class="row ">
+                <div class="col-xl-10 offset-xl-1 col-lg-10 offset-lg-1 py-2">
+                    <div class="vertical-center"><span id="lastUpdateBadge" class="badge bg-primary">Datenaktualität:
+                            Vormonat</span></div>
+
+
+                    <p> Die Datengrundlage für diesen Dienst sind die Vector Tiles von basemap.de.
+                        Über folgende Links können die Daten für den Bereich von Niedersachsen in Kartenanwendungen
+                        direkt eingebunden werden. </p>
+                    <p>
+                        TileJSON-URL:<br />
+                        <code>
+                        https://basisvisualisierung.niedersachsen.de/services/basiskarte/v2/tiles/basiskarte.json
+                    </code>
+                        <button class="btn btn-primary data-url-btn btn-sm px-3 px-md-3" onclick="copyURL('Tilejson')">
+                            <span class="d-none d-md-inline">URL</span>
+                            <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
+                                alt="Icon: In die Zwischenablage kopieren">
+                        </button>
+                    </p>
+                    <p>
+                        XYZ-URL:<br />
+                        <code>
+                        https://basisvisualisierung.niedersachsen.de/services/basiskarte/v2/tiles/{z}/{x}/{y}.pbf
+                    </code>
+                        <button class="btn btn-primary data-url-btn btn-sm px-3 px-md-3" onclick="copyURL('XYZ')">
+                            <span class="d-none d-md-inline">URL</span>
+                            <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
+                                alt="Icon: In die Zwischenablage kopieren">
+                        </button>
+                    </p>
+
+                    <p>
+                        Beispiel Style-URL (mehr Styles im Abschnitt <a class="news-href"
+                            onclick="scrollToID('styles')">Styles</a>):<br />
+                        <code>
+                        https://basisvisualisierung.niedersachsen.de/services/basiskarte/styles/vt-style-color.json
+                    </code>
+                        <button class="btn btn-primary data-url-btn btn-sm px-3 px-md-3" onclick="copyURL('Farbe')">
+                            <span class="d-none d-md-inline">URL</span>
+                            <img height="18px" width="18px" src="./svg/clipboard-plus.svg"
+                                alt="Icon: In die Zwischenablage kopieren">
+                        </button>
+                    </p>
+
+                    <p>
+                        Weitere Informationen zur Einbindung von Vector Tiles und dem zugrundeliegenden Datenmodell
+                        finden Sie in der Dokumentation von <a href="https://basemap.de/web-vektor/" target="_blank"
+                            rel="noopener">basemap.de</a>.
+                    </p>
+
+                    <h4 class="text-center">Aktualisierung Version 2</h4>
+                    <p>
+                        Mit Einführung der Version 2 unserer Vector Tiles, gibt es Änderungen am Datenschema. Diese
+                        können dem Änderungsprotokoll entnommen werden. Version 1 der Vector Tiles wird inhaltlich nicht
+                        mehr aktualisiert und wir empfehlen den Umstieg auf Version 2. 
+                    </p>
+                    <p>
+                        Für Nutzende unserer Styles
+                        besteht kein Handlungssbedarf, diese wurden an das neue Datenschema angepasst.
+                    </p>
+
+                    <div class="accordion col-xl-12 offset-xl-12 col-lg-12 offset-lg-12 py-2" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header bg-white rounded-top rounded-bottom" id="headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    Änderungsprotokoll
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse bg-white"
+                                aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <h6>Version 2.0</h6>
+                                    <ul>
+                                        <li>Layer "Name" umbenannt in "Name_Punkt"</li>
+                                        <li>Attribut "gebaeudefunktion" in Layer "Gebaeudeflaeche" umbenannt in "klasse"
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <!-- SECTION QGIS nutzen -->
+    <div id="qgis" class="container-fluid pb-4 bg-light position-relative">
+        <div class="col-xl-10 offset-xl-1 p-4 tos-container bg-white">
+            <h2 class="text-center">QGIS-Einbindung</h2>
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1 col-lg-10 offset-lg-1 py-2">
+                    <p>
+                        <video class="example-video" src="./qgis/Bavi_VectorTiles_in_QGIS_720p.mp4"
+                            alt="Video: Einbindung in QGIS" controls></video>
+                        <br>
+                        <!-- <a class="btn btn-primary px-3" href="./qgis/Basisvisualisierung-VT_3.22.2.qgs" type="application/qgis"
+                        download="QGIS-Beispiel.qgs">
+                        QGIS-Projekt<img height="20px" width="30px" src="./svg/box-arrow-down.svg"
+                            alt="Icon: Box mit einem Pfeil nach unten">
+                    </a> -->
+                        <a class="btn btn-primary px-3" href="./qgis/Readme.txt" type="application/qgis"
+                            download="Readme.txt">Readme<img height="20px" width="30px" src="./svg/box-arrow-down.svg"
+                                alt="Icon: Box mit einem Pfeil nach unten">
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION TERMS OF SERVICE -->
+    <div id="tos" class="container-fluid py-4 bg-white">
+        <h1 class="text-center pb-3">Nutzungsbedingungen</h1>
+        <div class="row gx-4">
+            <div class="col-xl-4 offset-xl-2 col-lg-5 offset-lg-1 py-2">
+                <div class="bg-light h-100 p-4 tos-container">
+                    <h2 class="text-center pb-2">Styles</h2>
+                    <p class="mb-2"> Die Styles sind als Dienst kostenfrei nutzbar. Bei öffentlichen Bereitstellungen
+                        ist die Angabe eines Quellenvermerks für die Daten anzubringen:
+                    </p>
+                    <div class="copyright-geobasis mb-2">
+                        <code>
+                            &copy LGLN | &copy GeoBasis-DE / BKG
+                        </code>
+                    </div>
+                    <p>
+                        Der Quellcode der Styles ist unter der MIT-Lizenz veröffentlicht. Mehr
+                        Informationen dazu finden Sie in unserem
+                        <a href="https://github.com/Basisvisualisierung/vt-styles" target="_blank"
+                            rel="noopener">GitHub-Repository</a>.
+                    </p>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-5 py-2">
+                <div class="bg-light h-100 p-4 tos-container">
+                    <h2 class="text-center pb-2">Daten</h2>
+                    <p class="mb-2">
+                        Der Vector-Tiles-Dienst darf kostenfrei in Kartenanwendungen eingebunden werden. Bei
+                        öffentlichen Bereitstellungen ist die Angabe eines Quellenvermerks anzubringen:
+                    </p>
+                    <div class="copyright-geobasis mb-2">
+                        <code>
+                            &copy LGLN | &copy GeoBasis-DE / BKG
+                        </code>
+                    </div>
+                    <p>
+                        Eine über die temporäre Speicherung (Caching) hinausgehende dauerhafte Speicherung und
+                        Weiterverbreitung der Daten ist untersagt.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION FAQ -->
+    <div id="faq" class="container-fluid py-4 bg-light">
+        <h1 class="text-center">FAQ - Häufig gestellte Fragen</h1>
+        <div class="row">
+            <div class="accordion col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 py-2" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header bg-white rounded-top" id="headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            Welchen Bereich decken die Vector Tiles ab?
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse bg-white" aria-labelledby="headingOne"
+                        data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Die auf dieser Seite verfügbaren Vector Tiles decken seit dem 01.02.2022 das Gebiet des
+                            Landes Niedersachsen und Bremen
+                            ab. Sprechen Sie uns gerne an, wenn Sie nur die Vector Tiles für Niedersachsen benötigen.
+                            Für deutschlandweite Vector Tiles kann <a target="_blank" href="https://basemap.de"
+                                rel="noopener">basemap.de</a> genutzt werden.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item bg-white">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Was kostet mich die Nutzung des Vector-Tiles-Dienstes?
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Die Vector Tiles sind ein kostenfreier Dienst.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item bg-white">
+                    <h2 class="accordion-header" id="headingTwoPointFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwoPointFive" aria-expanded="false"
+                            aria-controls="collapseTwoPointFive">
+                            Sind die Daten unter einer Open-Data-Lizenz lizensiert?
+                        </button>
+                    </h2>
+                    <div id="collapseTwoPointFive" class="accordion-collapse collapse"
+                        aria-labelledby="collapseTwoPointFive" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Nein, eine dauerhafte Speicherung und Weiterverbreitung der Daten ist untersagt.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item bg-white">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Woher stammen die Daten?
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Die Daten sind ein Auszug aus den Vector Tiles von <a target="_blank"
+                                href="https://basemap.de" rel="noopener">basemap.de</a>.
+                            Die Grundlage des Datensatzes sind hauptsächlich amtliche Geodaten des Landes Niedersachsen,
+                            wie z. B. das Basis-DLM und LoD1-Gebäudemodelle.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item bg-white">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Wie aktuell sind die Daten?
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                        data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Die Daten stammen größtenteils aus <span id="lastUpdateFaq">dem Vormonat</span>. Die
+                            Gebäudedaten können in der Aktualität
+                            abweichen.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item bg-white">
+                    <h2 class="accordion-header" id="headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            Wie kann ich Vector Tiles nutzen?
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                        data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Die Nutzung der Vector Tiles wird im Abschnitt <a class="link"
+                                onclick="scrollToID('map_creating')">Karte erstellen</a> beschrieben.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item bg-white">
+                    <h2 class="accordion-header" id="headingSeven">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                            In welcher Projektion liegen die Vector Tiles vor?
+                        </button>
+                    </h2>
+                    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
+                        data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Der Dienst unterstützt die Web-Mercator-Projektion (EPSG:3857).
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header bg-white rounded-bottom" id="headingEight">
+                        <button class="accordion-button collapsed bg-white" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                            Gibt es Code-Beispiele?
+                        </button>
+                    </h2>
+                    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
+                        data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Sie finden Code-Beispiele im Abschnitt <a class="link"
+                                onclick="scrollToID('usage')">Nutzung</a>, in der <a target="_blank"
+                                href="https://basemap.de/web-vektor/" rel="noopener">Dokumentation</a> von
+                            basemap.de und in der <a target="_blank"
+                                href="https://maplibre.org/maplibre-gl-js-docs/api/" rel="noopener">API-Referenz</a> von
+                            MapLibre GL JS.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION FOOTER -->
+    <div id="footer" class="container-fluid bg-secondary">
+        <div class="my-footer py-3">
+            <div>
+                <img src="./svg/lgln_logo_white.svg" height="50px" width="164.75px" alt="LGLN-Logo">
+            </div>
+            <div>
+                <ul class="text-end m-0">
+                    <li class="box-arrow-up-right">
+                        <a class="ps-3" role="button" href="/status/status.html" target="_blank"
+                            rel="noopener">Status<img height="20px" width="30px" class="d-none d-md-inline"
+                                src="./svg/box-arrow-up-right.svg" alt="Icon: Box mit einem Pfeil nach rechts oben"></a>
+                    </li>
+                    <li class="box-arrow-up-right">
+                        <a class="ps-3" role="button"
+                            href="https://www.lgln.niedersachsen.de/startseite/wir_uber_uns_amp_organisation/datenschutz/datenschutz-im-lgln-138166.html"
+                            target="_blank" rel="noopener">Datenschutz<img height="20px" width="30px"
+                                class="d-none d-md-inline" src="./svg/box-arrow-up-right.svg"
+                                alt="Icon: Box mit einem Pfeil nach rechts oben"></a>
+                    </li>
+                    <li class="chevron-down">
+                        <a class="ps-3" role="button" onclick="toggleFooterSection('imprint')">Impressum<img
+                                height="20px" width="30px" id="imprint-image" src="./svg/chevron-down.svg"
+                                alt="Icon: Pfeil (Chevron) nach unten"></a>
+                    </li>
+
+                    <li class="chevron-down">
+                        <a class="ps-3" role="button" onclick="toggleFooterSection('contact')">Kontakt<img height="20px"
+                                width="30px" id="contact-image" src="./svg/chevron-down.svg"
+                                alt="Icon: Pfeil (Chevron) nach unten"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="contact" class="container-fluid bg-secondary">
+        <div class="row contact">
+            <div class="py-lg-5 pt-5 col-lg-6 col-sm-12">
+                <h5>Landesamt für Geoinformation und Landesvermessung Niedersachsen (LGLN)</h5>
+                <div>- Landesvermessung und Geobasisinformation - Landesbetrieb -<br>
+                    Podbielskistraße 331<br>
+                    30659 Hannover</div>
+                <div>
+                    Telefon: 0511 64609-0
+                </div>
+            </div>
+            <div class="py-5 col-lg-6 col-sm-12">
+                <h5>Basisvisualisierung</h5>
+                <div>Fachgebiet 241 - Anwendungsentwicklung Geotopographie</div>
+                <a class="text-white"
+                    href="javascript:location='mailto:\u0062\u0061\u0073\u0069\u0073\u0076\u0069\u0073\u0075\u0061\u006c\u0069\u0073\u0069\u0065\u0072\u0075\u006e\u0067\u0040\u006c\u0067\u006c\u006e\u002e\u006e\u0069\u0065\u0064\u0065\u0072\u0073\u0061\u0063\u0068\u0073\u0065\u006e\u002e\u0064\u0065';void 0">E-Mail</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="imprint" class="container-fluid bg-secondary">
+        <div class="py-5">
+            <h5>Anbieter gem. § 5 Telemediengesetz und § 18 Abs. 1 des Medienstaatsvertrages (MStV):</h5><br>
+
+            Landesamt für Geoinformation und Landesvermessung Niedersachsen (LGLN)<br>
+            Podbielskistraße 331<br>
+            30659 Hannover<br>
+            Telefon: +49 511 64609-0<br>
+            Telefax: +49 511 64609-160<br>
+            E-Mail: poststelle@lgln.niedersachsen.de<br><br>
+
+            Rechtsform:<br>
+            Landesamt<br>
+            Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br>
+            DE 275 115 401<br><br>
+
+            Vertretungsberechtigt:<br>
+            Michel Golibrzuch (Präsident des LGLN)<br>
+            Verantwortlich:<br>
+            Fachgebiet 241, Thorsten Jakob<br>
+            Technischer Betrieb:<br>
+            IBM Deutschland GmbH<br><br>
+
+            Haftungsausschluss:<br><br>
+
+            1. Inhalt des Onlineangebotes<br>
+
+            Der Autor übernimmt keinerlei Gewähr für die Aktualität, Korrektheit, Vollständigkeit oder Qualität der
+            bereitgestellten Informationen. Haftungsansprüche gegen den Autor, welche sich auf Schäden materieller oder
+            ideeller Art beziehen, die durch die Nutzung oder Nichtnutzung der dargebotenen Informationen bzw. durch die
+            Nutzung fehlerhafter und unvollständiger Informationen verursacht wurden, sind grundsätzlich ausgeschlossen,
+            sofern seitens des Autors kein nachweislich vorsätzliches oder grob fahrlässiges Verschulden vorliegt. Alle
+            Angebote sind freibleibend und unverbindlich. Der Autor behält es sich ausdrücklich vor, Teile der Seiten
+            oder das gesamte Angebot ohne gesonderte Ankündigung zu verändern, zu ergänzen, zu löschen oder die
+            Veröffentlichung zeitweise oder endgültig einzustellen.<br><br>
+
+            2. Verweise und Links<br>
+
+            Bei direkten oder indirekten Verweisen auf fremde Internetseiten ("Links"), die außerhalb des
+            Verantwortungsbereiches des Autors liegen, würde eine Haftungsverpflichtung ausschließlich in dem Fall in
+            Kraft treten, in dem der Autor von den Inhalten Kenntnis hat und es ihm technisch möglich und zumutbar wäre,
+            die Nutzung im Falle rechtswidriger Inhalte zu verhindern. Der Autor erklärt hiermit ausdrücklich, dass zum
+            Zeitpunkt der Linksetzung keine illegalen Inhalte auf den zu verlinkenden Seiten erkennbar waren. Auf die
+            aktuelle und zukünftige Gestaltung, die Inhalte oder die Urheberschaft der gelinkten/verknüpften Seiten hat
+            der Autor keinerlei Einfluss. Deshalb distanziert er sich hiermit ausdrücklich von allen Inhalten aller
+            gelinkten /verknüpften Seiten, die nach der Linksetzung verändert wurden. Diese Feststellung gilt für alle
+            innerhalb des eigenen Internetangebotes gesetzten Links und Verweise sowie für Fremdeinträge in vom Autor
+            eingerichteten Gästebüchern, Diskussionsforen und Mailinglisten. Für illegale, fehlerhafte oder
+            unvollständige Inhalte und insbesondere für Schäden, die aus der Nutzung oder Nichtnutzung solcherart
+            dargebotener Informationen entstehen, haftet allein der Anbieter der Seite, auf welche verwiesen wurde,
+            nicht derjenige, der über Links auf die jeweilige Veröffentlichung lediglich verweist. <br><br>
+
+            3. Urheber- und Kennzeichenrecht<br>
+
+            Der Autor ist bestrebt, in allen Publikationen die Urheberrechte der verwendeten Grafiken, Tondokumente,
+            Videosequenzen und Texte zu beachten, von ihm selbst erstellte Grafiken, Tondokumente, Videosequenzen und
+            Texte zu nutzen oder auf lizenzfreie Grafiken, Tondokumente, Videosequenzen und Texte zurückzugreifen. Alle
+            innerhalb des Internetangebotes genannten und ggf. durch Dritte geschützten Marken- und Warenzeichen
+            unterliegen uneingeschränkt den Bestimmungen des jeweils gültigen Kennzeichenrechts und den Besitzrechten
+            der jeweiligen eingetragenen Eigentümer. Allein aufgrund der bloßen Nennung ist nicht der Schluß zu ziehen,
+            dass Markenzeichen nicht durch Rechte Dritter geschützt sind! Das Copyright für veröffentlichte, vom Autor
+            selbst erstellte Objekte bleibt allein beim Autor der Seiten. Eine Vervielfältigung oder Verwendung solcher
+            Grafiken, Tondokumente, Videosequenzen und Texte in anderen elektronischen oder gedruckten Publikationen ist
+            ohne ausdrückliche Zustimmung des Autors nicht gestattet.<br><br>
+
+            4. Rechtswirksamkeit dieses Haftungsausschlusses<br>
+
+            Dieser Haftungsausschluss ist als Teil des Internetangebotes zu betrachten, von dem aus auf diese Seite
+            verwiesen wurde. Sofern Teile oder einzelne Formulierungen dieses Textes der geltenden Rechtslage nicht,
+            nicht mehr oder nicht vollständig entsprechen sollten, bleiben die übrigen Teile des Dokumentes in ihrem
+            Inhalt und ihrer Gültigkeit davon unberührt.
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div class="toast hide" id="myToast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img height="16px" width="16px" src="./svg/square-fill.svg" class="me-2" alt="Rechtecksymbol">
+                <strong id="toastHeaderText" class="me-auto"></strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" id="toastBody">
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/smoothscroll.min.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/maplibre-gl.js"></script>
+    <script src="./js/maplibre-gl-compare.js"></script>
+    <script src="./js/prism.min.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+
+</html>

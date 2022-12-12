@@ -1,0 +1,33 @@
+.service-status {
+    float:right;
+}
+
+.small { 
+    font-size: 80%;
+    float: left;
+}
+
+.failed  { 
+    color: var(--bs-danger);
+}
+.success { 
+    color: var(--bs-success);
+}
+
+.fonts {
+    float:left;
+}
+
+
+
+.status-header {
+    display:flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.urlBtn>img {
+    vertical-align: text-top;
+
+}
