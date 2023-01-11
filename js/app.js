@@ -61,8 +61,8 @@ function setLastUpdate() {
         month = month + 12
         year = year - 1;
     }
-    document.getElementById("lastUpdateFaq").innerHTML = monthNames[month] + " " + d.getFullYear()
-    document.getElementById("lastUpdateBadge").innerHTML = "Datenaktualität: " + monthNames[month] + " " + d.getFullYear()
+    document.getElementById("lastUpdateFaq").innerHTML = monthNames[month] + " " + year
+    document.getElementById("lastUpdateBadge").innerHTML = "Datenaktualität: " + monthNames[month] + " " + year
 }
 
 
