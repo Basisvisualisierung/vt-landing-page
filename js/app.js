@@ -49,6 +49,7 @@ function setLastUpdate() {
 
     const d = new Date();
     let month = d.getMonth();
+    let year = d.getFullYear();
 
     if (d.getDate() > 2) {
         month = month - 1
@@ -58,6 +59,7 @@ function setLastUpdate() {
 
     if (month < 0) {
         month = month + 12
+        year = year - 1;
     }
     document.getElementById("lastUpdateFaq").innerHTML = monthNames[month] + " " + d.getFullYear()
     document.getElementById("lastUpdateBadge").innerHTML = "Datenaktualität: " + monthNames[month] + " " + d.getFullYear()
