@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Vector Tiles - OpenLayers Demo without MapBox GL JS</title>
+    <link href="https://cdn.skypack.dev/ol/ol.css" rel="stylesheet">
+    <style>
+        body { margin: 0; padding: 0; }
+        #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+    </style>
+</head>
+
+<body>
+    <div id="map" class="map"></div>
+    <script type="module">
+        // Usually one would simply install ol and ol-mapbox-style e.g. with npm, but
+        // since this should be a standalone file, we choose skypack. This affects
+        // initial loading times, but is extremely close to how one would actually
+        // use OpenLayers in real world applications.
+
+        // Import what we need from OpenLayers
+        import Map from 'https://cdn.skypack.dev/ol/Map.js';
+        import View from 'https://cdn.skypack.dev/ol/View.js';
+        import DragRotateAndZoom from 'https://cdn.skypack.dev/ol/interaction/DragRotateAndZoom.js';
+        import { useGeographic } from 'https://cdn.skypack.dev/ol/proj.js';
+
+        // Import what we need from ol-mapbox-style
+        import { apply } from 'https://cdn.skypack.dev/ol-mapbox-style';
+
+        // enables us to use lat/lon coordinates in an easy way
+        useGeographic();
+
+        const center = [9.8, 52.4];
+        const host = 'staging.basisvisualisierung.niedersachsen.de';
+        const path = 'services/basiskarte/styles/vt-style-color.json';
+        const vtStyle = `https://${host}/${path}`;
+
+        const map = new Map({
+            view: new View({
+                center: center,
+                zoom: 13
+            }),
+            target: 'map'
+        });
+
+        // enable easy rotation/zoom of the map… just press SHIFT and use the mouse.
+        map.addInteraction(new DragRotateAndZoom());
+
+        // here we apply the vtStyle to the current OpenLayers map, and that's it. 
+        apply(map, vtStyle);
+    </script>
+</body>
+
+</html>
