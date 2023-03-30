@@ -1,0 +1,18 @@
+{
+  "name": "openlayers_npm",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "4.2.0"
+  },
+  "dependencies": {
+    "ol": "7.3.0",
+    "ol-mapbox-style": "10.3.4"
+  }
+}
