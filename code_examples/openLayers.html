@@ -1,46 +1,63 @@
-
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Vector Tiles - OpenLayers Demo</title>
-    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.js"></script>
-    <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.css">
-    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/css/ol.css" type=text/css>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.3.0/ol.css" type=text/css>
     <style>
-        body { margin:0; padding:0; }
-        #map { position:absolute; top:0; bottom:0; width:100%; }
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
     </style>
 </head>
+
 <body>
     <div id="map" class="map"></div>
-    <script>
-        var center = [9.8, 52.4];
-        var mbMap = new mapboxgl.Map({
-            style: 'https://staging.basisvisualisierung.niedersachsen.de/services/basiskarte/styles/vt-style-color.json',
-            center: center,
-            container: 'map',
-        });
-        var mbLayer = new ol.layer.Layer({
-            render: function(frameState) {
-                var canvas = mbMap.getCanvas();
-                var viewState = frameState.viewState;
-                mbMap.jumpTo({
-                    center: ol.proj.toLonLat(viewState.center),
-                    zoom: viewState.zoom - 1,
-                    animate: false
-                });
-                return canvas;
+    <script type="module">
+        import { Map, View } from 'https://cdn.jsdelivr.net/npm/ol@7.3.0/+esm'
+        import { fromLonLat } from 'https://cdn.jsdelivr.net/npm/ol@7.3.0/proj/+esm'
+        import { apply } from 'https://cdn.jsdelivr.net/npm/ol-mapbox-style@10.3.4/+esm'
+
+        const styleUrl = "https://staging.basisvisualisierung.niedersachsen.de/services/basiskarte/styles/vt-style-color.json"
+
+        // Hannover
+        const center = [9.8, 52.4]
+
+        // OpenLayers Map with defined view
+        const map = new Map(
+            {
+                target: "map",
+                view: new View({
+                    center: fromLonLat(center),
+                    zoom: 15
+                })
             }
-        });
-        var map = new ol.Map({
-            layers: [mbLayer],
-            target: 'map',
-            view: new ol.View({
-                center: ol.proj.fromLonLat(center),
-                zoom: 13
+        )
+
+        // Fetch Mapbox style document
+        fetch(styleUrl)
+            .then(response => response.json())
+            .then(data => {
+                const style = data
+                style.layers.forEach(l => {
+                    delete l.layout?.["symbol-spacing"]
+                })
+                return style
             })
-        });
+            .then(style => {
+                // Apply style (data, style layers) to OpenLayers Map
+                // Note: pbf fonts are not supported, missing web-fonts are requested from google by default
+                apply(map, style)
+            })
     </script>
 </body>
+
 </html>
