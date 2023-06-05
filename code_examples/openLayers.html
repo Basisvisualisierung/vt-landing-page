@@ -3,7 +3,7 @@
 
 <head>
     <title>Vector Tiles - OpenLayers Demo</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.3.0/ol.css" type=text/css>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol/ol.css" type=text/css>
     <style>
         body {
             margin: 0;
@@ -22,39 +22,25 @@
 <body>
     <div id="map" class="map"></div>
     <script type="module">
-        import { Map, View } from 'https://cdn.jsdelivr.net/npm/ol@7.3.0/+esm'
-        import { fromLonLat } from 'https://cdn.jsdelivr.net/npm/ol@7.3.0/proj/+esm'
-        import { apply } from 'https://cdn.jsdelivr.net/npm/ol-mapbox-style@10.3.4/+esm'
-
-        const styleUrl = "https://staging.basisvisualisierung.niedersachsen.de/services/basiskarte/styles/vt-style-color.json"
-
-        // Hannover
-        const center = [9.8, 52.4]
+        import { Map, View } from 'https://cdn.jsdelivr.net/npm/ol/+esm'
+        import { fromLonLat } from 'https://cdn.jsdelivr.net/npm/ol/proj/+esm'
+        import { apply } from 'https://cdn.jsdelivr.net/npm/ol-mapbox-style/+esm'
 
         // OpenLayers Map with defined view
         const map = new Map(
             {
                 target: "map",
                 view: new View({
-                    center: fromLonLat(center),
-                    zoom: 15
+                    center: fromLonLat([9.8, 52.4]),
+                    zoom: 11
                 })
             }
         )
 
-        // Fetch Mapbox style document
-        fetch(styleUrl)
+        // Fetch MapLibre style document
+        fetch("https://basisvisualisierung.niedersachsen.de/services/basiskarte/styles/vt-style-color.json")
             .then(response => response.json())
-            .then(data => {
-                const style = data
-                style.layers.forEach(l => {
-                    delete l.layout?.["symbol-spacing"]
-                })
-                return style
-            })
             .then(style => {
-                // Apply style (data, style layers) to OpenLayers Map
-                // Note: pbf fonts are not supported, missing web-fonts are requested from google by default
                 apply(map, style)
             })
     </script>

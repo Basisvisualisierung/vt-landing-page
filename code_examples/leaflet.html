@@ -1,28 +1,39 @@
-
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Vector Tiles - Leaflet Demo</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <style>
-        body { margin:0; padding:0; }
-        #map { position:absolute; top:0; bottom:0; width:100%; }
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
     </style>
 </head>
+
 <body>
     <div id="map"></div>
-    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.js"></script>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/mapbox-gl-leaflet/leaflet-mapbox-gl.js"></script>
+    <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/@maplibre/maplibre-gl-leaflet/leaflet-maplibre-gl.js"></script>
     <script>
         var map = L.map('map', {
             minZoom: 6,
             maxZoom: 18,
         });
-        var gl = L.mapboxGL({
-            style: 'https://staging.basisvisualisierung.niedersachsen.de/services/basiskarte/styles/vt-style-color.json',
+        var gl = L.maplibreGL({
+            style: 'https://basisvisualisierung.niedersachsen.de/services/basiskarte/styles/vt-style-color.json',
         }).addTo(map);
-        map.setView([ 52.4, 9.8 ], 13);
+        map.setView([52.4, 9.8], 11);
     </script>
 </body>
+
 </html>
