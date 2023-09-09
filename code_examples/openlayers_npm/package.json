@@ -12,7 +12,7 @@
     "vite": "~4.3.0"
   },
   "dependencies": {
-    "ol": "~7.4.0",
+    "ol": "~8.1.0",
     "ol-mapbox-style": "~10.6.0"
   }
 }
