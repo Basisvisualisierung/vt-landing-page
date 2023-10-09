@@ -170,6 +170,9 @@
                         aria-labelledby="pills-news-tab">
                         <div class="p-2">
                             <div class="news-content" id="news-content">
+                                <b>09.10.2023 +++ Änderung der Vector Tiles auf Version 3 - Kacheln mit GDAL +++</b></br>
+                                Mehr dazu im Abschnitt <a class="news-href"
+                                    onclick="scrollToID('data')">Daten</a></br></br>
                                 <b>07.12.2022 +++ Änderung des Datenmodells auf Version 2 +++</b></br>
                                 Mehr dazu im Abschnitt <a class="news-href"
                                     onclick="scrollToID('data')">Daten</a></br></br>
@@ -932,7 +935,7 @@
                     <p>
                         TileJSON-URL:<br />
                         <code>
-                        https://basisvisualisierung.niedersachsen.de/services/basiskarte/v2/tiles/basiskarte.json
+                        https://basisvisualisierung.niedersachsen.de/services/basiskarte/v3/tiles/basiskarte.json
                     </code>
                         <button class="btn btn-primary data-url-btn btn-sm px-3 px-md-3" onclick="copyURL('Tilejson')">
                             <span class="d-none d-md-inline">URL</span>
@@ -943,7 +946,7 @@
                     <p>
                         XYZ-URL:<br />
                         <code>
-                        https://basisvisualisierung.niedersachsen.de/services/basiskarte/v2/tiles/{z}/{x}/{y}.pbf
+                        https://basisvisualisierung.niedersachsen.de/services/basiskarte/v3/tiles/{z}/{x}/{y}.pbf
                     </code>
                         <button class="btn btn-primary data-url-btn btn-sm px-3 px-md-3" onclick="copyURL('XYZ')">
                             <span class="d-none d-md-inline">URL</span>
@@ -971,15 +974,17 @@
                             rel="noopener">basemap.de</a>.
                     </p>
 
-                    <h4 class="text-center">Aktualisierung Version 2</h4>
+                    <h4 class="text-center">Aktualisierung Version 3</h4>
                     <p>
-                        Mit Einführung der Version 2 unserer Vector Tiles, gibt es Änderungen am Datenschema. Diese
-                        können dem Änderungsprotokoll entnommen werden. Version 1 der Vector Tiles wird inhaltlich nicht
-                        mehr aktualisiert und wir empfehlen den Umstieg auf Version 2. 
+                        Mit Einfühurng der Version 3 erfolgt der Kachelprozess mit dem Werkzeug <a href="https://gdal.org/programs/ogr2ogr.html" target="_blank"
+                        rel="noopener">ogr2ogr</a> von <a href="https://gdal.org/index.html" target="_blank"
+                        rel="noopener">GDAL</a>. Version 1 und Version 2 der Vector Tiles werden inhaltlich nicht
+                        mehr aktualisiert und wir empfehlen den Umstieg auf Version 3. Die Unterschiede in den Versionen
+                        können dem Änderungsprotokoll entnommen werden. 
                     </p>
                     <p>
                         Für Nutzende unserer Styles
-                        besteht kein Handlungssbedarf, diese wurden an das neue Datenschema angepasst.
+                        besteht kein Handlungssbedarf, diese wurden an die neue Version angepasst.
                     </p>
 
                     <div class="accordion col-xl-12 offset-xl-12 col-lg-12 offset-lg-12 py-2" id="faqAccordion">
@@ -993,10 +998,15 @@
                             <div id="collapseOne" class="accordion-collapse collapse bg-white"
                                 aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">
-                                    <h6>Version 2.0</h6>
+                                    <h6>Version 3.0</h6>
                                     <ul>
-                                        <li>Layer "Name" umbenannt in "Name_Punkt"</li>
-                                        <li>Attribut "gebaeudefunktion" in Layer "Gebaeudeflaeche" umbenannt in "klasse"
+                                        <li>Zur Herstellung der Kacheln wird GDAL mit ogr2ogr genutzt. </li>
+                                    </ul>
+                                    <h6>Version 2.0</h6>
+                                    Mit Einführung der Version 2 unserer Vector Tiles, gibt es Änderungen am Datenschema. 
+                                    <ul>
+                                        <li>Änderung Datenmodell: Layer "Name" umbenannt in "Name_Punkt"</li>
+                                        <li>Änderung Datenmodell: Attribut "gebaeudefunktion" in Layer "Gebaeudeflaeche" umbenannt in "klasse"
                                     </ul>
 
                                 </div>
