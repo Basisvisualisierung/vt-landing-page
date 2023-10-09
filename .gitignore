@@ -1,3 +1,5 @@
 # system files
 .DS_Store
 Thumbs.db
+code_examples/openlayers_npm/node_modules
+code_examples/openlayers_npm/package-lock.json
