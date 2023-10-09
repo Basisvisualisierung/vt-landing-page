@@ -121,11 +121,11 @@ function copyURL(id) {
     let active = document.getElementsByClassName('nav-link map active').item(0)
     if (id) {
         if (id =='Tilejson') {
-            copyToClipboard("https://basisvisualisierung.niedersachsen.de/services/basiskarte/v2/tiles/basiskarte.json")
+            copyToClipboard("https://basisvisualisierung.niedersachsen.de/services/basiskarte/v3/tiles/basiskarte.json")
         }else if (id =='Farbe') {
             copyToClipboard("https://basisvisualisierung.niedersachsen.de/services/basiskarte/styles/vt-style-color.json")
         }else {
-            copyToClipboard("https://basisvisualisierung.niedersachsen.de/services/basiskarte/v2/tiles/{z}/{x}/{y}.pbf")
+            copyToClipboard("https://basisvisualisierung.niedersachsen.de/services/basiskarte/v3/tiles/{z}/{x}/{y}.pbf")
         }
         showToast(id + "-URL kopiert", "Die URL urde erfolgreich in die Zwischenablage kopiert")
 

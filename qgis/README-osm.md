@@ -1,7 +1,7 @@
 # Einbindung in QGIS
 
 ## QGIS-Version
-Wir empfehlen die Verwendung von QGIS 3.22.2.
+Wir empfehlen die Verwendung von QGIS 3.22.8.
 Bei anderen QGIS-Versionen kann es zu Fehlern bei der Layer-Erstellung kommen.
 
 ***
@@ -11,7 +11,7 @@ Bei anderen QGIS-Versionen kann es zu Fehlern bei der Layer-Erstellung kommen.
 * Im linken *Browser*-Fenster eine neue Verbindung erstellen, unter *Vektor Tiles/ Neue allgemeine Verbindung...*
 * Vektorkachelverbindung
   * *Name* vergeben (z.B. Basisvisualisierung-Farbe)
-  * *URL* einfügen: https://basisvisualisierung.niedersachsen.de/services/basiskarte/v1/tiles/{z}/{x}/{y}.pbf
+  * *URL* einfügen: https://basisvisualisierung.niedersachsen.de/services/basiskarte/v3/tiles/{z}/{x}/{y}.pbf
   * *Maximale Zoomstufe* auf **15** ändern
   * *Stil URL* einfügen: https://basisvisualisierung.niedersachsen.de/services/basiskarte/styles/vt-style-color.json
 (Beispiel Color-Style. Weitere Stil-URL´s finden Sie unter https://basisvisualisierung.niedersachsen.de/ . Ohne Stil-URL werden die Daten in einem Standard-Stil von QGIS dargestellt.)
@@ -44,4 +44,4 @@ https://github.com/google/fonts/tree/main/ofl/cantarell
 Die genannten Warnungen können Ignoriert werden. 3D-Objekte werden von QGIS momentan ohne PlugIn nicht unterstützt.
 
 ***
-Stand: 20.01.2022
+Stand: 09.10.2023
