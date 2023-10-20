@@ -17,16 +17,16 @@ jobs:
           curl https://dl.minio.io/client/mc/release/linux-amd64/mc --output ./mc
           chmod u+x ./mc
       - name: Setup alias
-        run: ./mc alias set upload https://s3.eu-de.cloud-object-storage.appdomain.cloud ${{ secrets.IBM_COS_ACCESS_KEY }} ${{ secrets.IBM_COS_SECRET_KEY }}
+        run: ./mc alias set upload https://s3.eu-de.cloud-object-storage.appdomain.cloud ${{ secrets.IBM_COS_PROD_ACCESS_KEY }} ${{ secrets.IBM_COS_PROD_SECRET_KEY }}
       - name: Upload files
         run: |
-          ./mc cp -r css upload/website-bavi/
-          ./mc cp -r icons upload/website-bavi/
-          ./mc cp -r js upload/website-bavi/
-          ./mc cp qgis/Readme.txt upload/website-bavi/qgis/Readme.txt
-          ./mc cp -r video upload/website-bavi/
-          ./mc cp -r svg upload/website-bavi/
-          ./mc cp -r status upload/website-bavi/
-          ./mc cp index.html upload/website-bavi/
-          ./mc cp robots.txt upload/website-bavi/
-          ./mc cp sitemap.xml upload/website-bavi/
+          ./mc cp -r css upload/tiles-prod-website/
+          ./mc cp -r icons upload/tiles-prod-website/
+          ./mc cp -r js upload/tiles-prod-website/
+          ./mc cp qgis/Readme.txt upload/tiles-prod-website/qgis/Readme.txt
+          ./mc cp -r video upload/tiles-prod-website/
+          ./mc cp -r svg upload/tiles-prod-website/
+          ./mc cp -r status upload/tiles-prod-website/
+          ./mc cp index.html upload/tiles-prod-website/
+          ./mc cp robots.txt upload/tiles-prod-website/
+          ./mc cp sitemap.xml upload/tiles-prod-website/

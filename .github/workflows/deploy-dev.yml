@@ -24,16 +24,16 @@ jobs:
           curl https://dl.minio.io/client/mc/release/linux-amd64/mc --output ./mc
           chmod u+x ./mc
       - name: Setup alias
-        run: ./mc alias set upload https://s3.eu-de.cloud-object-storage.appdomain.cloud ${{ secrets.IBM_COS_ACCESS_KEY }} ${{ secrets.IBM_COS_SECRET_KEY }}
+        run: ./mc alias set upload https://s3.eu-de.cloud-object-storage.appdomain.cloud ${{ secrets.IBM_COS_DEV_ACCESS_KEY }} ${{ secrets.IBM_COS_DEV_SECRET_KEY }}
       - name: Upload files
         run: |
-          ./mc cp -r css upload/website-bavi-dev/
-          ./mc cp -r icons upload/website-bavi-dev/
-          ./mc cp -r js upload/website-bavi-dev/
-          ./mc cp qgis/Readme.txt upload/website-bavi-dev/qgis/Readme.txt
-          ./mc cp -r video upload/website-bavi-dev/
-          ./mc cp -r svg upload/website-bavi-dev/
-          ./mc cp -r status upload/website-bavi-dev/
-          ./mc cp index.html upload/website-bavi-dev/
-          ./mc cp robots.txt upload/website-bavi-dev/
-          ./mc cp sitemap.xml upload/website-bavi-dev/
+          ./mc cp -r css upload/tiles-dev-website/
+          ./mc cp -r icons upload/tiles-dev-website/
+          ./mc cp -r js upload/tiles-dev-website/
+          ./mc cp qgis/Readme.txt upload/tiles-dev-website/qgis/Readme.txt
+          ./mc cp -r video upload/tiles-dev-website/
+          ./mc cp -r svg upload/tiles-dev-website/
+          ./mc cp -r status upload/tiles-dev-website/
+          ./mc cp index.html upload/tiles-dev-website/
+          ./mc cp robots.txt upload/tiles-dev-website/
+          ./mc cp sitemap.xml upload/tiles-dev-website/

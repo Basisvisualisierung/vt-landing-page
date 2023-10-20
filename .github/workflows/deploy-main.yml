@@ -24,16 +24,16 @@ jobs:
           curl https://dl.minio.io/client/mc/release/linux-amd64/mc --output ./mc
           chmod u+x ./mc
       - name: Setup alias
-        run: ./mc alias set upload https://s3.eu-de.cloud-object-storage.appdomain.cloud ${{ secrets.IBM_COS_ACCESS_KEY }} ${{ secrets.IBM_COS_SECRET_KEY }}
+        run: ./mc alias set upload https://s3.eu-de.cloud-object-storage.appdomain.cloud ${{ secrets.IBM_COS_STAGING_ACCESS_KEY }} ${{ secrets.IBM_COS_STAGING_SECRET_KEY }}
       - name: Upload files
         run: |
-          ./mc cp -r css upload/website-bavi-staging/
-          ./mc cp -r icons upload/website-bavi-staging/
-          ./mc cp -r js upload/website-bavi-staging/
-          ./mc cp qgis/Readme.txt upload/website-bavi-staging/qgis/Readme.txt
-          ./mc cp -r video upload/website-bavi-staging/
-          ./mc cp -r svg upload/website-bavi-staging/
-          ./mc cp -r status upload/website-bavi-staging/
-          ./mc cp index.html upload/website-bavi-staging/
-          ./mc cp robots.txt upload/website-bavi-staging/
-          ./mc cp sitemap.xml upload/website-bavi-staging/
+          ./mc cp -r css upload/tiles-staging-website/
+          ./mc cp -r icons upload/tiles-staging-website/
+          ./mc cp -r js upload/tiles-staging-website/
+          ./mc cp qgis/Readme.txt upload/tiles-staging-website/qgis/Readme.txt
+          ./mc cp -r video upload/tiles-staging-website/
+          ./mc cp -r svg upload/tiles-staging-website/
+          ./mc cp -r status upload/tiles-staging-website/
+          ./mc cp index.html upload/tiles-staging-website/
+          ./mc cp robots.txt upload/tiles-staging-website/
+          ./mc cp sitemap.xml upload/tiles-staging-website/
