@@ -14,11 +14,11 @@ jobs:
         uses: actions/checkout@v3
       - name: Replace urls
         run: | 
-          sed -i 's/https:\/\/basisvisualisierung.niedersachsen.de/https:\/\/dev.basisvisualisierung.niedersachsen.de/g' ./js/app.js
-          sed -i 's/https:\/\/basisvisualisierung.niedersachsen.de/https:\/\/dev.basisvisualisierung.niedersachsen.de/g' ./index.html
-          sed -i 's/https:\/\/basisvisualisierung.niedersachsen.de/https:\/\/dev.basisvisualisierung.niedersachsen.de/g' ./status/status.html
-          sed -i 's/https:\/\/basisvisualisierung.niedersachsen.de/https:\/\/dev.basisvisualisierung.niedersachsen.de/g' ./robots.txt
-          sed -i 's/https:\/\/basisvisualisierung.niedersachsen.de/https:\/\/dev.basisvisualisierung.niedersachsen.de/g' ./sitemap.xml
+          sed -i 's/https:\/\/basisvisualisierung.niedersachsen.de/https:\/\/tiles-dev-website.s3-web.eu-de.cloud-object-storage.appdomain.cloud/g' ./js/app.js
+          sed -i 's/https:\/\/basisvisualisierung.niedersachsen.de/https:\/\/tiles-dev-website.s3-web.eu-de.cloud-object-storage.appdomain.cloud/g' ./index.html
+          sed -i 's/https:\/\/basisvisualisierung.niedersachsen.de/https:\/\/tiles-dev-website.s3-web.eu-de.cloud-object-storage.appdomain.cloud/g' ./status/status.html
+          sed -i 's/https:\/\/basisvisualisierung.niedersachsen.de/https:\/\/tiles-dev-website.s3-web.eu-de.cloud-object-storage.appdomain.cloud/g' ./robots.txt
+          sed -i 's/https:\/\/basisvisualisierung.niedersachsen.de/https:\/\/tiles-dev-website.s3-web.eu-de.cloud-object-storage.appdomain.cloud/g' ./sitemap.xml
       - name: Download minio
         run: |
           curl https://dl.minio.io/client/mc/release/linux-amd64/mc --output ./mc
