@@ -9,10 +9,10 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "vite": "4.4.12"
+    "vite": "~4.5.0"
   },
   "dependencies": {
-    "ol": "~8.1.0",
-    "ol-mapbox-style": "~12.0.0"
+    "ol": "~8.2.0",
+    "ol-mapbox-style": "~12.1.0"
   }
 }
