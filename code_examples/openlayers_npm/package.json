@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "vite": "6.0.3"
+    "vite": "6.0.6"
   },
   "dependencies": {
     "ol": "~10.3.0",
