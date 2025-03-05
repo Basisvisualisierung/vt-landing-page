@@ -42,7 +42,7 @@ function setupUsageMap() {
 }
 
 // Sets the date of the last data update in FAQ
-// The vector tiles are created on first/second day of month with data from the previous month
+// The vector tiles are created on every sunday with data from 6 days ago.
 function setLastUpdate() {
     const monthNames = ["Januar", "Februar", "März", "April", "Mai", "Juni",
                         "Juli", "August", "September", "Oktober", "November", "Dezember"]
@@ -51,10 +51,8 @@ function setLastUpdate() {
     let month = d.getMonth();
     let year = d.getFullYear();
 
-    if (d.getDate() > 2) {
+    if (d.getDate() <= 6) {
         month = month - 1
-    } else {
-        month = month - 2
     }
 
     if (month < 0) {
