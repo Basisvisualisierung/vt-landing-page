@@ -170,6 +170,9 @@
                         aria-labelledby="pills-news-tab">
                         <div class="p-2">
                             <div class="news-content" id="news-content">
+                                <b>05.03.2025 +++ Änderung der Vector Tiles auf Version 4 +++</b></br>
+                                Mehr dazu im Abschnitt <a class="news-href"
+                                    onclick="scrollToID('data')">Daten</a></br></br>
                                 <b>15.01.2024 +++ Änderung der Nutzungsbedingungen der Daten auf CC BY 4.0 +++</b></br>
                                 Mehr dazu im Abschnitt <a class="news-href"
                                     onclick="scrollToID('tos')">Nutzungsbedingungen</a></br></br>
@@ -327,8 +330,6 @@
                         Bavi Frontends sind, dass keine JavaScript-Kenntnisse benötigt werden und
                         verwendete Bibliotheken nicht mehr selbst verwaltet werden müssen.
                     </p>
-                    <p>Das Bavi Frontend befindet sich derzeit in aktiver Entwicklung. Die Komponenten, Attribute und
-                        Funktionen können sich jederzeit ändern.</p>
                 </div>
             </div>
             <div class="row mt-3">
@@ -929,7 +930,7 @@
             <div class="row ">
                 <div class="col-xl-10 offset-xl-1 col-lg-10 offset-lg-1 py-2">
                     <div class="vertical-center"><span id="lastUpdateBadge" class="badge bg-primary">Datenaktualität:
-                            Vormonat</span></div>
+                            letzte Woche</span></div>
 
 
                     <p> Die Datengrundlage für diesen Dienst sind die Vector Tiles von basemap.de.
@@ -938,7 +939,7 @@
                     <p>
                         TileJSON-URL:<br />
                         <code>
-                        https://basisvisualisierung.niedersachsen.de/services/basiskarte/v3/tiles/basiskarte.json
+                        https://basisvisualisierung.niedersachsen.de/services/basiskarte/v4/tiles/basiskarte.json
                     </code>
                         <button class="btn btn-primary data-url-btn btn-sm px-3 px-md-3" onclick="copyURL('Tilejson')">
                             <span class="d-none d-md-inline">URL</span>
@@ -949,7 +950,7 @@
                     <p>
                         XYZ-URL:<br />
                         <code>
-                        https://basisvisualisierung.niedersachsen.de/services/basiskarte/v3/tiles/{z}/{x}/{y}.pbf
+                        https://basisvisualisierung.niedersachsen.de/services/basiskarte/v4/tiles/{z}/{x}/{y}.pbf
                     </code>
                         <button class="btn btn-primary data-url-btn btn-sm px-3 px-md-3" onclick="copyURL('XYZ')">
                             <span class="d-none d-md-inline">URL</span>
@@ -977,17 +978,18 @@
                             rel="noopener">basemap.de</a>.
                     </p>
 
-                    <h4 class="text-center">Aktualisierung Version 3</h4>
+                    <h4 class="text-center">Aktualisierung Version 4</h4>
                     <p>
-                        Mit Einführung der Version 3 erfolgt der Kachelprozess mit dem Werkzeug <a href="https://gdal.org/programs/ogr2ogr.html" target="_blank"
-                        rel="noopener">ogr2ogr</a> von <a href="https://gdal.org/index.html" target="_blank"
-                        rel="noopener">GDAL</a>. Das zugrunde liegende Datenmodell hat sich mit dem Umstieg auf Version 3 nicht geändert. Version 1 und Version 2 der Vector Tiles werden inhaltlich nicht
-                        mehr aktualisiert und wir empfehlen den Umstieg auf Version 3. Die Unterschiede in den Versionen
-                        können dem Änderungsprotokoll entnommen werden. 
+                        Mit Einführung des Datenmodells und der Styles in Version 4 erfolgen vor allem Anpassungen der Datengrundlagen.
+                        So basieren die zugrundeliegenden Daten nun auf dem Anwendungsschema 7.1.2 der <a href="https://www.adv-online.de/GeoInfoDok/Aktuelle-Anwendungsschemata/" target="_blank"
+                        rel="noopener">GeoInfoDok</a> der AdV.
+                        Außerdem enthält das neue Datenmodell Gebäude aus dem Liegenschaftskataster (ALKIS), die eine höhere Aktualität aufweisen, als die in Version 3 verwendeten Gebäudedaten.
+                        Das Datenmodell enthält keine grundlegenden strukturellen Änderungen, aber inhaltliche Anpassungen.
+                        Ältere Versionen der Vector Tiles werden inhaltlich nicht mehr aktualisiert und wir empfehlen den Umstieg auf Version 4.
+                        Die Unterschiede in den Versionen können dem Änderungsprotokoll entnommen werden. 
                     </p>
                     <p>
-                        Für Nutzende unserer Styles
-                        besteht kein Handlungssbedarf, diese wurden an die neue Version angepasst.
+                        Für Nutzende unserer Styles besteht kein Handlungssbedarf, diese wurden an die neue Version angepasst.
                     </p>
 
                     <div class="accordion col-xl-12 offset-xl-12 col-lg-12 offset-lg-12 py-2" id="faqAccordion">
@@ -1001,6 +1003,13 @@
                             <div id="collapseOne" class="accordion-collapse collapse bg-white"
                                 aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">
+                                    <h6>Version 4.0</h6>
+                                    Mit Einführung der Version 4 unserer Vector Tiles gibt es folgende Änderungen. 
+                                    <ul>
+                                        <li>Änderung Gebäudedaten: Umstieg von LoD1- auf ALKIS-Gebäude</li>
+                                        <li>Änderung Objektklasse: Inhaltliche Ergänzungen und Anpassungen der Werte des Attributs "klasse" in vielen Layern</li>
+                                        <li>Aktualisierungszyklus: Die Aktualisierung der Vector Tiles erfolgt wöchentlich</li>
+                                    </ul>
                                     <h6>Version 3.0</h6>
                                     <ul>
                                         <li>Zur Herstellung der Kacheln wird GDAL mit ogr2ogr genutzt. </li>
@@ -1159,9 +1168,7 @@
                     <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
                         data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
-                            Die Daten stammen größtenteils aus <span id="lastUpdateFaq">dem Vormonat</span>. Die
-                            Gebäudedaten können in der Aktualität
-                            abweichen.
+                            Die Daten stammen größtenteils aus <span id="lastUpdateFaq">der letzten Woche.</span>.
                         </div>
                     </div>
                 </div>

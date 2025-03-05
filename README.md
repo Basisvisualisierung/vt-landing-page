@@ -6,4 +6,4 @@ This page is published on https://basisvisualisierung.niedersachsen.de
 
 MIT License. For more information see LICENSE.txt.
 
-Copyright 2021-2022 Landesamt für Geoinformation und Landesvermessung Niedersachsen
+Copyright 2021-2025 Landesamt für Geoinformation und Landesvermessung Niedersachsen
