@@ -9,10 +9,18 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "vite": "6.0.11"
   },
   "dependencies": {
     "ol": "~10.4.0",
     "ol-mapbox-style": "~12.4.0"
+=======
+    "vite": "7.1.12"
+  },
+  "dependencies": {
+    "ol": "10.6.0",
+    "ol-mapbox-style": "13.1.0"
+>>>>>>> develop
   }
 }
