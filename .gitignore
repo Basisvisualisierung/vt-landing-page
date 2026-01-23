@@ -2,3 +2,5 @@
 .DS_Store
 Thumbs.db
 code_examples/openlayers_npm/node_modules
+
+.env
