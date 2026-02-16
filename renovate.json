@@ -1,4 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "ignoreArtifacts": true
+  "packageRules": [
+    {
+      "matchManagers": ["npm"],
+      "ignoreArtifacts": true
+    }
+  ]
 }
