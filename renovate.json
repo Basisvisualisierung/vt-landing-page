@@ -3,7 +3,7 @@
   "packageRules": [
     {
       "matchManagers": ["npm"],
-      "ignoreArtifacts": true
+      "skipArtifactsUpdate": true
     }
   ]
 }
